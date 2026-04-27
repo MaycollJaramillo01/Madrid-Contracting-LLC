@@ -19,13 +19,13 @@ if (empty($categoryConfig)) {
   $categoryConfig = [
     [
       'label' => 'Core Services',
-      'summary_slug' => 'bathroom-remodeling',
-      'service_slugs' => ['bathroom-remodeling', 'flooring-remodeling', 'kitchen-remodeling', 'painting', 'door-installation-replacement']
+      'summary_slug' => 'local-towing',
+      'service_slugs' => ['local-towing', 'long-distance-towing', 'we-buy-junk-cars', 'jump-start-vehicles', 'locked-car-services']
     ],
     [
       'label' => 'Other Services',
       'summary_slug' => 'other-services',
-      'service_slugs' => ['wood-flooring', 'deck-construction-repair']
+      'service_slugs' => ['roadside-assistance', '24-hour-towing']
     ]
   ];
 }
@@ -69,13 +69,13 @@ if (!function_exists('homeServicesMinimalImage')) {
     $exts = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
     $aliasMap = [
-      'bathroom-remodeling' => ['kitchen-bathroom-remodeling'],
-      'flooring-remodeling' => ['flooring-installation'],
-      'kitchen-remodeling' => ['kitchen-bathroom-remodeling'],
-      'painting' => ['interior-exterior-painting'],
-      'door-installation-replacement' => ['door-window-installation-replacement'],
-      'wood-flooring' => ['flooring-installation'],
-      'deck-construction-repair' => ['deck-installation-repair']
+      'local-towing' => ['towing', 'tow-truck'],
+      'long-distance-towing' => ['long-distance-tow', 'vehicle-transport'],
+      'we-buy-junk-cars' => ['junk-cars', 'junk-car-removal'],
+      'jump-start-vehicles' => ['jump-start', 'battery-jump'],
+      'locked-car-services' => ['lockout', 'car-lockout'],
+      'roadside-assistance' => ['roadside-help'],
+      '24-hour-towing' => ['emergency-towing', '24-hour-service']
     ];
 
     $labelCandidates = [];
@@ -168,7 +168,7 @@ if (!function_exists('homeServicesMinimalImage')) {
       }
     }
 
-    return 'assets/img/stock/remodel-main.jpg';
+    return 'assets/img/truck.jpeg';
   }
 }
 

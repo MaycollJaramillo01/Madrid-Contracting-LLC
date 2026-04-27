@@ -4,11 +4,11 @@
 require_once __DIR__ . '/text.php';
 
 $page_name = $NavCopy['services'] ?? 'Services';
-$PageTitle = ($NavCopy['services'] ?? 'Services') . ' | ' . ($Company ?? 'OMAR REMODELING LLC');
+$PageTitle = ($NavCopy['services'] ?? 'Services') . ' | ' . ($Company ?? 'Familia Towing');
 
 $PageDescription = trim((string) ($HomeServicesCopy['desc'] ?? ''));
 if ($PageDescription === '') {
-  $PageDescription = 'Residential and commercial remodeling services within 80 miles of Laurel, MD.';
+  $PageDescription = 'Local towing, long distance towing, jump starts, lockout service, and junk car buying in Palm Beach County.';
 }
 
 $PageCanonical = rtrim((string) ($BaseURL ?? ''), '/') . '/services.php';

@@ -7,7 +7,7 @@ $whyDescription = trim((string) ($whyCopy['description'] ?? ''));
 $whyServiceAreaLabel = trim((string) ($whyCopy['service_area_label'] ?? 'Coverage and Credentials'));
 $whyCtaLabel = trim((string) ($whyCopy['cta_label'] ?? 'Request Free Estimate'));
 
-$companyName = trim((string) ($Company ?? 'Omar Remodeling LLC'));
+$companyName = trim((string) ($Company ?? 'Familia Towing'));
 $coverageText = trim((string) ($Coverage ?? 'Serving nearby communities.'));
 $phoneMain = trim((string) ($Phone ?? ''));
 $phoneMainRef = trim((string) ($PhoneRef ?? '#'));
@@ -194,16 +194,16 @@ if (empty($licensePills)) {
   --wl-primary: var(--brand-primary);
   --wl-secondary: var(--brand-secondary);
   --wl-accent: var(--brand-accent);
-  --wl-ink: #ffffff;
-  --wl-muted: rgba(255, 255, 255, 0.74);
-  --wl-line: rgba(255, 255, 255, 0.16);
+  --wl-ink: var(--site-dark-text);
+  --wl-muted: var(--site-dark-muted);
+  --wl-line: var(--site-dark-line);
   position: relative;
   overflow: hidden;
   padding: clamp(82px, 9vw, 132px) 0;
   background:
-    radial-gradient(circle at 10% 12%, rgba(227, 30, 36, 0.2), transparent 36%),
-    radial-gradient(circle at 90% 86%, rgba(227, 30, 36, 0.16), transparent 38%),
-    linear-gradient(145deg, var(--wl-secondary) 0%, color-mix(in srgb, var(--wl-primary) 78%, #000 22%) 58%, #08080a 100%);
+    radial-gradient(circle at 10% 12%, rgba(var(--brand-accent-rgb), 0.2), transparent 36%),
+    radial-gradient(circle at 90% 86%, rgba(var(--brand-accent-rgb), 0.16), transparent 38%),
+    linear-gradient(145deg, var(--site-dark) 0%, color-mix(in srgb, var(--wl-primary) 78%, #000 22%) 58%, #08080a 100%);
 }
 
 .why-lattice__noise {
@@ -230,9 +230,9 @@ if (empty($licensePills)) {
   min-height: 32px;
   padding: 6px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(227, 30, 36, 0.55);
-  background: rgba(227, 30, 36, 0.14);
-  color: #ffd8d9;
+  border: 1px solid rgba(var(--brand-accent-rgb), 0.55);
+  background: rgba(var(--brand-accent-rgb), 0.14);
+  color: color-mix(in srgb, var(--brand-white) 82%, var(--brand-accent) 18%);
   font-size: 11px;
   letter-spacing: 1.3px;
   text-transform: uppercase;
@@ -309,8 +309,8 @@ if (empty($licensePills)) {
 
 .why-lattice__coverage {
   border-radius: 18px;
-  border: 1px solid rgba(227, 30, 36, 0.42);
-  background: linear-gradient(160deg, rgba(227, 30, 36, 0.16), rgba(0, 0, 0, 0.22));
+  border: 1px solid rgba(var(--brand-accent-rgb), 0.42);
+  background: linear-gradient(160deg, rgba(var(--brand-accent-rgb), 0.14), rgba(0, 0, 0, 0.22));
   padding: clamp(14px, 2.2vw, 22px);
 }
 
@@ -327,7 +327,7 @@ if (empty($licensePills)) {
 }
 
 .why-lattice__coverage p i {
-  color: #ffb2b5;
+  color: color-mix(in srgb, var(--brand-accent) 74%, var(--brand-white) 26%);
   margin-right: 8px;
 }
 
@@ -372,7 +372,7 @@ if (empty($licensePills)) {
 
 .why-lattice__feature:hover {
   transform: translateY(-3px);
-  border-color: rgba(227, 30, 36, 0.7);
+  border-color: rgba(var(--brand-accent-rgb), 0.7);
   box-shadow: 0 18px 32px rgba(0, 0, 0, 0.18);
 }
 
@@ -394,9 +394,9 @@ if (empty($licensePills)) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(227, 30, 36, 0.14);
-  border: 1px solid rgba(227, 30, 36, 0.35);
-  color: #b6171c;
+  background: rgba(var(--brand-accent-rgb), 0.14);
+  border: 1px solid rgba(var(--brand-accent-rgb), 0.35);
+  color: var(--brand-accent);
   font-size: 15px;
 }
 
@@ -453,13 +453,13 @@ if (empty($licensePills)) {
 }
 
 .why-lattice__btn--primary {
-  background: #e31e24;
-  border: 1px solid #e31e24;
-  color: #ffffff;
+  background: var(--brand-accent);
+  border: 1px solid var(--brand-accent);
+  color: #050505;
 }
 
 .why-lattice__btn--primary:hover {
-  background: #b6171c;
+  background: color-mix(in srgb, var(--brand-accent) 84%, #fff 16%);
 }
 
 .why-lattice__btn--ghost {

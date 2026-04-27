@@ -24,7 +24,7 @@ if (empty($allAreas) && !empty($Coverage)) {
 }
 
 if (empty($allAreas)) {
-  $allAreas = ['Laurel, MD', 'Columbia, MD', 'Silver Spring, MD'];
+  $allAreas = ['West Palm Beach, FL', 'Jupiter, FL', 'Boca Raton, FL'];
 }
 
 $primaryAreas = array_slice($allAreas, 0, 6);

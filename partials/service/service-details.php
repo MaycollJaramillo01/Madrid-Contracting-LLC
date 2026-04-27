@@ -33,7 +33,7 @@ if (empty($detailImage) && !empty($heroImageMain)) {
 }
 
 if (empty($detailImage)) {
-    $detailImage = 'assets/img/stock/remodel-detail.jpg';
+    $detailImage = 'assets/img/truck.jpeg';
 }
 
 // Features por defecto si no hay específicas

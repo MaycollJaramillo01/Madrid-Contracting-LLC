@@ -27,7 +27,7 @@ $googleRef = trim((string) ($google ?? ''));
 $messengerRef = trim((string) ($messenger ?? ''));
 $googleMap = (string) ($GoogleMap ?? '');
 
-$logoPath = 'assets/img/logo.png';
+$logoPath = 'assets/img/logos.png';
 $domainRef = trim((string) ($Domain ?? ($BaseURL ?? '')));
 if ($domainRef === '') $domainRef = '#';
 $domainLabel = preg_replace('#^https?://#i', '', $domainRef);
@@ -134,8 +134,8 @@ if (isset($_GET['vcard'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($company, ENT_QUOTES, 'UTF-8'); ?>  Business Card</title>
     <meta name="description" content="Digital business card for <?php echo htmlspecialchars($company, ENT_QUOTES, 'UTF-8'); ?>">
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
-    <link rel="apple-touch-icon" href="assets/img/logo.png">
+    <link rel="icon" type="image/png" href="assets/img/logos.png">
+    <link rel="apple-touch-icon" href="assets/img/logos.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">

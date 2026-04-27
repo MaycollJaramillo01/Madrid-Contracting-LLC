@@ -62,10 +62,10 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
 <style>
     :root {
         /* Variables dinámicas desde PHP */
-        --f-bg: #ffffff;                                       /* Fondo Claro */
-        --f-text: var(--brand-secondary);                                     /* Texto Claro */
-        --f-accent: var(--brand-primary);                      /* Acento */
-        --f-border: rgba(31, 42, 54, 0.14);
+        --f-bg: #050505;
+        --f-text: var(--brand-accent);
+        --f-accent: var(--brand-accent);
+        --f-border: rgba(var(--brand-accent-rgb), 0.24);
     }
 
     .site-footer {
@@ -97,19 +97,28 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
 
     /* --- COLUMNA MARCA --- */
     .f-brand { grid-area: brand; }
+
+    .f-logo-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        margin-bottom: 25px;
+        background: #ffffff;
+        border-radius: 12px;
+        border: 1px solid rgba(var(--brand-accent-rgb), 0.16);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    }
     
     .f-logo {
         max-width: 180px;
-        margin-bottom: 25px;
-        /* Si tu logo es negro, esto lo invierte a blanco. Si ya es blanco, quita el filter */
-       /* filter: brightness(0) invert(1); */
         display: block;
     }
 
     .f-desc {
         font-size: 0.95rem;
         line-height: 1.6;
-        color: rgba(31, 42, 54, 0.82);
+        color: rgba(255, 255, 255, 0.72);
         margin-bottom: 30px;
         max-width: 300px;
     }
@@ -121,13 +130,13 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
 
     .f-social-btn {
         width: 40px; height: 40px;
-        background: rgba(31, 42, 54, 0.05);
+        background: rgba(var(--brand-accent-rgb), 0.08);
         display: flex; align-items: center; justify-content: center;
         border-radius: 4px; /* Cuadrado redondeado para look construcción */
         color: var(--f-text);
         text-decoration: none;
         transition: 0.3s;
-        border: 1px solid rgba(31, 42, 54, 0.12);
+        border: 1px solid rgba(var(--brand-accent-rgb), 0.2);
     }
 
     .f-social-btn img {
@@ -138,9 +147,9 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
     }
 
     .f-social-btn:hover {
-        background: rgba(0, 0, 0, 0.02);
+        background: rgba(var(--brand-accent-rgb), 0.14);
         border-color: var(--f-accent);
-        color: var(--f-accent);
+        color: #fff;
         transform: translateY(-3px);
     }
 
@@ -166,7 +175,7 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
     .f-list li { margin-bottom: 12px; }
 
     .f-list a {
-        color: rgba(31, 42, 54, 0.78);
+        color: rgba(255, 255, 255, 0.78);
         text-decoration: none;
         transition: 0.3s;
         font-size: 0.95rem;
@@ -196,7 +205,7 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
 
     .c-text span, .c-text a {
         display: block;
-        color: rgba(31, 42, 54, 0.84);
+        color: rgba(255, 255, 255, 0.82);
         text-decoration: none;
         line-height: 1.5;
         font-size: 0.95rem;
@@ -207,7 +216,7 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
     .c-label {
         font-size: 0.75rem;
         text-transform: uppercase;
-        color: rgba(31, 42, 54, 0.6);
+        color: rgba(var(--brand-accent-rgb), 0.82);
         margin-bottom: 2px;
         display: block;
     }
@@ -222,7 +231,7 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
         flex-wrap: wrap;
         gap: 20px;
         font-size: 0.85rem;
-        color: rgba(31, 42, 54, 0.68);
+        color: rgba(255, 255, 255, 0.68);
     }
 
     .legal-badges {
@@ -233,7 +242,7 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
     .legal-badges span {
         color: var(--f-accent);
         font-weight: 600;
-        background: rgba(31, 42, 54, 0.05);
+        background: rgba(var(--brand-accent-rgb), 0.12);
         padding: 4px 10px;
         border-radius: 4px;
     }
@@ -299,8 +308,8 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
         <div class="footer-grid">
             
             <div class="f-brand">
-                <a href="<?php echo $BaseURL; ?>">
-                    <img src="assets/img/logo.png" alt="<?php echo $Company; ?>" class="f-logo">
+                <a href="<?php echo $BaseURL; ?>" class="f-logo-link">
+                    <img src="assets/img/logos.png" alt="<?php echo $Company; ?>" class="f-logo">
                 </a>
                 <p class="f-desc">
                     <?php echo htmlspecialchars($FooterCopy['desc'] ?? ''); ?>
@@ -425,6 +434,7 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
         box-shadow: 0 12px 30px rgba(0,0,0,0.2);
         border: 1px solid rgba(255,255,255,0.2);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        animation: floatingBubble 3.5s ease-in-out infinite;
     }
 
     .fabtn:hover {
@@ -433,6 +443,7 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
     }
 
     .fabtn.call { background: var(--brand-primary); }
+    .fabtn.call-alt { background: var(--brand-accent); color: var(--brand-secondary); }
     .fabtn.whatsapp { background: #25D366; }
     .fabtn.messenger { background: #0084FF; }
     .fabtn.fb { background: #1877F2; }
@@ -441,12 +452,21 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
     .fabtn.tiktok { background: #111111; }
 
     .bubble-mobile { display: inline-flex; }
+
+    @keyframes floatingBubble {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
 </style>
-                                <!--
 <div class="floating-actions" aria-label="<?php echo htmlspecialchars($FooterCopy['titles']['contact'] ?? ''); ?>">
     <a class="fabtn call" href="<?php echo $PhoneRef; ?>" aria-label="<?php echo htmlspecialchars($AriaCopy['call'] ?? ''); ?>">
         <i class="fas fa-phone-alt"></i>
     </a>
+    <?php if(!empty($Phone2) && !empty($PhoneRef2)): ?>
+        <a class="fabtn call-alt" href="<?php echo $PhoneRef2; ?>" aria-label="<?php echo htmlspecialchars(($AriaCopy['call'] ?? 'Click to call') . ' ' . ($Phone2Name ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+            <i class="fas fa-phone-volume"></i>
+        </a>
+    <?php endif; ?>
     <?php if(!empty($whatsapp)): ?>
         <a class="fabtn whatsapp" href="<?php echo $whatsapp; ?>" target="_blank" aria-label="<?php echo htmlspecialchars($AriaCopy['whatsapp'] ?? ''); ?>">
             <i class="fab fa-whatsapp"></i>
@@ -478,7 +498,6 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
         </a>
     <?php endif; ?>
 </div>
--->
 <script src="assets/js/jquery-3.7.1.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

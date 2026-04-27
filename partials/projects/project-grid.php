@@ -1,78 +1,43 @@
 <?php
 if (!isset($BrandColors)) include_once __DIR__ . '/../../text.php';
 
-$galleryRootAbs = __DIR__ . '/../../assets/img/gallery';
-$galleryRootRel = 'assets/img/gallery';
-$imgExt = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
-$vidExt = ['mp4', 'webm', 'mov', 'ogg'];
+$galleryCandidates = [
+    'assets/img/truck.jpeg',
+    'assets/img/hero/hero1.jpg',
+    'assets/img/hero/hero2.jpg',
+    'assets/img/hero/hero3.jpg',
+    'assets/img/services/Local Towing.png',
+    'assets/img/services/Long Distance Towing.png',
+    'assets/img/services/We Buy Junk Cars.png',
+    'assets/img/services/Jump Start Vehicles.png',
+    'assets/img/services/Locked Car Services.png',
+    'assets/img/services/Roadside Assistance.png',
+    'assets/img/services/24 Hour Towing.png'
+];
 $galleryItems = [];
 $seenMedia = [];
 
-if (is_dir($galleryRootAbs)) {
-    $galleryRootReal = realpath($galleryRootAbs);
-    if ($galleryRootReal === false) $galleryRootReal = $galleryRootAbs;
-    $galleryRootNorm = str_replace('\\', '/', rtrim((string) $galleryRootReal, '/\\'));
-
-    $iterator = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($galleryRootAbs, FilesystemIterator::SKIP_DOTS)
-    );
-
-    foreach ($iterator as $fileInfo) {
-        if (!$fileInfo->isFile()) continue;
-
-        $ext = strtolower((string) $fileInfo->getExtension());
-        $abs = $fileInfo->getPathname();
-        $fileReal = realpath($abs);
-        if ($fileReal === false) $fileReal = $abs;
-        $fileNorm = str_replace('\\', '/', (string) $fileReal);
-
-        $relativePath = '';
-        $prefix = $galleryRootNorm . '/';
-        if (strpos($fileNorm, $prefix) === 0) {
-            $relativePath = substr($fileNorm, strlen($prefix));
-        } else {
-            $subPath = str_replace('\\', '/', (string) $iterator->getSubPathName());
-            $relativePath = ltrim($subPath, '/');
-        }
-
-        if ($relativePath === '' || strpos($relativePath, '..') !== false) {
-            $relativePath = basename($fileNorm);
-        }
-
-        $rel = $galleryRootRel . '/' . ltrim($relativePath, '/');
-
-        if (isset($seenMedia[$rel])) continue;
-        $seenMedia[$rel] = true;
-
-        if (in_array($ext, $imgExt, true)) {
-            $galleryItems[] = [
-                'src' => $rel,
-                'cat' => 'images',
-                'type' => 'image',
-                'title' => 'Project Image'
-            ];
-        } elseif (in_array($ext, $vidExt, true)) {
-            $galleryItems[] = [
-                'src' => $rel,
-                'cat' => 'videos',
-                'type' => 'video',
-                'title' => 'Project Video'
-            ];
-        }
-    }
+foreach ($galleryCandidates as $rel) {
+    $abs = __DIR__ . '/../../' . str_replace('/', DIRECTORY_SEPARATOR, $rel);
+    if (!is_file($abs)) continue;
+    if (isset($seenMedia[$rel])) continue;
+    $seenMedia[$rel] = true;
+    $galleryItems[] = [
+        'src' => $rel,
+        'cat' => 'images',
+        'type' => 'image',
+        'title' => 'Familia Towing Image'
+    ];
 }
 
 $hasImages = false;
-$hasVideos = false;
 foreach ($galleryItems as $item) {
     if (($item['cat'] ?? '') === 'images') $hasImages = true;
-    if (($item['cat'] ?? '') === 'videos') $hasVideos = true;
 }
 
-$defaultFilter = $hasImages ? 'images' : 'videos';
+$defaultFilter = 'images';
 $tabLabels = [
-    'images' => 'Images',
-    'videos' => 'Videos'
+    'images' => 'Images'
 ];
 ?>
 
@@ -359,7 +324,7 @@ $tabLabels = [
     <div class="container">
         <div class="gal-header" data-aos="fade-up">
             <span class="gal-eyebrow">Project Gallery</span>
-            <h2 class="gal-title">Images and Videos <br><strong>From Recent Work</strong></h2>
+            <h2 class="gal-title">Towing Gallery <br><strong>From Recent Work</strong></h2>
         </div>
 
         <div class="gallery-filter-nav" data-aos="fade-up" data-aos-delay="100">
@@ -374,22 +339,12 @@ $tabLabels = [
             <?php if (empty($galleryItems)): ?>
                 <div class="gallery-empty">
                     <i class="fas fa-camera" style="font-size: 3rem; color: var(--gal-accent); margin-bottom: 20px;"></i>
-                    <p style="color: rgba(255,255,255,0.72);">No images or videos are available yet.</p>
+                    <p style="color: rgba(255,255,255,0.72);">No gallery images are available yet.</p>
                 </div>
             <?php else: ?>
                 <?php foreach ($galleryItems as $item): ?>
-                    <div class="gallery-card<?php echo ($item['cat'] === $defaultFilter) ? ' show' : ''; ?><?php echo ($item['type'] === 'video') ? ' is-video' : ''; ?>" data-category="<?php echo htmlspecialchars($item['cat'], ENT_QUOTES, 'UTF-8'); ?>">
-                        <?php if ($item['type'] === 'video'): ?>
-                            <?php $videoMimeExt = strtolower((string) pathinfo($item['src'], PATHINFO_EXTENSION)); ?>
-                            <video class="gallery-video" muted playsinline preload="metadata" data-autoposter="1">
-                                <source src="<?php echo htmlspecialchars($item['src'], ENT_QUOTES, 'UTF-8'); ?>" type="video/<?php echo htmlspecialchars($videoMimeExt !== '' ? $videoMimeExt : 'mp4', ENT_QUOTES, 'UTF-8'); ?>">
-                            </video>
-                            <div class="video-play-badge" aria-hidden="true">
-                                <span><i class="fas fa-play"></i></span>
-                            </div>
-                        <?php else: ?>
-                            <img src="<?php echo htmlspecialchars($item['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
-                        <?php endif; ?>
+                    <div class="gallery-card<?php echo ($item['cat'] === $defaultFilter) ? ' show' : ''; ?>" data-category="<?php echo htmlspecialchars($item['cat'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <img src="<?php echo htmlspecialchars($item['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
 
                         <div class="card-overlay">
                             <div class="card-zoom-icon">
@@ -420,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
     GLightbox({
         touchNavigation: true,
         loop: true,
-        autoplayVideos: true,
+        autoplayVideos: false,
         selector: '.glightbox'
     });
 
@@ -447,67 +402,5 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-
-    const videos = Array.from(document.querySelectorAll('.gallery-video[data-autoposter="1"]'));
-    const buildPoster = (video) => {
-        if (!video || video.dataset.posterReady === '1') return;
-
-        const finish = () => { video.dataset.posterReady = '1'; };
-
-        const capture = () => {
-            if (video.readyState < 2) {
-                video.addEventListener('loadeddata', capture, { once: true });
-                return;
-            }
-            if (!video.videoWidth || !video.videoHeight) { finish(); return; }
-            const canvas = document.createElement('canvas');
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            const ctx = canvas.getContext('2d');
-            if (!ctx) { finish(); return; }
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            try {
-                video.poster = canvas.toDataURL('image/jpeg', 0.85);
-            } catch (e) {
-                // If canvas is tainted or fails, leave without poster
-            }
-            finish();
-        };
-
-        const onLoadedMeta = () => {
-            const duration = Number.isFinite(video.duration) ? video.duration : 0;
-            const target = duration > 0.2 ? 0.1 : 0;
-
-            if (Math.abs(video.currentTime - target) < 0.01) {
-                capture();
-                return;
-            }
-
-            video.addEventListener('seeked', capture, { once: true });
-            try {
-                video.currentTime = target;
-            } catch (e) {
-                capture();
-            }
-        };
-
-        video.addEventListener('loadedmetadata', onLoadedMeta, { once: true });
-        video.addEventListener('error', finish, { once: true });
-
-        if (video.readyState >= 1) onLoadedMeta();
-    };
-
-    if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                buildPoster(entry.target);
-                io.unobserve(entry.target);
-            });
-        }, { rootMargin: '200px 0px' });
-        videos.forEach(v => io.observe(v));
-    } else {
-        videos.forEach(buildPoster);
-    }
 });
 </script>

@@ -43,7 +43,7 @@
           $serviceDesc = trim((string) ($service['ui_desc'] ?? ''));
           $serviceGroup = trim((string) ($service['ui_group'] ?? 'General Services'));
           $serviceGroupKey = trim((string) ($service['ui_group_key'] ?? 'general-services'));
-          $serviceImage = trim((string) ($service['ui_image'] ?? 'assets/img/stock/remodel-main.jpg'));
+          $serviceImage = trim((string) ($service['ui_image'] ?? 'assets/img/truck.jpeg'));
           $serviceIcon = trim((string) ($service['ui_icon'] ?? 'fa-solid fa-screwdriver-wrench'));
           $serviceCode = trim((string) ($service['ui_code'] ?? 'SVC-00'));
           $serviceHref = trim((string) ($service['ui_href'] ?? 'contact.php'));

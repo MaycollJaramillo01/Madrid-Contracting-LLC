@@ -62,13 +62,13 @@ if (!function_exists('serviceHomeIcon')) {
   function serviceHomeIcon($slug)
   {
     $icons = [
-      'bathroom-remodeling' => 'fa-solid fa-bath',
-      'flooring-remodeling' => 'fa-solid fa-grip-lines',
-      'kitchen-remodeling' => 'fa-solid fa-kitchen-set',
-      'painting' => 'fa-solid fa-paint-roller',
-      'door-installation-replacement' => 'fa-solid fa-door-open',
-      'wood-flooring' => 'fa-solid fa-layer-group',
-      'deck-construction-repair' => 'fa-solid fa-bridge'
+      'local-towing' => 'fa-solid fa-truck-pickup',
+      'long-distance-towing' => 'fa-solid fa-road',
+      'we-buy-junk-cars' => 'fa-solid fa-recycle',
+      'jump-start-vehicles' => 'fa-solid fa-car-battery',
+      'locked-car-services' => 'fa-solid fa-key',
+      'roadside-assistance' => 'fa-solid fa-screwdriver-wrench',
+      '24-hour-towing' => 'fa-solid fa-clock'
     ];
 
     $slug = trim((string) $slug);
@@ -93,13 +93,13 @@ if (!function_exists('serviceHomeImage')) {
     $exts = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
     $aliasMap = [
-      'bathroom-remodeling' => ['kitchen-bathroom-remodeling'],
-      'flooring-remodeling' => ['flooring-installation'],
-      'kitchen-remodeling' => ['kitchen-bathroom-remodeling'],
-      'painting' => ['interior-exterior-painting'],
-      'door-installation-replacement' => ['door-window-installation-replacement'],
-      'wood-flooring' => ['flooring-installation'],
-      'deck-construction-repair' => ['deck-installation-repair']
+      'local-towing' => ['towing', 'tow-truck'],
+      'long-distance-towing' => ['long-distance-tow', 'vehicle-transport'],
+      'we-buy-junk-cars' => ['junk-cars', 'junk-car-removal'],
+      'jump-start-vehicles' => ['jump-start', 'battery-jump'],
+      'locked-car-services' => ['lockout', 'car-lockout'],
+      'roadside-assistance' => ['roadside-help'],
+      '24-hour-towing' => ['emergency-towing', '24-hour-service']
     ];
 
     $labels = [];
@@ -187,7 +187,7 @@ if (!function_exists('serviceHomeImage')) {
       }
     }
 
-    return 'assets/img/stock/remodel-main.jpg';
+    return 'assets/img/truck.jpeg';
   }
 }
 

@@ -172,9 +172,9 @@ if ($whatsAppHref === '') $whatsAppHref = 'contact.php';
   overflow: hidden;
   padding: clamp(84px, 9vw, 140px) 0;
   background:
-    radial-gradient(circle at 15% 18%, rgba(48, 79, 124, 0.22), transparent 44%),
-    radial-gradient(circle at 86% 84%, rgba(183, 190, 200, 0.24), transparent 42%),
-    linear-gradient(140deg, #121212 0%, #191919 52%, #1c1c1c 100%);
+    radial-gradient(circle at 15% 18%, rgba(var(--brand-accent-rgb), 0.18), transparent 44%),
+    radial-gradient(circle at 86% 84%, rgba(var(--brand-accent-rgb), 0.12), transparent 42%),
+    linear-gradient(140deg, var(--site-dark) 0%, var(--site-dark-2) 52%, var(--site-dark-3) 100%);
 }
 
 .cta-forge::before {
@@ -202,8 +202,8 @@ if ($whatsAppHref === '') $whatsAppHref = 'contact.php';
 .cta-forge__message {
   position: relative;
   border-radius: 22px;
-  border: 1px solid rgba(183, 190, 200, 0.38);
-  background: linear-gradient(155deg, rgba(13, 19, 27, 0.78), rgba(31, 46, 64, 0.58));
+  border: 1px solid var(--site-dark-line);
+  background: linear-gradient(155deg, rgba(10, 10, 12, 0.82), rgba(22, 22, 22, 0.66));
   padding: clamp(22px, 3vw, 38px);
   box-shadow: 0 24px 44px rgba(0, 0, 0, 0.24);
 }
@@ -215,7 +215,7 @@ if ($whatsAppHref === '') $whatsAppHref = 'contact.php';
   top: 0;
   width: 160px;
   height: 160px;
-  background: radial-gradient(circle, rgba(183, 190, 200, 0.24), transparent 70%);
+  background: radial-gradient(circle, rgba(var(--brand-accent-rgb), 0.18), transparent 70%);
   pointer-events: none;
 }
 
@@ -225,8 +225,8 @@ if ($whatsAppHref === '') $whatsAppHref = 'contact.php';
   min-height: 32px;
   padding: 6px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(183, 190, 200, 0.44);
-  color: #d6deea;
+  border: 1px solid rgba(var(--brand-accent-rgb), 0.42);
+  color: color-mix(in srgb, var(--brand-white) 84%, var(--brand-accent) 16%);
   font-size: 11px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -242,7 +242,7 @@ if ($whatsAppHref === '') $whatsAppHref = 'contact.php';
 
 .cta-forge__title strong {
   display: block;
-  color: #e31e24;
+  color: var(--brand-accent);
 }
 
 .cta-forge__paragraph {
@@ -274,7 +274,7 @@ if ($whatsAppHref === '') $whatsAppHref = 'contact.php';
 }
 
 .cta-forge__feature-line i {
-  color: #e31e24;
+  color: var(--brand-accent);
 }
 
 .cta-forge__actions {
@@ -304,14 +304,14 @@ if ($whatsAppHref === '') $whatsAppHref = 'contact.php';
 }
 
 .cta-forge__btn--primary {
-  background: #e31e24;
-  color: #ffffff;
-  border: 1px solid #e31e24;
+  background: var(--brand-accent);
+  color: #050505;
+  border: 1px solid var(--brand-accent);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
 }
 
 .cta-forge__btn--primary:hover {
-  background: #b6171c;
+  background: color-mix(in srgb, var(--brand-accent) 84%, #fff 16%);
 }
 
 .cta-forge__btn--ghost {

@@ -2,7 +2,7 @@
 /* =========================================================
   about-section.php
   - Debe ser incluido en una página donde YA se cargó text.php
-  - Requisito: incluir imagen en ruta: assets/img/stock/remodel-main.jpg
+  - Requisito: incluir imagen principal de towing
 ========================================================= */
 
 $about = (isset($HomeAboutCopy) && is_array($HomeAboutCopy)) ? $HomeAboutCopy : [];
@@ -22,14 +22,14 @@ $bilingualLabel= trim((string) ($BilingualNote ?? ''));
 
 $features = (isset($about['features']) && is_array($about['features'])) ? $about['features'] : [];
 
-// Imagen requerida (no cambiar ruta)
-$aboutImg    = 'assets/img/stock/remodel-main.jpg';
+// Imagen principal del bloque about
+$aboutImg    = 'assets/img/truck.jpeg';
 $aboutImgAlt = trim((string) (
   $about['images']['back']['alt']
   ?? $about['images']['front']['alt']
-  ?? ($PageHeroCopy['about']['title'] ?? 'Remodeling project image')
+  ?? ($PageHeroCopy['about']['title'] ?? 'Towing service image')
 ));
-if ($aboutImgAlt === '') $aboutImgAlt = 'Remodeling project image';
+if ($aboutImgAlt === '') $aboutImgAlt = 'Towing service image';
 
 $ctaText = trim((string) ($about['cta'] ?? ($NavCopy['about'] ?? 'Learn more')));
 $ctaHref = 'about.php';
@@ -48,7 +48,7 @@ $telText = trim((string) ($Phone ?? ''));
   background:
     radial-gradient(70% 90% at 10% 0%, rgba(var(--brand-accent-rgb),0.14) 0%, transparent 60%),
     radial-gradient(60% 75% at 92% 92%, rgba(var(--brand-primary-rgb),0.10) 0%, transparent 58%),
-    linear-gradient(180deg, #f8fbff 0%, var(--brand-neutral) 100%);
+    linear-gradient(180deg, var(--site-surface) 0%, var(--site-surface-soft) 100%);
   overflow: clip;
 }
 
@@ -86,7 +86,7 @@ $telText = trim((string) ($Phone ?? ''));
   border-radius: 999px;
   border: 1px solid rgba(var(--brand-accent-rgb),0.40);
   background: rgba(255,255,255,0.72);
-  color: var(--brand-secondary);
+  color: var(--site-ink);
   font-weight: 800;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -118,7 +118,7 @@ $telText = trim((string) ($Phone ?? ''));
 
 .section-about-arch .content-arch p{
   margin: 14px 0 0;
-  color: rgba(var(--brand-secondary-rgb),0.76);
+  color: var(--site-ink-soft);
   line-height: 1.75;
   max-width: 70ch;
   font-size: 1.02rem;
@@ -137,9 +137,9 @@ $telText = trim((string) ($Phone ?? ''));
   gap: 10px;
   padding: 10px 12px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.72);
-  border: 1px solid rgba(0,0,0,0.10);
-  color: var(--brand-secondary);
+  background: var(--site-panel-soft);
+  border: 1px solid var(--site-line);
+  color: var(--site-ink);
   font-weight: 800;
   letter-spacing: .4px;
   font-size: 12px;
@@ -165,8 +165,8 @@ $telText = trim((string) ($Phone ?? ''));
 
 .section-about-arch .arch-feature{
   border-radius: 16px;
-  border: 1px solid rgba(0,0,0,0.12);
-  background: rgba(255,255,255,0.78);
+  border: 1px solid var(--site-line);
+  background: var(--site-panel-soft);
   box-shadow: 0 18px 40px rgba(0,0,0,0.08);
   padding: 14px;
   display:flex;
@@ -188,7 +188,7 @@ $telText = trim((string) ($Phone ?? ''));
 
 .section-about-arch .feature-body h3{
   margin: 0;
-  color: var(--brand-secondary);
+  color: var(--site-ink);
   font-weight: 900;
   letter-spacing: .3px;
   font-size: 1.02rem;
@@ -196,7 +196,7 @@ $telText = trim((string) ($Phone ?? ''));
 
 .section-about-arch .feature-body p{
   margin: 6px 0 0;
-  color: rgba(var(--brand-secondary-rgb),0.72);
+  color: var(--site-ink-soft);
   line-height: 1.6;
   font-size: .95rem;
 }

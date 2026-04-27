@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" role="img" aria-labelledby="title desc">
+  <title id="title">Familia Towing</title>
+  <desc id="desc">Familia Towing logo with road icon</desc>
+  <rect width="560" height="220" rx="28" fill="#0b0b0d"/>
+  <path d="M270 39 170 176h200L270 39Z" fill="#ff7a00"/>
+  <path d="M270 62 212 176h116L270 62Z" fill="#171717"/>
+  <path d="M270 73v22M270 108v25M270 147v26" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <text x="44" y="78" fill="#fff" font-family="Montserrat, Arial, sans-serif" font-size="46" font-weight="900" font-style="italic">Familia</text>
+  <text x="344" y="78" fill="#fff" font-family="Montserrat, Arial, sans-serif" font-size="46" font-weight="900" font-style="italic">Towing</text>
+  <rect x="38" y="154" width="484" height="34" rx="17" fill="#ff7a00"/>
+  <text x="280" y="178" text-anchor="middle" fill="#080808" font-family="Montserrat, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="3">24 HOUR SERVICE</text>
+</svg>

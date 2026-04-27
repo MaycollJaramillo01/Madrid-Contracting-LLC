@@ -20,8 +20,8 @@ $tik_url = $tiktok ?? '';
     <title><?php echo $PageTitle; ?></title>
     <meta name="description" content="<?php echo $PageDescription; ?>">
     <link rel="canonical" href="<?php echo $PageCanonical; ?>">
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
-    <link rel="apple-touch-icon" href="assets/img/logo.png">
+    <link rel="icon" type="image/png" href="assets/img/logos.png">
+    <link rel="apple-touch-icon" href="assets/img/logos.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,6 +81,7 @@ $tik_url = $tiktok ?? '';
             text-decoration: none;
             flex-shrink: 0;
             max-width: 320px;
+            min-width: 0;
         }
 
         .logo-img {
@@ -353,6 +354,55 @@ $tik_url = $tiktok ?? '';
             box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
         }
 
+        .language-switcher {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px;
+            border-radius: 999px;
+            background: #0b0b0d;
+            border: 1px solid rgba(var(--brand-accent-rgb), 0.45);
+        }
+
+        .language-switcher button {
+            border: 0;
+            border-radius: 999px;
+            padding: 8px 12px;
+            background: transparent;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1;
+        }
+
+        .language-switcher button.active,
+        .language-switcher button:hover {
+            background: var(--brand-accent);
+            color: #050505;
+        }
+
+        .lang-flag {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            background: #fff;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14);
+            flex: 0 0 auto;
+        }
+
+        .lang-label {
+            white-space: nowrap;
+        }
+
         .mobile-toggle {
             display: none;
             width: 44px;
@@ -403,14 +453,21 @@ $tik_url = $tiktok ?? '';
                 padding: 10px 0;
             }
 
+            .brand {
+                max-width: min(250px, calc(100vw - 92px));
+            }
+
             .logo-img {
-                height: 96px;
-                min-height: 96px;
-                max-height: 102px;
+                width: min(240px, 62vw);
+                height: auto;
+                min-height: 0;
+                max-height: 72px;
             }
 
             .header-container {
-                min-height: 92px;
+                grid-template-columns: minmax(0, 1fr) auto;
+                min-height: 78px;
+                gap: 12px;
             }
 
             .brand-text {
@@ -561,6 +618,10 @@ $tik_url = $tiktok ?? '';
                 padding: 14px;
             }
 
+            .mobile-cta .language-switcher {
+                margin: 0 auto 4px;
+            }
+
             /* --- CORRECCIÃ“N DE REDES SOCIALES EN MÃ“VIL --- */
             .mobile-socials {
                 display: flex;
@@ -581,6 +642,28 @@ $tik_url = $tiktok ?? '';
                 border: 1px solid rgba(31, 42, 54, 0.2) !important;
             }
         }
+
+        @media (max-width: 575px) {
+            .brand {
+                max-width: min(225px, calc(100vw - 84px));
+            }
+
+            .logo-img {
+                width: min(220px, 60vw);
+                max-height: 64px;
+            }
+
+            .header-container {
+                min-height: 72px;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .mobile-toggle {
+                width: 42px;
+                height: 42px;
+            }
+        }
     </style>
 </head>
 <?php
@@ -597,7 +680,7 @@ $bodyClassAttr = trim((string) ($BodyClass ?? ''));
             $brandLine2 = implode(' ', array_slice($companyParts, 2));
             ?>
             <a href="<?php echo $BaseURL; ?>" class="brand">
-                <img src="assets/img/logo.png" alt="<?php echo $Company; ?>" class="logo-img">
+                <img src="assets/img/logos.png" alt="<?php echo $Company; ?>" class="logo-img">
             </a>
 
             <nav class="main-nav" id="mainNav" aria-label="<?php echo htmlspecialchars($AriaCopy['primary_nav'] ?? ''); ?>">
@@ -615,6 +698,16 @@ $bodyClassAttr = trim((string) ($BodyClass ?? ''));
                     
                     <li class="mobile-cta d-lg-none">
                         <a href="<?php echo $PhoneRef; ?>" class="btn-estimate"><?php echo $NavCopy['cta_mobile'] ?? ''; ?></a>
+                        <div class="language-switcher" aria-label="<?php echo htmlspecialchars($LanguageCopy['label'] ?? 'Language', ENT_QUOTES, 'UTF-8'); ?>">
+                            <button type="button" data-lang="en" aria-label="<?php echo htmlspecialchars($LanguageCopy['english'] ?? 'English', ENT_QUOTES, 'UTF-8'); ?>">
+                                <span class="lang-flag" aria-hidden="true">🇺🇸</span>
+                                <span class="lang-label"><?php echo htmlspecialchars($LanguageCopy['english'] ?? 'English', ENT_QUOTES, 'UTF-8'); ?></span>
+                            </button>
+                            <button type="button" data-lang="es" aria-label="<?php echo htmlspecialchars($LanguageCopy['spanish'] ?? 'Espanol', ENT_QUOTES, 'UTF-8'); ?>">
+                                <span class="lang-flag" aria-hidden="true">🇪🇸</span>
+                                <span class="lang-label"><?php echo htmlspecialchars($LanguageCopy['spanish'] ?? 'Espanol', ENT_QUOTES, 'UTF-8'); ?></span>
+                            </button>
+                        </div>
                         
                         <div class="mobile-socials">
                             <?php if(!empty($fb_url)): ?>
@@ -662,6 +755,17 @@ $bodyClassAttr = trim((string) ($BodyClass ?? ''));
                     <?php endif; ?>
                 </div>
 
+                <div class="language-switcher d-none d-lg-inline-flex" aria-label="<?php echo htmlspecialchars($LanguageCopy['label'] ?? 'Language', ENT_QUOTES, 'UTF-8'); ?>">
+                    <button type="button" data-lang="en" aria-label="<?php echo htmlspecialchars($LanguageCopy['english'] ?? 'English', ENT_QUOTES, 'UTF-8'); ?>">
+                        <span class="lang-flag" aria-hidden="true">🇺🇸</span>
+                        <span class="lang-label"><?php echo htmlspecialchars($LanguageCopy['english'] ?? 'English', ENT_QUOTES, 'UTF-8'); ?></span>
+                    </button>
+                    <button type="button" data-lang="es" aria-label="<?php echo htmlspecialchars($LanguageCopy['spanish'] ?? 'Espanol', ENT_QUOTES, 'UTF-8'); ?>">
+                        <span class="lang-flag" aria-hidden="true">🇪🇸</span>
+                        <span class="lang-label"><?php echo htmlspecialchars($LanguageCopy['spanish'] ?? 'Espanol', ENT_QUOTES, 'UTF-8'); ?></span>
+                    </button>
+                </div>
+
                 <a href="<?php echo $PhoneRef; ?>" class="btn-estimate"><?php echo $NavCopy['cta'] ?? ''; ?></a>
                 
                 <button class="mobile-toggle" type="button" aria-label="<?php echo htmlspecialchars($HeaderCopy['menu_toggle'] ?? ''); ?>" aria-controls="mainNav" aria-expanded="false">
@@ -674,6 +778,39 @@ $bodyClassAttr = trim((string) ($BodyClass ?? ''));
         <div class="mobile-menu-overlay"></div>
     </div>
 </header>
+<div id="google_translate_element" aria-hidden="true"></div>
+<script>
+    window.googleTranslateElementInit = function () {
+        if (!window.google || !google.translate) return;
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,es',
+            autoDisplay: false
+        }, 'google_translate_element');
+    };
+
+    (function () {
+        const buttons = document.querySelectorAll('.language-switcher [data-lang]');
+        const current = /googtrans=\/en\/es/.test(document.cookie) ? 'es' : 'en';
+
+        buttons.forEach((button) => {
+            button.classList.toggle('active', button.dataset.lang === current);
+            button.addEventListener('click', () => {
+                const lang = button.dataset.lang === 'es' ? 'es' : 'en';
+                const value = '/en/' + lang;
+                document.cookie = 'googtrans=' + value + ';path=/';
+
+                const parts = window.location.hostname.split('.');
+                if (parts.length > 1) {
+                    document.cookie = 'googtrans=' + value + ';path=/;domain=.' + parts.slice(-2).join('.');
+                }
+
+                window.location.reload();
+            });
+        });
+    }());
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <main>
     
 

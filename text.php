@@ -21,10 +21,10 @@ elseif ($page_name == 'contact.php')      { $namepage = "Contact"; }
 else                                      { $namepage = ucfirst(str_replace('.php', '', $page_name)); }
 
 /*=========================
-   INFO GENERAL - OMAR REMODELING LLC
+   INFO GENERAL - FAMILIA TOWING
    =========================*/
-$Company      = "OMAR REMODELING LLC";
-$CustomerName = "Omar Orellana";
+$Company      = "Familia Towing";
+$CustomerName = "Familia";
 
 function detectBaseURL() {
   $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
@@ -36,14 +36,14 @@ function detectBaseURL() {
 }
 
 $BaseURL   = rtrim(detectBaseURL(), '/') . '/';
-$Domain    = "https://omarremodeling.com/";
+$Domain    = $BaseURL;
 $MAVEN     = "go-maven.com";
-$Address   = "Laurel, MD";
-$PhoneName = "English";
-$Phone2Name = "Spanish";
+$Address   = "W.P.B., FL 33416";
+$PhoneName = "Spanish";
+$Phone2Name = "English";
 
-$Phone     = "+1 (443) 864-0169";
-$Phone2    = "+1 (443) 360-1413";
+$Phone     = "+1 (561) 396-0659";
+$Phone2    = "+1 (561) 215-4377";
 
 function telRef($p) {
   $clean = str_replace(str_split('()-/\\:?"<>|., '), '', $p);
@@ -58,38 +58,37 @@ function slugify($text) {
   return trim($text, '-') ?: 'service';
 }
 
-// WhatsApp link
 $whatsapp_num = preg_replace('/\D+/', '', $Phone);
 if (strpos($whatsapp_num, '1') !== 0) { $whatsapp_num = '1' . $whatsapp_num; }
-$whatsapp = "https://api.whatsapp.com/send?phone=$whatsapp_num&text=Hello%20OMAR%20REMODELING%20LLC!%20I%27d%20like%20to%20request%20a%20free%20estimate.";
+$whatsapp = "https://api.whatsapp.com/send?phone=$whatsapp_num&text=Hello%20Familia%20Towing!%20I%20need%20towing%20or%20roadside%20assistance.";
 
-$Mail    = "omarremodelingllc@gmail.com";
+$Mail    = "info@familiatowing.com";
 $MailRef = "mailto:" . $Mail;
 
 /*=========================
    GENERAL MESSAGES
    =========================*/
-$Services       = "Residential and Commercial Services";
-$Estimates      = "Free Estimates";
-$Payment        = "Ck, Cash, Bank Transfers, Zelle";
-$Experience     = "6 Years";
-$Schedule       = "Monday to Saturday from 8:00 AM to 7:00 PM.";
-$Coverage       = "We cover up to 80 miles from Laurel, MD.";
-$LicenseNote    = "Fully Insured & Licensed";
-$BilingualNote  = "Bilingual Attention (English & Spanish)";
-$TypeOfService  = "Residential and Commercial";
+$Services       = "Local and long distance towing, junk car buying, jump starts, and lockout service";
+$Estimates      = "Fast Assistance";
+$Payment        = "Cash, Zelle, Card";
+$Experience     = "2+ Years";
+$Schedule       = "Office hours: 6:00 AM to 6:00 PM. Emergency towing available 24/7.";
+$Coverage       = "We cover West Palm Beach, Jupiter, Boca Raton, and all Palm Beach County.";
+$LicenseNote    = "Reliable 24 Hour Service";
+$BilingualNote  = "English and Spanish Spoken";
+$TypeOfService  = "Towing and Roadside Assistance";
 
 /*=========================
    BRAND COLORS
    =========================*/
 $BrandColors = [
-  'primary'       => '#2A2A2D',
-  'primary_rgb'   => '42, 42, 45',
-  'secondary'     => '#101012',
-  'secondary_rgb' => '16, 16, 18',
-  'accent'        => '#E31E24',
-  'accent_rgb'    => '227, 30, 36',
-  'neutral'       => '#ECEDEF',
+  'primary'       => '#0B0B0D',
+  'primary_rgb'   => '11, 11, 13',
+  'secondary'     => '#181818',
+  'secondary_rgb' => '24, 24, 24',
+  'accent'        => '#FF7A00',
+  'accent_rgb'    => '255, 122, 0',
+  'neutral'       => '#F7F4EF',
   'white'         => '#FFFFFF'
 ];
 
@@ -97,38 +96,29 @@ $BrandColors = [
    SERVICE AREAS
    =========================*/
 $Areas = [
-  "Laurel, MD",
-  "Baltimore, MD",
-  "Columbia, MD",
-  "Ellicott City, MD",
-  "Silver Spring, MD",
-  "Rockville, MD",
-  "Gaithersburg, MD",
-  "Bowie, MD",
-  "Hyattsville, MD",
-  "Washington, DC",
-  "Bethesda, MD",
-  "Glen Burnie, MD",
-  "Towson, MD",
-  "Annapolis, MD",
-  "Frederick, MD",
-  "Bel Air, MD",
-  "Waldorf, MD",
-  "Westminster, MD",
-  "Aberdeen, MD",
-  "Hagerstown, MD",
-  "Salisbury, MD",
-  "Arlington, VA",
-  "Alexandria, VA",
-  "And surrounding communities within 80 miles"
+  "West Palm Beach, FL",
+  "W.P.B., FL 33416",
+  "Jupiter, FL",
+  "Boca Raton, FL",
+  "Palm Beach County, FL",
+  "Lake Worth Beach, FL",
+  "Boynton Beach, FL",
+  "Delray Beach, FL",
+  "Palm Beach Gardens, FL",
+  "Royal Palm Beach, FL",
+  "Wellington, FL",
+  "Riviera Beach, FL",
+  "Greenacres, FL",
+  "Lantana, FL",
+  "And nearby communities"
 ];
 
 /*=========================
    MAPA Y REDES SOCIALES
    =========================*/
-$GoogleMap = '<iframe src="https://maps.google.com/maps?q=Laurel%2C%20MD&t=&z=11&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy"></iframe>';
+$GoogleMap = '<iframe src="https://maps.google.com/maps?q=West%20Palm%20Beach%2C%20FL%2033416&t=&z=11&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy"></iframe>';
 $facebook  = "";
-$instagram = "https://www.instagram.com/omar_remodeling_llc";
+$instagram = "";
 $google = "";
 $tiktok = "";
 $messenger = "";
@@ -144,34 +134,34 @@ $GoogleReviews = 'reviews.php';
 
 $DirectoryReviewItems = [
   [
-    'name' => 'Angela M.',
-    'city' => 'Laurel, MD',
+    'name' => 'Verified Driver',
+    'city' => 'West Palm Beach, FL',
     'stars' => 5,
-    'text' => 'They remodeled our bathroom and installed a new door with great workmanship. The team was clean and professional.',
+    'text' => 'Familia Towing answered quickly and helped with a local tow when my car stopped running.',
     'source' => 'Website Review',
     'url' => ''
   ],
   [
-    'name' => 'David P.',
-    'city' => 'Columbia, MD',
+    'name' => 'Roadside Customer',
+    'city' => 'Jupiter, FL',
     'stars' => 5,
-    'text' => 'Kitchen remodeling came out excellent. Communication was clear from estimate to final walkthrough.',
+    'text' => 'They helped with a jump start and explained everything clearly in English and Spanish.',
     'source' => 'Website Review',
     'url' => ''
   ],
   [
-    'name' => 'Marisol R.',
-    'city' => 'Silver Spring, MD',
+    'name' => 'Palm Beach Client',
+    'city' => 'Boca Raton, FL',
     'stars' => 5,
-    'text' => 'The painting and flooring remodeling were done on time and the final finish looks amazing.',
+    'text' => 'Reliable service for long distance towing. The driver arrived prepared and handled the vehicle carefully.',
     'source' => 'Website Review',
     'url' => ''
   ],
   [
-    'name' => 'Carlos G.',
-    'city' => 'Rockville, MD',
+    'name' => 'Local Customer',
+    'city' => 'Lake Worth Beach, FL',
     'stars' => 5,
-    'text' => 'We hired them for deck repairs and wood flooring. Quality work and fair pricing.',
+    'text' => 'Fast lockout help and fair communication from start to finish.',
     'source' => 'Website Review',
     'url' => ''
   ]
@@ -188,134 +178,129 @@ $ReviewSourceSummaries = [
     'url' => ''
   ],
   [
-    'source' => 'Customer Follow-Up',
+    'source' => 'Roadside Follow-Up',
     'rating' => '5.0/5',
     'count' => 4,
-    'label' => 'Post-project satisfaction responses',
+    'label' => 'Customer service follow-up responses',
     'url' => ''
   ]
 ];
 
 $DetailedReviewItems = [
   [
-    'name' => 'Angela M.',
-    'city' => 'Laurel, MD',
+    'name' => 'Verified Driver',
+    'city' => 'West Palm Beach, FL',
     'stars' => 5,
-    'text' => 'They remodeled our bathroom and installed a new door with great workmanship. The team was clean and professional.',
+    'text' => 'Familia Towing answered quickly and helped with a local tow when my car stopped running.',
+    'source' => 'Website Review',
+    'date' => 'April 2026',
+    'url' => ''
+  ],
+  [
+    'name' => 'Roadside Customer',
+    'city' => 'Jupiter, FL',
+    'stars' => 5,
+    'text' => 'They helped with a jump start and explained everything clearly in English and Spanish.',
+    'source' => 'Website Review',
+    'date' => 'March 2026',
+    'url' => ''
+  ],
+  [
+    'name' => 'Palm Beach Client',
+    'city' => 'Boca Raton, FL',
+    'stars' => 5,
+    'text' => 'Reliable service for long distance towing. The driver arrived prepared and handled the vehicle carefully.',
+    'source' => 'Website Review',
+    'date' => 'February 2026',
+    'url' => ''
+  ],
+  [
+    'name' => 'Local Customer',
+    'city' => 'Lake Worth Beach, FL',
+    'stars' => 5,
+    'text' => 'Fast lockout help and fair communication from start to finish.',
     'source' => 'Website Review',
     'date' => 'January 2026',
     'url' => ''
-  ],
-  [
-    'name' => 'David P.',
-    'city' => 'Columbia, MD',
-    'stars' => 5,
-    'text' => 'Kitchen remodeling came out excellent. Communication was clear from estimate to final walkthrough.',
-    'source' => 'Website Review',
-    'date' => 'December 2025',
-    'url' => ''
-  ],
-  [
-    'name' => 'Marisol R.',
-    'city' => 'Silver Spring, MD',
-    'stars' => 5,
-    'text' => 'The painting and flooring remodeling were done on time and the final finish looks amazing.',
-    'source' => 'Website Review',
-    'date' => 'November 2025',
-    'url' => ''
-  ],
-  [
-    'name' => 'Carlos G.',
-    'city' => 'Rockville, MD',
-    'stars' => 5,
-    'text' => 'We hired them for deck repairs and wood flooring. Quality work and fair pricing.',
-    'source' => 'Website Review',
-    'date' => 'October 2025',
-    'url' => ''
   ]
 ];
+
 /*=========================
    SEO & BRANDING SLOGANS
    =========================*/
 $Phrase = [
-  "6 Years of Residential and Commercial Remodeling Services",
-  "Bathroom, Flooring, Kitchen Remodeling, Painting, and Door Replacement",
-  "Wood Flooring and Deck Services",
-  "Fully Insured, Licensed, and Bilingual Support",
-  "Free Estimates Within 80 Miles of Laurel, MD"
+  "24 Hour Towing Service in Palm Beach County",
+  "Local and Long Distance Towing",
+  "We Buy Junk Cars",
+  "Jump Start Vehicles and Locked Car Services",
+  "English and Spanish Spoken"
 ];
 
 /*=========================
-   HOME SECTION
+   HOME / ABOUT
    =========================*/
 $Home = [
-  "OMAR REMODELING LLC provides residential and commercial remodeling services including bathrooms, kitchens, flooring, painting, doors, wood flooring, and deck work.",
-  "With 6 years of experience, our fully insured and licensed team delivers quality workmanship, clear communication, and free estimates."
+  "Familia Towing provides local and long distance towing, junk car buying, jump starts, and locked car services across West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.",
+  "With more than 2 years of experience, our bilingual team responds with dependable 24 hour roadside support and clear communication."
 ];
 
-/*=========================
-   ABOUT SECTION
-   =========================*/
 $About = [
-  "OMAR REMODELING LLC helps homeowners and businesses improve and renovate their properties with detail-focused craftsmanship and practical planning.",
-  "Based in Laurel, MD, we are fully insured and licensed, provide bilingual attention, and cover up to 80 miles for residential and commercial projects."
+  "Familia Towing is a local towing and roadside assistance company serving drivers throughout Palm Beach County.",
+  "We cover West Palm Beach, Jupiter, Boca Raton, and nearby areas with English and Spanish support, fast dispatch, and practical help when your vehicle cannot move."
 ];
 
-/*=========================
-    MISSION & VISION
-    =========================*/
-$Mission = "To provide high-quality remodeling services with honest communication, efficient scheduling, and durable finishes that improve each client's property.";
-$Vision  = "To be the trusted remodeling company in and around Laurel, MD by delivering reliable workmanship, bilingual support, and consistent customer satisfaction.";
+$Mission = "To provide dependable towing and roadside assistance with fast response, safe handling, and clear bilingual communication.";
+$Vision  = "To be a trusted towing company across Palm Beach County for local drivers who need reliable help day or night.";
 
 /*=========================
    SERVICES SECTION
    =========================*/
 $SN = $SD = $ExSD = [];
 
-$SN[1] = "Bathroom Remodeling";
-$SD[1] = "Complete bathroom remodeling solutions focused on comfort, clean finishes, and long-term durability.";
+$SN[1] = "Local Towing";
+$SD[1] = "Local towing for cars and light vehicles throughout West Palm Beach and nearby Palm Beach County areas.";
 
-$SN[2] = "Flooring Remodeling";
-$SD[2] = "Upgrade interior floors with precise installation, quality materials, and detail-focused craftsmanship.";
+$SN[2] = "Long Distance Towing";
+$SD[2] = "Long distance towing handled with careful loading, safe transport, and direct communication.";
 
-$SN[3] = "Kitchen Remodeling";
-$SD[3] = "Kitchen remodeling designed to improve layout, style, storage, and everyday functionality.";
+$SN[3] = "We Buy Junk Cars";
+$SD[3] = "We buy junk cars and help remove unwanted vehicles with straightforward scheduling.";
 
-$SN[4] = "Painting";
-$SD[4] = "Interior and exterior painting services delivered with proper preparation and smooth, lasting coverage.";
+$SN[4] = "Jump Start Vehicles";
+$SD[4] = "Battery jump start assistance when your vehicle will not start at home, work, or on the road.";
 
-$SN[5] = "Door Installation & Replacement";
-$SD[5] = "Professional door installation and replacement for better security, efficiency, and appearance.";
+$SN[5] = "Locked Car Services";
+$SD[5] = "Vehicle lockout help when keys are locked inside and you need access quickly.";
 
-$SN[6] = "Wood Flooring";
-$SD[6] = "Wood flooring installation and upgrades completed with accurate leveling, alignment, and finishing.";
+$SN[6] = "Roadside Assistance";
+$SD[6] = "Roadside assistance for drivers who need fast help before the next step is decided.";
 
-$SN[7] = "Deck Construction & Repair";
-$SD[7] = "Deck construction and repair services built for durability, safety, and curb appeal.";
+$SN[7] = "24 Hour Towing";
+$SD[7] = "Emergency towing support available 24/7, with office hours from 6:00 AM to 6:00 PM.";
 
 $OtherServices = [
-  "Wood Flooring",
-  "Deck Construction & Repair"
+  "Roadside Assistance",
+  "24 Hour Towing"
 ];
 
 $ServicesByCategory = [
   [
-    'label' => 'Core Services',
-    'summary_slug' => 'bathroom-remodeling',
+    'label' => 'Towing Services',
+    'summary_slug' => 'local-towing',
     'service_slugs' => [
-      'bathroom-remodeling',
-      'flooring-remodeling',
-      'kitchen-remodeling',
-      'painting',
-      'door-installation-replacement',
+      'local-towing',
+      'long-distance-towing',
+      'we-buy-junk-cars',
+      'jump-start-vehicles',
+      'locked-car-services',
     ]
   ],
   [
-    'label' => 'Other Services',
-    'summary_slug' => 'other-services',
+    'label' => 'Roadside Help',
+    'summary_slug' => 'roadside-assistance',
     'service_slugs' => [
-      'wood-flooring',
-      'deck-construction-repair'
+      'roadside-assistance',
+      '24-hour-towing'
     ]
   ]
 ];
@@ -328,20 +313,12 @@ $Badges = [
   $BilingualNote
 ];
 
-/*=========================
-   SEO EXTRACTS
-   =========================*/
 $ExAbout = substr($About[0], 0, 145) . '...';
 $ExHome  = substr($Home[0],  0, 95)  . '...';
 for ($i = 1; $i <= count($SN); $i++) {
-  if (isset($SD[$i])) {
-    $ExSD[$i] = substr($SD[$i], 0, 120) . '...';
-  }
+  if (isset($SD[$i])) $ExSD[$i] = substr($SD[$i], 0, 120) . '...';
 }
 
-/*=========================
-   SERVICE MAP (slugs + URLs)
-   =========================*/
 $ServicesList = [];
 for ($i = 1; $i <= count($SN); $i++) {
   if (empty($SN[$i])) continue;
@@ -357,55 +334,39 @@ for ($i = 1; $i <= count($SN); $i++) {
   ];
 }
 
-// Service groups used for section labels and filtering.
 $OtherServicesLandingSlugs = [
-  'wood-flooring',
-  'deck-construction-repair'
+  'roadside-assistance',
+  '24-hour-towing'
 ];
 
-// Only keep the service set requested by client across the full website.
 $PrimaryServiceSlugs = [
-  'bathroom-remodeling',
-  'flooring-remodeling',
-  'kitchen-remodeling',
-  'painting',
-  'door-installation-replacement'
+  'local-towing',
+  'long-distance-towing',
+  'we-buy-junk-cars',
+  'jump-start-vehicles',
+  'locked-car-services'
 ];
 $AllowedServiceSlugs = array_merge($PrimaryServiceSlugs, $OtherServicesLandingSlugs);
 foreach (array_keys($ServicesList) as $serviceSlug) {
-  if (!in_array($serviceSlug, $AllowedServiceSlugs, true)) {
-    unset($ServicesList[$serviceSlug]);
-  }
+  if (!in_array($serviceSlug, $AllowedServiceSlugs, true)) unset($ServicesList[$serviceSlug]);
 }
 
 $serviceCategoryMap = [];
-if (!empty($ServicesByCategory) && is_array($ServicesByCategory)) {
-  foreach ($ServicesByCategory as $category) {
-    if (!is_array($category)) continue;
-
-    $categoryLabel = trim((string) ($category['label'] ?? 'General'));
-    $categorySlug = trim((string) ($category['summary_slug'] ?? ''));
-    if ($categorySlug === '') $categorySlug = slugify($categoryLabel);
-
-    $allSlugs = [];
-    if (!empty($category['summary_slug'])) {
-      $allSlugs[] = trim((string) $category['summary_slug']);
-    }
-
-    if (!empty($category['service_slugs']) && is_array($category['service_slugs'])) {
-      foreach ($category['service_slugs'] as $serviceSlug) {
-        $serviceSlug = trim((string) $serviceSlug);
-        if ($serviceSlug !== '') $allSlugs[] = $serviceSlug;
-      }
-    }
-
-    foreach (array_unique($allSlugs) as $serviceSlug) {
-      if ($serviceSlug === '') continue;
-      $serviceCategoryMap[$serviceSlug] = [
-        'category_slug' => $categorySlug,
-        'category_label' => $categoryLabel
-      ];
-    }
+foreach ($ServicesByCategory as $category) {
+  $categoryLabel = trim((string) ($category['label'] ?? 'General'));
+  $categorySlug = trim((string) ($category['summary_slug'] ?? ''));
+  if ($categorySlug === '') $categorySlug = slugify($categoryLabel);
+  $allSlugs = [];
+  if (!empty($category['summary_slug'])) $allSlugs[] = trim((string) $category['summary_slug']);
+  foreach (($category['service_slugs'] ?? []) as $serviceSlug) {
+    $serviceSlug = trim((string) $serviceSlug);
+    if ($serviceSlug !== '') $allSlugs[] = $serviceSlug;
+  }
+  foreach (array_unique($allSlugs) as $serviceSlug) {
+    $serviceCategoryMap[$serviceSlug] = [
+      'category_slug' => $categorySlug,
+      'category_label' => $categoryLabel
+    ];
   }
 }
 
@@ -420,181 +381,120 @@ foreach ($ServicesList as $serviceSlug => &$serviceData) {
 }
 unset($serviceData);
 
-/*=========================
-   DISPLAY SERVICES
-   =========================*/
-$ServicesDisplayList = [];
-if (!empty($ServicesList) && is_array($ServicesList)) {
-  $ServicesDisplayList = array_values($ServicesList);
-  usort($ServicesDisplayList, static function ($a, $b) {
-    return (int) ($a['id'] ?? 0) <=> (int) ($b['id'] ?? 0);
-  });
-}
+$ServicesDisplayList = array_values($ServicesList);
+usort($ServicesDisplayList, static function ($a, $b) {
+  return (int) ($a['id'] ?? 0) <=> (int) ($b['id'] ?? 0);
+});
 
-/*=========================
-   SERVICE DETAIL CONTENT
-   =========================*/
 $ServiceDetails = [
-  'bathroom-remodeling' => [
-    'kicker'     => 'Bathroom Remodeling',
-    'headline'   => 'Comfortable, modern bathrooms built to last',
+  'local-towing' => [
+    'kicker' => 'Local Towing',
+    'headline' => 'Fast towing help near West Palm Beach',
     'paragraphs' => [
-      'We remodel bathrooms with practical layouts, durable materials, and finishes designed for daily use.',
-      'From demolition to final details, our team focuses on clean execution and clear communication.'
+      'We provide local towing for drivers in West Palm Beach and nearby Palm Beach County communities.',
+      'Our team focuses on safe loading, clear updates, and dependable arrival.'
     ],
-    'bullets'    => [
-      'Shower and tub upgrades',
-      'Vanity, tile, and fixture installation',
-      'Moisture-resistant materials',
-      'Clean final finishing'
-    ]
+    'bullets' => ['Cars and light vehicles', 'Local transport', 'Safe vehicle handling', 'English and Spanish support']
   ],
-  'flooring-remodeling' => [
-    'kicker'     => 'Flooring Remodeling',
-    'headline'   => 'Updated floors with precision and clean transitions',
+  'long-distance-towing' => [
+    'kicker' => 'Long Distance Towing',
+    'headline' => 'Safe transport beyond your local area',
     'paragraphs' => [
-      'Our flooring remodeling services improve durability and appearance in residential and commercial spaces.',
-      'Each project starts with proper preparation to ensure a level, long-lasting final result.'
+      'When your vehicle needs to move farther, Familia Towing coordinates long distance towing with careful handling.',
+      'We keep communication direct so you know the pickup and delivery details.'
     ],
-    'bullets'    => [
-      'Subfloor prep and leveling',
-      'Accurate layout and alignment',
-      'Trim and edge detailing',
-      'Durable installation standards'
-    ]
+    'bullets' => ['Longer transport routes', 'Careful loading', 'Route coordination', 'Clear updates']
   ],
-  'kitchen-remodeling' => [
-    'kicker'     => 'Kitchen Remodeling',
-    'headline'   => 'Functional kitchens tailored to your routine',
+  'we-buy-junk-cars' => [
+    'kicker' => 'Junk Cars',
+    'headline' => 'We buy junk cars and help clear space',
     'paragraphs' => [
-      'We remodel kitchens to improve flow, storage, and daily functionality with quality finishes.',
-      'Our process keeps schedule, scope, and craftsmanship aligned from start to final walkthrough.'
+      'If you have an unwanted vehicle, contact us for junk car buying and removal options.',
+      'We make scheduling simple and keep the process straightforward.'
     ],
-    'bullets'    => [
-      'Cabinet and countertop upgrades',
-      'Backsplash and surface improvements',
-      'Layout and storage optimization',
-      'Detail-focused finishing'
-    ]
+    'bullets' => ['Junk car buying', 'Unwanted vehicle removal', 'Simple scheduling', 'Local pickup support']
   ],
-  'painting' => [
-    'kicker'     => 'Painting',
-    'headline'   => 'Smooth paint work that refreshes and protects',
+  'jump-start-vehicles' => [
+    'kicker' => 'Jump Starts',
+    'headline' => 'Battery help when your vehicle will not start',
     'paragraphs' => [
-      'We provide interior and exterior painting with careful preparation and professional application.',
-      'Our team delivers clean lines, durable coats, and reliable jobsite organization.'
+      'A dead battery can stop your day fast. We provide jump start assistance where your vehicle is located.',
+      'If a jump start is not enough, we can help coordinate the next towing step.'
     ],
-    'bullets'    => [
-      'Surface prep and priming',
-      'Interior and exterior painting',
-      'Trim and accent detailing',
-      'Final touchups and cleanup'
-    ]
+    'bullets' => ['Battery jump starts', 'Home, work, and roadside help', 'Fast dispatch', 'Next-step towing support']
   ],
-  'door-installation-replacement' => [
-    'kicker'     => 'Door Installation & Replacement',
-    'headline'   => 'Secure, efficient doors with proper fit and finish',
+  'locked-car-services' => [
+    'kicker' => 'Lockout Service',
+    'headline' => 'Help when your keys are locked inside',
     'paragraphs' => [
-      'We install and replace doors for homes and commercial properties with accurate measurements and dependable workmanship.',
-      'Every installation is completed with attention to alignment, operation, and appearance.'
+      'Locked out of your vehicle? Call Familia Towing for lockout assistance.',
+      'We respond with practical help and bilingual communication.'
     ],
-    'bullets'    => [
-      'Interior and exterior door installation',
-      'Door replacement and hardware updates',
-      'Weather sealing and alignment checks',
-      'Clean trim finishing'
-    ]
+    'bullets' => ['Locked car help', 'Driver support', 'Bilingual service', 'Fast roadside response']
   ],
-  'wood-flooring' => [
-    'kicker'     => 'Wood Flooring',
-    'headline'   => 'Natural wood floors installed for durability and style',
+  'roadside-assistance' => [
+    'kicker' => 'Roadside Assistance',
+    'headline' => 'Practical roadside help when plans change',
     'paragraphs' => [
-      'We install and upgrade wood flooring with careful planning and detail-focused craftsmanship.',
-      'Our team ensures smooth transitions, stable fit, and polished final presentation.'
+      'Roadside problems can happen anywhere. We help drivers with jump starts, lockouts, and towing coordination.',
+      'Call the Spanish or English number for direct support.'
     ],
-    'bullets'    => [
-      'Wood floor installation',
-      'Board alignment and finishing',
-      'Transitions and trim work',
-      'Clean and protected work areas'
-    ]
+    'bullets' => ['Roadside support', 'Jump starts', 'Lockout help', 'Towing coordination']
   ],
-  'deck-construction-repair' => [
-    'kicker'     => 'Deck Construction & Repair',
-    'headline'   => 'Outdoor decks built and restored for safe daily use',
+  '24-hour-towing' => [
+    'kicker' => '24 Hour Towing',
+    'headline' => 'Emergency towing available day or night',
     'paragraphs' => [
-      'We build and repair decks with durable framing, secure fastening, and quality finishing.',
-      'Each deck project is completed with a focus on safety, long-term performance, and curb appeal.'
+      'Familia Towing provides 24/7 emergency towing support across Palm Beach County.',
+      'Office hours are 6:00 AM to 6:00 PM, and emergency calls are available 24 hours.'
     ],
-    'bullets'    => [
-      'New deck framing and construction',
-      'Deck board and structure repairs',
-      'Railing and stair improvements',
-      'Weather-ready finishing'
-    ]
+    'bullets' => ['24/7 emergency towing', 'Palm Beach County coverage', 'Fast response', 'Safe vehicle transport']
   ]
 ];
 
 /*=========================
-  WHY CHOOSE (Section copy)
+  COPY / UI TEXT
   =========================*/
 $WhyChoose = [
-  'eyebrow' => 'Expertise You Can Trust',
+  'eyebrow' => 'Roadside Help You Can Trust',
   'title_pre' => 'Why Choose',
-  'intro' => 'With 6 years of field experience, we complete residential and commercial remodeling projects with discipline, quality, and clear communication.',
+  'intro' => 'With more than 2 years of towing experience, Familia Towing helps drivers with safe transport, quick roadside assistance, and bilingual communication.',
   'cards' => [
-    [
-      'title' => 'Reliability First',
-      'text'  => 'We respect your time. Our bilingual crew provides consistent updates and arrives on-site ready to deliver quality work on your schedule.'
-    ],
-    [
-      'title' => 'Full Coverage',
-      'text'  => $LicenseNote . '. We prioritize safety and property protection on every project we handle.'
-    ],
-    [
-      'title' => 'Ready to Transform?',
-      'text'  => 'Get professional remodeling solutions with meticulous attention to detail included in every job.',
-      'btn'   => [
-        'href' => 'contact.php',
-        'text' => 'Request Free Estimate'
-      ]
-    ],
+    ['title' => 'Fast Response', 'text' => 'Call for towing, jump starts, lockout service, and junk car help across Palm Beach County.'],
+    ['title' => 'Bilingual Support', 'text' => $BilingualNote . '. Use the Spanish or English number shown on the site.'],
+    ['title' => 'Need Help Now?', 'text' => 'Contact Familia Towing for 24 hour towing and roadside support.', 'btn' => ['href' => $PhoneRef, 'text' => 'Call Now']],
   ],
 ];
 
-/*=========================
-   PAYMENT METHODS
-   =========================*/
 function paymentList($txt) {
-  $parts = array_map('trim', explode(',', $txt));
-  return $parts;
+  return array_map('trim', explode(',', $txt));
 }
 $PaymentMethods = paymentList($Payment);
 
-/*=========================
-   EXPERIENCE CALCULATION
-   =========================*/
 $ExperienceYears = (int) filter_var($Experience, FILTER_SANITIZE_NUMBER_INT);
 if ($ExperienceYears <= 0) $ExperienceYears = 1;
 
-/*=========================
-   COPY / UI TEXT
-   =========================*/
 $NavCopy = [
   'home' => 'Home',
   'about' => 'About',
   'services' => 'Services',
-  'projects' => 'Projects',
+  'projects' => 'Fleet',
   'reviews' => 'Reviews',
   'contact' => 'Contact',
-  'other_services' => 'Other Services',
-  'cta' => 'Get a Free Estimate',
-  'cta_mobile' => 'Get a Free Estimate',
+  'other_services' => 'Roadside Help',
+  'cta' => 'Call Now',
+  'cta_mobile' => 'Call Now',
   'explore_service' => 'Explore Service',
   'view_services' => 'View Services',
   'contact_today' => 'Contact Us Today',
   'leave_review' => 'Leave a Review',
   'read_reviews' => 'Read Reviews'
+];
+
+$LanguageCopy = [
+  'label' => 'Language',
+  'english' => 'English',
+  'spanish' => 'Espanol'
 ];
 
 $HeaderCopy = [
@@ -611,702 +511,315 @@ $HeaderCopy = [
 ];
 
 $FooterCopy = [
-  'desc' => 'Fully insured and licensed residential and commercial remodeling services from Laurel, MD with 80-mile coverage.',
-  'titles' => [
-    'company' => 'Company',
-    'services' => 'Services',
-    'contact' => 'Contact Us'
-  ],
-  'labels' => [
-    'location' => 'Location',
-    'phone' => 'Phone',
-    'hours' => 'Hours'
-  ],
+  'desc' => 'Local and long distance towing, junk car buying, jump starts, and lockout service in Palm Beach County.',
+  'titles' => ['company' => 'Company', 'services' => 'Services', 'contact' => 'Contact Us'],
+  'labels' => ['location' => 'Location', 'phone' => 'Phone', 'hours' => 'Hours'],
   'copyright_suffix' => 'All Rights Reserved.'
 ];
 
 $PageHeroCopy = [
-  'default' => [
-    'title' => 'Our Services',
-    'desc' => 'Residential and commercial bathroom remodeling, flooring remodeling, kitchen remodeling, painting, door replacement, wood flooring, and deck services.',
-    'bg' => 'assets/img/hero/hero1.jpg'
-  ],
-  'projects' => [
-    'title' => 'Our Recent Projects',
-    'desc' => 'See how we transform homes and businesses with dependable remodeling results.',
-    'bg' => 'assets/img/hero/hero2.jpg'
-  ],
-  'about' => [
-    'title' => 'About ' . $Company,
-    'desc' => 'Licensed, insured, and bilingual service you can trust for residential and commercial projects.',
-    'bg' => 'assets/img/hero/hero3.jpg'
-  ],
-  'contact' => [
-    'title' => 'Get in Touch',
-    'desc' => 'Ready to start your project? Contact us today for a free estimate.',
-    'bg' => 'assets/img/hero/hero1.jpg'
-  ],
-  'reviews' => [
-    'title' => 'Customer Reviews',
-    'desc' => 'Read verified feedback from clients across our 80-mile coverage area.',
-    'bg' => 'assets/img/hero/hero2.jpg'
-  ],
-  'other' => [
-    'title' => 'Other Services',
-    'desc' => 'Tell us what you need and we will tailor a solution for your property.',
-    'bg' => 'assets/img/hero/hero3.jpg'
-  ]
+  'default' => ['title' => 'Towing Services', 'desc' => 'Local towing, long distance towing, junk car buying, jump starts, locked car service, and 24 hour roadside support.', 'bg' => 'assets/img/hero/hero1.jpg'],
+  'projects' => ['title' => 'Our Tow Truck', 'desc' => 'Dependable towing and roadside help across Palm Beach County.', 'bg' => 'assets/img/hero/hero2.jpg'],
+  'about' => ['title' => 'About ' . $Company, 'desc' => 'Bilingual towing and roadside assistance serving West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.', 'bg' => 'assets/img/hero/hero3.jpg'],
+  'contact' => ['title' => 'Get Roadside Help', 'desc' => 'Call Familia Towing for towing, jump starts, lockouts, and junk car service.', 'bg' => 'assets/img/hero/hero1.jpg'],
+  'reviews' => ['title' => 'Customer Reviews', 'desc' => 'Read feedback from drivers we have helped across Palm Beach County.', 'bg' => 'assets/img/hero/hero2.jpg'],
+  'other' => ['title' => 'Roadside Help', 'desc' => 'Fast help for towing, jump starts, lockouts, and emergency calls.', 'bg' => 'assets/img/hero/hero3.jpg']
 ];
 
 $HomeHeroCopy = [
   'headline' => $Company,
-  'sub' => 'Trusted remodeling contractors for bathrooms, kitchens, flooring, painting, doors, wood flooring, and decks. We combine disciplined planning, reliable crews, and clean finishes.',
-  'cta_primary' => 'Schedule Free Estimate',
-  'cta_secondary' => 'Explore Projects',
-  'cta_primary_href' => 'contact.php',
-  'cta_secondary_href' => 'projects.php',
+  'sub' => '24 hour towing, local and long distance service, junk car buying, jump starts, and locked car help in West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.',
+  'cta_primary' => 'Call Spanish Line',
+  'cta_secondary' => 'Call English Line',
+  'cta_primary_href' => $PhoneRef,
+  'cta_secondary_href' => $PhoneRef2,
   'prev_label' => 'Previous slide',
   'next_label' => 'Next slide',
-  'slide_alt_prefix' => 'Contractor Project Slide',
-  'thumb_alt_prefix' => 'Project Thumbnail'
+  'slide_alt_prefix' => 'Familia Towing Slide',
+  'thumb_alt_prefix' => 'Towing Thumbnail'
 ];
 
 $HomeAboutCopy = [
-  'eyebrow' => 'Laurel, MD Residential & Commercial Remodeling',
-  'title' => 'Planned for Performance,',
-  'title_strong' => 'Built to Last.',
-  'description' => 'From bathroom and kitchen remodeling to flooring, painting, doors, wood flooring, and deck work, we execute every scope with structured planning and clear communication.',
+  'eyebrow' => 'Palm Beach County Towing',
+  'title' => 'Fast Roadside Help,',
+  'title_strong' => 'Handled Safely.',
+  'description' => 'Familia Towing helps drivers with towing, jump starts, lockouts, long distance transport, and junk car removal.',
   'badge_label' => 'Years in Service',
   'images' => [
-    'back' => [
-      'src' => 'assets/img/stock/remodel-main.jpg',
-      'alt' => 'Remodeling project main image'
-    ],
-    'front' => [
-      'src' => 'assets/img/stock/remodel-detail.jpg',
-      'alt' => 'Remodeling project detail image'
-    ]
+    'back' => ['src' => 'assets/img/truck.jpeg', 'alt' => 'Towing service truck'],
+    'front' => ['src' => 'assets/img/truck.jpeg', 'alt' => 'Familia Towing truck']
   ],
   'features' => [
-    [
-      'icon' => 'fa-clipboard-list',
-      'title' => 'Scope Planning',
-      'text' => 'Clear scope, schedule, and execution sequence before work begins.'
-    ],
-    [
-      'icon' => 'fa-hard-hat',
-      'title' => 'Licensed Crew',
-      'text' => $LicenseNote
-    ],
-    [
-      'icon' => 'fa-comments',
-      'title' => 'Bilingual Support',
-      'text' => $BilingualNote
-    ],
-    [
-      'icon' => 'fa-calendar-check',
-      'title' => 'On-Time Delivery',
-      'text' => 'Structured coordination keeps each phase moving with fewer delays.'
-    ]
+    ['icon' => 'fa-truck-pickup', 'title' => 'Local Towing', 'text' => 'West Palm Beach, Jupiter, Boca Raton, and nearby areas.'],
+    ['icon' => 'fa-road', 'title' => 'Long Distance', 'text' => 'Vehicle transport with careful loading and communication.'],
+    ['icon' => 'fa-comments', 'title' => 'Bilingual Support', 'text' => $BilingualNote],
+    ['icon' => 'fa-clock', 'title' => '24 Hour Service', 'text' => $LicenseNote]
   ],
-  'cta' => 'Learn About Our Team'
+  'cta' => 'Learn About Us'
 ];
 
 $AboutHeroCopy = [
   'eyebrow' => 'About ' . $Company,
-  'title' => 'Trusted remodeling team based in Laurel, MD',
+  'title' => 'Reliable towing based in Palm Beach County',
   'desc' => $About[0],
   'cta_primary' => 'Our Story',
   'cta_primary_href' => '#story',
   'cta_secondary_prefix' => 'Call',
-  'meta' => [
-    $Experience,
-    $Estimates,
-    $LicenseNote,
-    $BilingualNote
-  ],
+  'meta' => [$Experience, $Estimates, $LicenseNote, $BilingualNote],
   'list' => [
-    [
-      'label' => 'Service area',
-      'value' => $Coverage
-    ],
-    [
-      'label' => 'Schedule',
-      'value' => $Schedule
-    ],
-    [
-      'label' => 'Core trades',
-      'value' => $TypeOfService
-    ],
-    [
-      'label' => 'Licenses',
-      'value' => $LicenseNote
-    ]
+    ['label' => 'Service area', 'value' => $Coverage],
+    ['label' => 'Schedule', 'value' => $Schedule],
+    ['label' => 'Core services', 'value' => $TypeOfService],
+    ['label' => 'Availability', 'value' => $LicenseNote]
   ]
 ];
 
 $AboutStoryCopy = [
   'eyebrow' => 'Our Story',
-  'title' => 'Built on reliable finishes and clear communication',
+  'title' => 'Built on fast response and safe vehicle handling',
   'points' => [
-    [
-      'title' => 'Licensed & insured',
-      'text' => $LicenseNote
-    ],
-    [
-      'title' => 'Bilingual attention',
-      'text' => $BilingualNote
-    ],
-    [
-      'title' => 'Free estimates',
-      'text' => $Estimates
-    ]
+    ['title' => '24 hour support', 'text' => $LicenseNote],
+    ['title' => 'Bilingual attention', 'text' => $BilingualNote],
+    ['title' => 'Fast help', 'text' => $Estimates]
   ],
-  'actions' => [
-    'primary_text' => 'Request an estimate',
-    'primary_href' => 'contact.php',
-    'secondary_prefix' => 'Call'
-  ],
-  'stats' => [
-    'years_label' => 'Years of Experience',
-    'services_label' => 'Core services',
-    'areas_label' => 'Service areas',
-    'areas_separator' => ', ',
-    'areas_preview_count' => 5
-  ]
+  'actions' => ['primary_text' => 'Request service', 'primary_href' => $PhoneRef, 'secondary_prefix' => 'Call'],
+  'stats' => ['years_label' => 'Years of Experience', 'services_label' => 'Core services', 'areas_label' => 'Service areas', 'areas_separator' => ', ', 'areas_preview_count' => 5]
 ];
 
 $AboutCredentialsCopy = [
   'eyebrow' => 'Why work with us',
-  'title' => 'Details that build trust in every project',
-  'intro' => 'Every estimate and project includes clear scope and scheduling so homeowners and businesses know exactly who they are hiring.',
+  'title' => 'Reliable help when your vehicle cannot move',
+  'intro' => 'Every call is handled with direct communication, bilingual support, and practical next steps.',
   'list' => [
-    [
-      'label' => 'Contact',
-      'value' => $Phone . ' | ' . $Phone2
-    ],
-    [
-      'label' => 'Licensed & insured',
-      'value' => $LicenseNote
-    ],
-    [
-      'label' => 'Core services',
-      'value' => $TypeOfService
-    ],
-    [
-      'label' => 'Coverage',
-      'value' => $Coverage
-    ],
-    [
-      'text' => $Estimates . ' | ' . $BilingualNote
-    ]
+    ['label' => 'Contact', 'value' => $Phone . ' | ' . $Phone2],
+    ['label' => 'Availability', 'value' => $LicenseNote],
+    ['label' => 'Core services', 'value' => $TypeOfService],
+    ['label' => 'Coverage', 'value' => $Coverage],
+    ['text' => $Estimates . ' | ' . $BilingualNote]
   ],
-  'cta' => [
-    'title' => 'Need a fast quote?',
-    'desc' => 'Quick answers for bathroom, kitchen, flooring, painting, doors, and deck projects.',
-    'primary_text' => 'Start a quote',
-    'primary_href' => 'contact.php',
-    'secondary_prefix' => 'Call'
-  ]
+  'cta' => ['title' => 'Need towing now?', 'desc' => 'Call for towing, jump starts, lockouts, and junk car removal.', 'primary_text' => 'Call Now', 'primary_href' => $PhoneRef, 'secondary_prefix' => 'Call']
 ];
 
-$AboutServicesSummaryCopy = [
-  'eyebrow' => 'Services',
-  'title' => 'What we deliver',
-  'desc' => $TypeOfService . ' tailored to properties within 80 miles of Laurel, MD.',
-  'link_label' => 'Learn more'
-];
-
-$ServicesListCopy = [
-  'eyebrow' => 'Scope',
-  'title' => 'Core trades we deliver',
-  'desc' => $Services,
-  'link_label' => 'Learn more'
-];
-
-$BrandsCopy = [
-  'tagline' => 'Trusted by Clients Across Our 80-Mile Coverage Area'
-];
+$AboutServicesSummaryCopy = ['eyebrow' => 'Services', 'title' => 'How we help', 'desc' => $TypeOfService . ' across Palm Beach County.', 'link_label' => 'Learn more'];
+$ServicesListCopy = ['eyebrow' => 'Scope', 'title' => 'Towing services we provide', 'desc' => $Services, 'link_label' => 'Learn more'];
+$BrandsCopy = ['tagline' => 'Trusted by Drivers Across Palm Beach County'];
 
 $HomeServicesCopy = [
-  'eyebrow' => 'Contractor Services',
-  'title' => 'Built for Residential',
-  'title_strong' => 'and Commercial Properties',
-  'desc' => 'Bathroom remodeling, flooring remodeling, kitchen remodeling, painting, door installation and replacement, wood flooring, and deck services delivered by an organized team.',
-  'link_label' => 'View Service',
-  'more_title' => 'Need a Custom Scope?',
-  'more_desc' => 'Tell us the goal and we will prepare a practical plan with timeline and cost clarity.',
-  'more_button' => 'Request a Custom Quote',
-  'more_href' => 'contact.php'
+  'eyebrow' => 'Towing Services',
+  'title' => 'Built for Drivers',
+  'title_strong' => 'Who Need Help Fast',
+  'desc' => 'Local towing, long distance towing, junk car buying, jump starts, locked car service, and 24 hour towing.',
+  'link_label' => 'Contact',
+  'more_title' => 'Need Roadside Help?',
+  'more_desc' => 'Call Familia Towing and tell us your location, vehicle, and what happened.',
+  'more_button' => 'Call for Service',
+  'more_href' => $PhoneRef
 ];
+
 $HomeMaintenanceCopy = [
-  'tagline' => 'Reliable Field Crew',
-  'title' => 'Repair, Upgrade,',
-  'title_strong' => 'Maintain',
-  'desc' => 'Beyond full remodels, we handle targeted upgrades and finishing work that protect long-term property value.',
+  'tagline' => 'Reliable Tow Service',
+  'title' => 'Tow, Unlock,',
+  'title_strong' => 'Jump Start',
+  'desc' => 'From roadside emergencies to junk car pickup, Familia Towing responds with practical vehicle help.',
   'cards' => [
-    [
-      'icon' => 'fa-hammer',
-      'title' => 'Bathroom & Kitchen',
-      'text' => 'Complete remodeling updates focused on function, layout, and durable finishes.',
-      'action' => 'See Details'
-    ],
-    [
-      'icon' => 'fa-paint-roller',
-      'title' => 'Flooring Solutions',
-      'text' => 'Flooring remodeling and wood flooring installation with clean transitions and precision.',
-      'action' => 'See Details'
-    ],
-    [
-      'icon' => 'fa-tools',
-      'title' => 'Painting & Doors',
-      'text' => 'Interior and exterior painting plus door installation and replacement done right.',
-      'action' => 'See Details'
-    ],
-    [
-      'icon' => 'fa-clipboard-check',
-      'title' => 'Deck Services',
-      'text' => 'Deck construction and repairs for safe, durable, and attractive outdoor spaces.',
-      'action' => 'See Details'
-    ]
+    ['icon' => 'fa-truck', 'title' => 'Local & Long Distance', 'text' => 'Towing service for short local routes and longer vehicle transport.', 'action' => 'See Details'],
+    ['icon' => 'fa-car-battery', 'title' => 'Jump Starts', 'text' => 'Battery jump start help when your vehicle will not turn on.', 'action' => 'See Details'],
+    ['icon' => 'fa-key', 'title' => 'Lockout Service', 'text' => 'Locked car service when keys are inside the vehicle.', 'action' => 'See Details'],
+    ['icon' => 'fa-recycle', 'title' => 'Junk Cars', 'text' => 'We buy junk cars and help clear unwanted vehicles.', 'action' => 'See Details']
   ],
   'foundation' => [
-    [
-      'icon' => 'fa-file-signature',
-      'title' => $Estimates,
-      'subtitle' => 'Clear Scope and Pricing'
-    ],
-    [
-      'icon' => 'fa-shield-alt',
-      'title' => 'Licensed Contractor',
-      'subtitle' => 'Insured and Protected'
-    ],
-    [
-      'icon' => 'fa-star',
-      'title' => $ExperienceYears . '+ Years',
-      'subtitle' => 'Field-Proven Results'
-    ]
+    ['icon' => 'fa-phone-volume', 'title' => '24/7 Calls', 'subtitle' => 'Emergency towing support'],
+    ['icon' => 'fa-language', 'title' => 'Bilingual', 'subtitle' => 'English and Spanish'],
+    ['icon' => 'fa-star', 'title' => $ExperienceYears . '+ Years', 'subtitle' => 'Field experience']
   ]
 ];
 
 $WhyCopy = [
-  'badge' => 'Trusted Remodeling Choice',
-  'title_prefix' => 'Why Property Owners Choose',
-  'description' => 'Our process is built around planning discipline, direct communication, and accountable execution from estimate to completion.',
+  'badge' => 'Trusted Towing Choice',
+  'title_prefix' => 'Why Drivers Choose',
+  'description' => 'Our towing service is built around fast response, safe vehicle handling, and bilingual communication.',
   'stats' => [
-    [
-      'value' => $ExperienceYears . '+',
-      'label' => 'Years in Business'
-    ],
-    [
-      'value' => count($ServicesList) . '+',
-      'label' => 'Services Offered'
-    ],
-    [
-      'value' => 'Insured & Licensed',
-      'label' => 'Licensed & Insured'
-    ]
+    ['value' => $ExperienceYears . '+', 'label' => 'Years in Service'],
+    ['value' => count($ServicesList) . '+', 'label' => 'Services Offered'],
+    ['value' => '24/7', 'label' => 'Emergency Towing']
   ],
-  'service_area_label' => 'Coverage, License, and Protection',
+  'service_area_label' => 'Coverage and Availability',
   'features' => [
-    [
-      'icon' => 'fa-comments',
-      'title' => 'Clear Communication',
-      'text' => $BilingualNote . '. Direct updates through each project phase.'
-    ],
-    [
-      'icon' => 'fa-file-invoice-dollar',
-      'title' => 'Transparent Proposals',
-      'text' => $Estimates . '. Practical pricing with detailed scope and no surprises.'
-    ],
-    [
-      'icon' => 'fa-shield-alt',
-      'title' => 'Risk Control',
-      'text' => $LicenseNote . '. Safety and site protection are part of every scope.'
-    ],
-    [
-      'icon' => 'fa-clock',
-      'title' => 'Consistent Scheduling',
-      'text' => 'Coordinated crews and milestone-based planning keep projects on track.'
-    ]
+    ['icon' => 'fa-comments', 'title' => 'Clear Communication', 'text' => $BilingualNote . '. Call the Spanish or English line.'],
+    ['icon' => 'fa-truck-fast', 'title' => 'Fast Dispatch', 'text' => 'Share your location and vehicle issue so we can send the right help.'],
+    ['icon' => 'fa-shield-alt', 'title' => 'Safe Handling', 'text' => 'We focus on careful loading and transport for every tow.'],
+    ['icon' => 'fa-clock', 'title' => '24 Hour Support', 'text' => $Schedule]
   ],
-  'cta_label' => 'Book a Free Estimate'
+  'cta_label' => 'Call Now'
 ];
 
-$MissionCopy = [
-  'mission_title' => 'Our Mission',
-  'vision_title' => 'Our Vision'
-];
+$MissionCopy = ['mission_title' => 'Our Mission', 'vision_title' => 'Our Vision'];
 
 $ProcessCopy = [
-  'title' => 'How We Deliver',
-  'title_strong' => 'Consistent Results',
-  'desc' => 'Our workflow is simple, transparent, and built to protect schedule, quality, and communication at every stage.',
+  'title' => 'How We Respond',
+  'title_strong' => 'When You Call',
+  'desc' => 'Our process keeps towing and roadside service simple from first call to final drop-off.',
   'steps' => [
-    [
-      'icon' => 'fa-clipboard-list',
-      'title' => 'Site Consultation',
-      'text' => 'We evaluate the property, goals, and constraints, then define a clear path forward.'
-    ],
-    [
-      'icon' => 'fa-pencil-ruler',
-      'title' => 'Scope and Schedule',
-      'text' => 'We finalize budget, materials, and timeline so expectations are aligned before work begins.'
-    ],
-    [
-      'icon' => 'fa-hammer',
-      'title' => 'Build Phase',
-      'text' => 'Licensed crews execute each phase with jobsite control, quality checks, and progress updates.'
-    ],
-    [
-      'icon' => 'fa-check-circle',
-      'title' => 'Final Walkthrough',
-      'text' => 'We review all completed work, confirm punch-list items, and close out with confidence.'
-    ]
+    ['icon' => 'fa-phone', 'title' => 'Call Us', 'text' => 'Tell us your location, vehicle, and what kind of help you need.'],
+    ['icon' => 'fa-location-dot', 'title' => 'Confirm Details', 'text' => 'We confirm pickup point, service type, and destination when needed.'],
+    ['icon' => 'fa-truck-fast', 'title' => 'Dispatch Help', 'text' => 'Our driver heads to your location for towing or roadside assistance.'],
+    ['icon' => 'fa-check-circle', 'title' => 'Complete Service', 'text' => 'We help finish the tow, jump start, lockout, or junk car pickup safely.']
   ]
 ];
 
 $FaqCopy = [
   'title' => 'Frequently Asked Questions',
   'items' => [
-    [
-      'q' => 'Do you provide free estimates?',
-      'a' => 'Yes. We offer free, no-obligation estimates for all residential and commercial services.'
-    ],
-    [
-      'q' => 'Are you fully insured and licensed?',
-      'a' => $LicenseNote
-    ],
-    [
-      'q' => 'How quickly can you start a project?',
-      'a' => 'Start dates depend on project scope and current schedule. We provide timeline availability during your estimate.'
-    ],
-    [
-      'q' => 'Do you handle commercial properties?',
-      'a' => 'Yes. Our team serves both homeowners and commercial clients within our 80-mile coverage area.'
-    ]
+    ['q' => 'Do you provide 24 hour service?', 'a' => 'Yes. Emergency towing support is available 24/7. Office hours are 6:00 AM to 6:00 PM.'],
+    ['q' => 'Do you speak Spanish?', 'a' => 'Yes. Familia Towing speaks English and Spanish.'],
+    ['q' => 'What areas do you cover?', 'a' => $Coverage],
+    ['q' => 'Do you buy junk cars?', 'a' => 'Yes. We buy junk cars and help schedule removal for unwanted vehicles.']
   ]
 ];
 
 $AreasCopy = [
   'title' => 'Serving',
-  'title_strong' => 'Laurel and Nearby Areas',
-  'subtitle' => 'Coverage includes Laurel, Baltimore, Columbia, Silver Spring, Rockville, and surrounding communities within 80 miles.',
+  'title_strong' => 'Palm Beach County',
+  'subtitle' => 'Coverage includes West Palm Beach, Jupiter, Boca Raton, and nearby communities.',
   'cta_label' => 'Request Service in Your Area',
-  'map_overlay' => 'Active Service Coverage',
-  'license_pills' => [
-    'Fully Insured',
-    'Licensed Team',
-    'Residential & Commercial'
-  ]
+  'map_overlay' => 'Active Towing Coverage',
+  'license_pills' => ['24 Hour Service', 'English & Spanish', 'Local & Long Distance']
 ];
+
 $CtaCopy = [
-  'badge' => $ExperienceYears . '+ Years in Contracting',
-  'title' => 'Ready to Upgrade',
-  'title_strong' => 'Your Property?',
-  'paragraph' => 'From bathroom and kitchen remodeling to flooring, painting, door replacement, wood flooring, and deck services, ' . $Company . ' delivers durable results within 80 miles of Laurel, MD.',
-  'features' => [
-    'Licensed and Insured',
-    'Bilingual Team',
-    'Free Detailed Estimates'
-  ],
-  'button' => 'Request Your Estimate',
-  'card_title' => 'Speak With Our Team',
-  'card_subtitle' => 'Fast responses for new project requests',
-  'row_call_label' => 'Call for a project quote',
-  'row_license_label' => 'License and insurance',
-  'row_license_title' => 'Fully Insured & Licensed Team',
+  'badge' => $ExperienceYears . '+ Years in Towing',
+  'title' => 'Need Towing',
+  'title_strong' => 'Right Now?',
+  'paragraph' => $Company . ' provides local and long distance towing, junk car buying, jump starts, and locked car service across Palm Beach County.',
+  'features' => ['24 Hour Service', 'Bilingual Team', 'Fast Assistance'],
+  'button' => 'Call for Service',
+  'card_title' => 'Speak With Familia Towing',
+  'card_subtitle' => 'Fast response for towing and roadside calls',
+  'row_call_label' => 'Call for towing',
+  'row_license_label' => 'Availability',
+  'row_license_title' => $LicenseNote,
   'row_service_label' => 'Coverage Area',
   'whatsapp_button' => 'WhatsApp Us',
   'book_button' => 'Start Request'
 ];
 
 $ContactFormCopy = [
-  'eyebrow' => 'Plan Your Project',
-  'title' => "Let's Remodel",
-  'title_strong' => 'With Precision.',
-  'desc' => 'Tell us what you need and our team will prepare a practical estimate with clear next steps.',
-  'method_labels' => [
-    'call' => 'Call or Text',
-    'hours' => 'Business Hours'
-  ],
-  'form_labels' => [
-    'name' => 'Name',
-    'phone' => 'Phone',
-    'email' => 'Email',
-    'service' => 'Service',
-    'message' => 'Project Details'
-  ],
-  'placeholders' => [
-    'service' => 'Select service type',
-    'service_other' => 'Other / Custom Request',
-    'message' => 'Describe location, scope, and target timeline...'
-  ],
-  'submit' => 'Send Estimate Request',
+  'eyebrow' => 'Request Service',
+  'title' => "Let's Get You",
+  'title_strong' => 'Back on the Road.',
+  'desc' => 'Send your location, vehicle details, and service needed. For emergencies, call directly.',
+  'method_labels' => ['call' => 'Call or Text', 'hours' => 'Business Hours'],
+  'form_labels' => ['name' => 'Name', 'phone' => 'Phone', 'email' => 'Email', 'service' => 'Service', 'message' => 'Service Details'],
+  'placeholders' => ['service' => 'Select service type', 'service_other' => 'Other / Custom Request', 'message' => 'Describe your location, vehicle, and what happened...'],
+  'submit' => 'Send Service Request',
   'honeypot_label' => 'Leave this field empty'
 ];
 
-$MapCopy = [
-  'title' => 'Locate',
-  'title_strong' => 'Omar Remodeling',
-  'labels' => [
-    'location' => 'Service Base',
-    'call' => 'Phone',
-    'hours' => 'Hours'
-  ]
-];
+$MapCopy = ['title' => 'Locate', 'title_strong' => 'Familia Towing', 'labels' => ['location' => 'Service Base', 'call' => 'Phone', 'hours' => 'Hours']];
 
-$TestimonialsCopy = [
-  'title' => 'Verified Feedback',
-  'title_strong' => 'From Real Clients',
-  'desc' => 'Read homeowner and business feedback from recent projects completed across our 80-mile coverage area.',
-  'button_label' => 'Read More Reviews',
-  'button_href' => 'reviews.php',
-  'fallback_name' => 'Verified Client'
-];
+$TestimonialsCopy = ['title' => 'Driver Feedback', 'title_strong' => 'From Real Calls', 'desc' => 'Read customer feedback from towing and roadside assistance calls across Palm Beach County.', 'button_label' => 'Read More Reviews', 'button_href' => 'reviews.php', 'fallback_name' => 'Verified Client'];
 
 $TrustedDirectoriesCopy = [
   'eyebrow' => 'Trusted Feedback Sources',
-  'title' => 'Client Satisfaction Highlights',
-  'desc' => 'Explore customer feedback collected from website reviews and post-project follow-up.',
+  'title' => 'Customer Service Highlights',
+  'desc' => 'Explore feedback from drivers helped by Familia Towing.',
   'cards' => [
-    [
-      'icon' => 'fa-award',
-      'subtitle' => 'Website',
-      'title' => 'Website Reviews',
-      'text' => 'Read direct feedback shared by our residential and commercial clients.',
-      'url' => 'reviews.php',
-      'tags' => ['Client Feedback', 'Verified Responses']
-    ],
-    [
-      'icon' => 'fa-building',
-      'subtitle' => 'Follow-Up',
-      'title' => 'Post-Project Surveys',
-      'text' => 'See customer satisfaction highlights collected after project completion.',
-      'url' => 'reviews.php',
-      'tags' => ['Quality Control', 'Project Follow-Up']
-    ],
-    [
-      'icon' => 'fa-thumbs-up',
-      'subtitle' => 'Residential',
-      'title' => 'Homeowner Experiences',
-      'text' => 'Explore service feedback from bathroom, kitchen, flooring, painting, and door projects.',
-      'url' => 'reviews.php',
-      'tags' => ['Home Projects', 'Service Quality']
-    ],
-    [
-      'icon' => 'fa-house',
-      'subtitle' => 'Commercial',
-      'title' => 'Business Client Feedback',
-      'text' => 'Read comments from commercial clients who trusted our team with property upgrades.',
-      'url' => 'reviews.php',
-      'tags' => ['Commercial Work', 'Trusted Service']
-    ]
+    ['icon' => 'fa-award', 'subtitle' => 'Website', 'title' => 'Website Reviews', 'text' => 'Read direct feedback from towing and roadside customers.', 'url' => 'reviews.php', 'tags' => ['Client Feedback', 'Verified Responses']],
+    ['icon' => 'fa-phone', 'subtitle' => 'Follow-Up', 'title' => 'Service Follow-Up', 'text' => 'See customer satisfaction highlights after towing calls.', 'url' => 'reviews.php', 'tags' => ['Roadside Help', 'Service Quality']],
+    ['icon' => 'fa-car', 'subtitle' => 'Drivers', 'title' => 'Driver Experiences', 'text' => 'Explore feedback from local towing, jump starts, and lockouts.', 'url' => 'reviews.php', 'tags' => ['Local Drivers', 'Fast Response']],
+    ['icon' => 'fa-map', 'subtitle' => 'Coverage', 'title' => 'Palm Beach County', 'text' => 'Read comments from drivers across West Palm Beach, Jupiter, and Boca Raton.', 'url' => 'reviews.php', 'tags' => ['County Coverage', 'Trusted Service']]
   ]
 ];
+
 $ReviewsPageCopy = [
   'hero_title' => 'Customer Reviews',
-  'hero_subtitle' => 'See what homeowners and businesses across our 80-mile service area say about working with us.',
+  'hero_subtitle' => 'See what drivers across Palm Beach County say about working with us.',
   'hero_image' => 'assets/img/stock/vision-crew.jpg',
   'list_eyebrow' => 'Reviews',
-  'list_title' => 'What Our Clients Say',
-  'list_desc' => 'Recent feedback from homeowners and businesses, including comments submitted directly through our website.',
+  'list_title' => 'What Our Customers Say',
+  'list_desc' => 'Recent feedback from towing and roadside assistance customers.',
   'list_cta' => 'Leave a Review'
 ];
 
 $ReviewFormCopy = [
   'title' => 'Share Your Experience',
-  'subtitle' => 'We value your feedback and would love to hear about your project.',
+  'subtitle' => 'We value your feedback and would love to hear about your service.',
   'success_title' => 'Thank You!',
   'success_message' => 'Your review has been submitted successfully.',
   'error_title' => 'Error!',
   'captcha_error' => 'Incorrect security code. Please try again.',
-  'labels' => [
-    'name' => 'Your Name',
-    'city' => 'City / Location',
-    'rating' => 'Rating',
-    'rating_hint' => '(Select stars)',
-    'review' => 'Your Review',
-    'security' => 'Security Check',
-    'refresh' => 'Refresh',
-    'captcha' => 'Enter the code shown above'
-  ],
+  'labels' => ['name' => 'Your Name', 'city' => 'City / Location', 'rating' => 'Rating', 'rating_hint' => '(Select stars)', 'review' => 'Your Review', 'security' => 'Security Check', 'refresh' => 'Refresh', 'captcha' => 'Enter the code shown above'],
   'captcha_alt' => 'Captcha image',
-  'placeholders' => [
-    'name' => '',
-    'city' => 'e.g. Laurel, MD',
-    'review' => 'Tell us how we did...'
-  ],
+  'placeholders' => ['name' => '', 'city' => 'e.g. West Palm Beach, FL', 'review' => 'Tell us how we did...'],
   'submit' => 'Submit Review'
 ];
 
-$GalleryHeroCopy = [
-  'eyebrow' => 'Our Gallery',
-  'title' => 'Capturing the Craft of Every Project',
-  'desc' => 'Explore how ' . $Company . ' transforms homes and businesses across our coverage area. Each project reflects over ' . $ExperienceYears . ' years of craftsmanship, attention to detail, and passion for quality.',
-  'cta_text' => 'Request Free Estimate',
-  'cta_href' => 'contact.php'
-];
+$GalleryHeroCopy = ['eyebrow' => 'Our Gallery', 'title' => 'Familia Towing in Action', 'desc' => 'Explore towing and roadside service moments from ' . $Company . ' across Palm Beach County.', 'cta_text' => 'Call Now', 'cta_href' => $PhoneRef];
 
 $ProjectsIntroCopy = [
-  'label' => 'Our Portfolio',
-  'title_line1' => 'Building',
-  'title_line2' => 'Excellence.',
-  'outline_line1' => 'One Detail',
-  'outline_line2' => 'At A Time.',
-  'desc' => 'At ' . $Company . ', every project reflects organized planning and skilled workmanship. Explore recent work across our 80-mile coverage area.',
+  'label' => 'Our Work',
+  'title_line1' => 'Towing',
+  'title_line2' => 'Support.',
+  'outline_line1' => 'On The Road',
+  'outline_line2' => 'Day Or Night.',
+  'desc' => 'At ' . $Company . ', every call is handled with safe vehicle care and clear communication.',
   'stats' => [
-    [
-      'value' => $ExperienceYears . '+',
-      'label' => 'Years of Experience'
-    ],
-    [
-      'value' => count($ServicesList) . '+',
-      'label' => 'Services Offered'
-    ],
-    [
-      'value' => count($Areas),
-      'label' => 'Cities Served'
-    ]
+    ['value' => $ExperienceYears . '+', 'label' => 'Years of Experience'],
+    ['value' => count($ServicesList) . '+', 'label' => 'Services Offered'],
+    ['value' => count($Areas), 'label' => 'Areas Served']
   ]
 ];
 
-$ProjectsBeforeAfterCopy = [
-  'eyebrow' => 'Transformations',
-  'title' => 'Before & After',
-  'desc' => 'See the difference professional craftsmanship makes.',
-  'before_label' => 'Before',
-  'after_label' => 'After'
-];
+$ProjectsBeforeAfterCopy = ['eyebrow' => 'Service', 'title' => 'Before & After', 'desc' => 'See how roadside help gets drivers moving again.', 'before_label' => 'Before', 'after_label' => 'After'];
+$ProjectsStatsCopy = ['items' => [
+  ['icon' => 'fa-hourglass-half', 'value' => $ExperienceYears . '+', 'label' => 'Years of Service'],
+  ['icon' => 'fa-truck', 'value' => count($ServicesList) . '+', 'label' => 'Towing Services'],
+  ['icon' => 'fa-map-location-dot', 'value' => count($Areas), 'label' => 'Areas Served'],
+  ['icon' => 'fa-clock', 'value' => '24/7', 'label' => 'Emergency Towing']
+]];
 
-$ProjectsStatsCopy = [
-  'items' => [
-    [
-      'icon' => 'fa-hourglass-half',
-      'value' => $ExperienceYears . '+',
-      'label' => 'Years of Excellence'
-    ],
-    [
-      'icon' => 'fa-hammer',
-      'value' => count($ServicesList) . '+',
-      'label' => 'Specialized Services'
-    ],
-    [
-      'icon' => 'fa-map-location-dot',
-      'value' => count($Areas),
-      'label' => 'Cities Served'
-    ],
-    [
-      'icon' => 'fa-id-card',
-      'value' => 'Insured & Licensed',
-      'label' => 'Licensed & Insured'
-    ]
-  ]
-];
-
-$ProjectsGalleryCopy = [
-  'eyebrow' => 'Project Gallery',
-  'title' => 'Selected Work &',
-  'title_strong' => 'Recent Projects',
-  'videos_label' => 'Videos',
-  'empty' => 'Projects coming soon.',
-  'image_title' => 'Project Photo',
-  'video_title' => 'Project Video'
-];
-$ServiceHeroCopy = [
-  'badge' => 'Premium Service',
-  'cta_primary' => 'Get Free Estimate',
-  'cta_secondary' => 'Explore Service'
-];
-
+$ProjectsGalleryCopy = ['eyebrow' => 'Service Gallery', 'title' => 'Selected Work &', 'title_strong' => 'Recent Calls', 'videos_label' => 'Videos', 'empty' => 'Projects coming soon.', 'image_title' => 'Service Photo', 'video_title' => 'Service Video'];
+$ServiceHeroCopy = ['badge' => 'Towing Service', 'cta_primary' => 'Call Now', 'cta_secondary' => 'Explore Service'];
 $ServiceIntroCopy = [
-  'eyebrow' => 'Our Methodology',
+  'eyebrow' => 'Our Method',
   'title' => 'How We Deliver',
-  'title_strong' => 'Quality Work',
-  'desc' => 'We follow a structured process so you always know what to expect from start to finish.',
+  'title_strong' => 'Roadside Help',
+  'desc' => 'We keep the process simple so you know what to expect from call to completion.',
   'steps' => [
-    [
-      'icon' => 'fa-comments',
-      'title' => 'Consultation',
-      'text' => 'We start with a free estimate and a clear scope of work.'
-    ],
-    [
-      'icon' => 'fa-pencil-ruler',
-      'title' => 'Plan & Design',
-      'text' => 'Materials and details are selected to match your goals and budget.'
-    ],
-    [
-      'icon' => 'fa-hammer',
-      'title' => 'Execution',
-      'text' => 'Our licensed crew completes the work with clean job sites and reliable scheduling.'
-    ]
+    ['icon' => 'fa-comments', 'title' => 'Call', 'text' => 'We start by confirming your location and service need.'],
+    ['icon' => 'fa-map-location-dot', 'title' => 'Dispatch', 'text' => 'A driver heads your way with the right support.'],
+    ['icon' => 'fa-truck', 'title' => 'Service', 'text' => 'We complete the tow, jump start, lockout, or junk car pickup.']
   ]
 ];
 
-$ServiceDetailsCopy = [
-  'badge_title' => 'Omar Remodeling Guarantee',
-  'badge_subtitle' => 'Satisfaction Focused',
-  'title_prefix' => 'Professional',
-  'button' => 'Get Free Estimate'
-];
-
+$ServiceDetailsCopy = ['badge_title' => 'Familia Towing Promise', 'badge_subtitle' => 'Service Focused', 'title_prefix' => 'Professional', 'button' => 'Call Now'];
 $ServiceFaqCopy = [
   'eyebrow' => 'Common Questions',
   'title' => 'Info About Our',
-  'title_strong' => 'Remodeling Process',
+  'title_strong' => 'Towing Service',
   'items' => [
-    [
-      'icon' => 'fa-hourglass-half',
-      'question' => 'How long does a typical project take?',
-      'answer' => 'Timelines vary by scope. We provide a detailed schedule during your estimate so you know what to expect.'
-    ],
-    [
-      'icon' => 'fa-file-invoice-dollar',
-      'question' => 'Is the estimate really free?',
-      'answer' => 'Yes. ' . $Company . ' provides free estimates and transparent proposals with no obligation.'
-    ],
-    [
-      'icon' => 'fa-shield-halved',
-      'question' => 'Are you licensed and insured?',
-      'answer' => $LicenseNote . '. We carry liability coverage to protect your property and our crews.'
-    ],
-    [
-      'icon' => 'fa-layer-group',
-      'question' => 'Do you help with materials and permits?',
-      'answer' => 'Yes. We help source materials and can assist with permits as needed for your project.'
-    ]
+    ['icon' => 'fa-hourglass-half', 'question' => 'How fast can you arrive?', 'answer' => 'Arrival time depends on your location and traffic. Call with your exact location for current availability.'],
+    ['icon' => 'fa-file-invoice-dollar', 'question' => 'Do you buy junk cars?', 'answer' => 'Yes. ' . $Company . ' buys junk cars and helps schedule removal.'],
+    ['icon' => 'fa-language', 'question' => 'Do you speak Spanish?', 'answer' => $BilingualNote . '.'],
+    ['icon' => 'fa-map', 'question' => 'What areas do you serve?', 'answer' => $Coverage]
   ],
   'footer' => 'Have a different question? Contact our team directly'
 ];
 
 $ServiceCtaCopy = [
-  'tag' => 'Ready to Build?',
-  'title' => "Let's Transform Your",
-  'title_strong' => 'Property Today',
-  'paragraph' => 'Get a free, detailed estimate for your %s within 80 miles of Laurel, MD. Our licensed and insured team is ready to deliver precision and quality.',
-  'subject_fallback' => 'project',
-  'features' => ['Licensed', 'Insured', $Experience],
-  'primary' => 'Get Free Estimate',
+  'tag' => 'Need Help?',
+  'title' => "Let's Get Your",
+  'title_strong' => 'Vehicle Moving',
+  'paragraph' => 'Call for %s across West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.',
+  'subject_fallback' => 'service',
+  'features' => ['24/7', 'Bilingual', $Experience],
+  'primary' => 'Call Now',
   'secondary_prefix' => 'Call'
 ];
 
-$OtherServicesCopy = [
-  'label' => 'Additional Services',
-  'title' => 'More Ways We Can Help',
-  'title_strong' => 'Your Property',
-  'item_note' => 'Professional installation and finishing.',
-  'cta_title' => 'Have a specific request?',
-  'cta_text' => 'From repairs to custom upgrades, we handle the details.',
-  'cta_button' => $Estimates,
-  'page_desc' => 'Additional service options tailored to your property needs.'
-];
-$FounderCopy = [
-  'title' => 'A Note from',
-  'title_strong' => 'The Founder',
-  'quote' => 'At ' . $Company . ', we believe remodeling is about trust. For over ' . $Experience . ', our commitment has been to treat every property as if it were our own, delivering durability, quality, and peace of mind.',
-  'role' => 'Owner & Lead Contractor',
-  'image_alt' => $CustomerName
-];
+$OtherServicesCopy = ['label' => 'Additional Help', 'title' => 'More Ways We Can Help', 'title_strong' => 'On The Road', 'item_note' => 'Professional towing and roadside assistance.', 'cta_title' => 'Have a specific request?', 'cta_text' => 'From emergency towing to junk car pickup, call and tell us what you need.', 'cta_button' => $Estimates, 'page_desc' => 'Additional roadside help tailored to your vehicle situation.'];
+$FounderCopy = ['title' => 'A Note from', 'title_strong' => 'The Owner', 'quote' => 'At ' . $Company . ', we believe towing is about trust, response, and safe vehicle care. Our goal is to help every driver with practical service and clear communication.', 'role' => 'Owner', 'image_alt' => $CustomerName];
+
 $AriaCopy = [
   'call' => 'Click to call',
   'primary_nav' => 'Primary navigation',
@@ -1318,29 +831,11 @@ $AriaCopy = [
   'tiktok' => 'TikTok',
   'email' => 'Email'
 ];
-$TestimonialsPageCopy = [
-  'eyebrow' => $NavCopy['reviews'] ?? 'Reviews',
-  'title' => 'What Clients Say',
-  'desc' => 'Trusted feedback from homeowners and businesses across our 80-mile coverage area.',
-  'card_title' => 'Read Verified Reviews',
-  'card_desc' => 'See feedback from website reviews and post-project follow-up.',
-  'card_button' => $NavCopy['read_reviews'] ?? 'Read Reviews',
-  'card_link' => 'reviews.php'
-];
-$ThankYouCopy = [
-  'title' => 'Thank You',
-  'description' => 'Thank you for contacting ' . $Company . '. We will be in touch shortly.',
-  'eyebrow' => 'Thank You',
-  'headline' => 'We received your request',
-  'body' => 'Thank you for contacting ' . $Company . '. Our team will reach out soon to confirm project details.',
-  'cta_call' => 'Click to Call',
-  'cta_home' => 'Back to Home'
-];
-$LabelsCopy = [
-  'service_areas' => 'Service Areas',
-  'call' => 'Call',
-  'email' => 'Email'
-];
+
+$TestimonialsPageCopy = ['eyebrow' => $NavCopy['reviews'] ?? 'Reviews', 'title' => 'What Customers Say', 'desc' => 'Trusted feedback from drivers across Palm Beach County.', 'card_title' => 'Read Verified Reviews', 'card_desc' => 'See feedback from towing and roadside service customers.', 'card_button' => $NavCopy['read_reviews'] ?? 'Read Reviews', 'card_link' => 'reviews.php'];
+$ThankYouCopy = ['title' => 'Thank You', 'description' => 'Thank you for contacting ' . $Company . '. We will be in touch shortly.', 'eyebrow' => 'Thank You', 'headline' => 'We received your request', 'body' => 'Thank you for contacting ' . $Company . '. Our team will reach out soon to confirm your towing or roadside service details.', 'cta_call' => 'Click to Call', 'cta_home' => 'Back to Home'];
+$LabelsCopy = ['service_areas' => 'Service Areas', 'call' => 'Call', 'email' => 'Email'];
+
 /*=========================
    CSS VARIABLES
    =========================*/
@@ -1357,41 +852,60 @@ $BrandCSSVars = sprintf(
 );
 
 $BrandCSSVars .= <<<CSS
+:root{
+  --site-surface:#ffffff;
+  --site-surface-soft:color-mix(in srgb, var(--brand-neutral) 82%, #fff 18%);
+  --site-ink:var(--brand-secondary);
+  --site-ink-soft:rgba(var(--brand-secondary-rgb),0.76);
+  --site-panel:#ffffff;
+  --site-panel-soft:rgba(255,255,255,0.78);
+  --site-line:rgba(var(--brand-secondary-rgb),0.14);
+  --site-dark:#0a0a0b;
+  --site-dark-2:#161616;
+  --site-dark-3:#1f1f1f;
+  --site-dark-line:rgba(var(--brand-accent-rgb),0.26);
+  --site-dark-text:#ffffff;
+  --site-dark-muted:rgba(255,255,255,0.72);
+  --site-accent-soft:rgba(var(--brand-accent-rgb),0.14);
+}
 body{
-  background: linear-gradient(180deg, var(--brand-neutral) 0%, #e3eaf2 100%);
+  background:
+    radial-gradient(circle at 10% 8%, rgba(var(--brand-accent-rgb),0.16), transparent 28%),
+    linear-gradient(180deg, var(--brand-neutral) 0%, #ffffff 100%);
 }
 #hero-4.hero4{
-  background: linear-gradient(130deg, var(--brand-secondary) 0%, var(--brand-primary) 58%, #2a2a2a 100%) !important;
+  background: linear-gradient(130deg, #000 0%, var(--brand-secondary) 58%, #2a1600 100%) !important;
 }
 #hero-4 .hero4__slides::after{
-  background: linear-gradient(to bottom, rgba(var(--brand-secondary-rgb),0.75) 0%, rgba(var(--brand-secondary-rgb),0.48) 42%, rgba(var(--brand-secondary-rgb),0.82) 100%) !important;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.88) 100%) !important;
 }
 #hero-4 .hero4__content{
-  background: linear-gradient(145deg, rgba(var(--brand-secondary-rgb),0.9), rgba(var(--brand-primary-rgb),0.72)) !important;
-  border: 1px solid rgba(var(--brand-accent-rgb),0.45) !important;
+  background: linear-gradient(145deg, rgba(0,0,0,0.92), rgba(var(--brand-secondary-rgb),0.78)) !important;
+  border: 1px solid rgba(var(--brand-accent-rgb),0.55) !important;
 }
 #hero-4 .hero4__content::before{
-  background: radial-gradient(120% 140% at 0% 0%, rgba(var(--brand-accent-rgb),0.2), transparent 62%) !important;
+  background: radial-gradient(120% 140% at 0% 0%, rgba(var(--brand-accent-rgb),0.24), transparent 62%) !important;
 }
-#hero-4 .hero4__btn--primary{
+#hero-4 .hero4__btn--primary,
+.section-about-arch .btn-arch,
+.section-remodel-why .btn-gold,
+.cta-premium-section .btn-cta-primary,
+.section-contact-premium .btn-submit-arch{
   background: var(--brand-accent) !important;
-  color: var(--brand-secondary) !important;
+  color: #080808 !important;
+  border-color: var(--brand-accent) !important;
 }
-#hero-4 .hero4__btn--ghost{
-  border-color: rgba(var(--brand-accent-rgb),0.7) !important;
-  background: rgba(var(--brand-secondary-rgb),0.24) !important;
-}
+#hero-4 .hero4__btn--ghost,
 #hero-4 .hero4__thumb.active,
 #hero-4 .hero4__arrow:hover{
   border-color: var(--brand-accent) !important;
 }
-
 .section-about-arch,
 .section-services-premium,
 .section-maint-pro,
 .mission-vision-section,
 .faq-section{
-  background: linear-gradient(180deg, #f8fbff 0%, var(--brand-neutral) 100%) !important;
+  background: linear-gradient(180deg, #ffffff 0%, var(--brand-neutral) 100%) !important;
 }
 .section-remodel-why,
 .section-process,
@@ -1399,9 +913,8 @@ body{
 .cta-premium-section,
 .section-contact-premium,
 .section-map-contact{
-  background: linear-gradient(135deg, color-mix(in srgb, var(--brand-secondary) 92%, #000 8%) 0%, color-mix(in srgb, var(--brand-primary) 78%, #000 22%) 100%) !important;
+  background: linear-gradient(135deg, #000 0%, var(--brand-secondary) 100%) !important;
 }
-
 .section-about-arch .arch-eyebrow,
 .section-services-premium .sv-eyebrow,
 .section-maint-pro .tagline,
@@ -1411,9 +924,14 @@ body{
 .section-areas .city-icon,
 .cta-premium-section .cta-badge,
 .section-contact-premium .ct-eyebrow,
-.section-map-contact .info-icon{
+.section-map-contact .info-icon,
+.section-remodel-why .why-header h2 strong,
+.section-process .process-header h2 span,
+.section-areas .areas-content h2 strong,
+.cta-premium-section .cta-content h2 strong,
+.section-map-contact .contact-card h3 span{
   color: var(--brand-accent) !important;
-  border-color: rgba(var(--brand-accent-rgb),0.55) !important;
+  border-color: rgba(var(--brand-accent-rgb),0.6) !important;
 }
 .section-about-arch .arch-eyebrow::before,
 .section-services-premium .sv-eyebrow::before,
@@ -1421,20 +939,11 @@ body{
 .section-contact-premium .ct-eyebrow::before{
   background: var(--brand-accent) !important;
 }
-
 .section-about-arch .content-arch h2 strong,
 .section-services-premium .sv-header h2 strong,
 .section-maint-pro .pro-header h2 strong{
   color: var(--brand-primary) !important;
 }
-.section-remodel-why .why-header h2 strong,
-.section-process .process-header h2 span,
-.section-areas .areas-content h2 strong,
-.cta-premium-section .cta-content h2 strong,
-.section-map-contact .contact-card h3 span{
-  color: var(--brand-accent) !important;
-}
-
 .section-services-premium .sv-card,
 .section-maint-pro .maint-card-dark,
 .section-remodel-why .feature-card,
@@ -1443,15 +952,14 @@ body{
 .section-contact-premium .ct-form-wrapper,
 .cta-premium-section .contact-glass-card,
 .section-map-contact .contact-card{
-  border-radius: 16px !important;
+  border-radius: 18px !important;
 }
 .section-services-premium .sv-card:hover,
 .section-maint-pro .maint-card-dark:hover,
 .section-remodel-why .feature-card:hover,
 .section-process .process-step:hover{
-  box-shadow: 0 22px 48px rgba(var(--brand-secondary-rgb),0.26) !important;
+  box-shadow: 0 22px 48px rgba(0,0,0,0.28) !important;
 }
-
 .section-about-arch .btn-arch,
 .section-remodel-why .btn-gold,
 .section-areas .btn-area,
@@ -1460,20 +968,12 @@ body{
 .section-services-premium .btn-sv-accent{
   border-radius: 999px !important;
 }
-.section-about-arch .btn-arch,
-.section-remodel-why .btn-gold,
-.cta-premium-section .btn-cta-primary,
-.section-contact-premium .btn-submit-arch{
-  background: var(--brand-accent) !important;
-  color: var(--brand-secondary) !important;
-  border-color: var(--brand-accent) !important;
-}
 .section-about-arch .btn-arch:hover,
 .section-remodel-why .btn-gold:hover,
 .cta-premium-section .btn-cta-primary:hover,
 .section-contact-premium .btn-submit-arch:hover{
   background: color-mix(in srgb, var(--brand-accent) 84%, #fff 16%) !important;
-  color: var(--brand-secondary) !important;
+  color: #080808 !important;
 }
 .section-areas .btn-area{
   border-color: var(--brand-accent) !important;
@@ -1481,13 +981,52 @@ body{
 }
 .section-areas .btn-area:hover{
   background: var(--brand-accent) !important;
-  color: var(--brand-secondary) !important;
+  color: #080808 !important;
 }
 .section-contact-premium .form-control-arch:focus{
   border-bottom-color: var(--brand-accent) !important;
 }
 .section-map-contact .map-background iframe{
-  filter: grayscale(78%) invert(88%) contrast(0.82) !important;
+  filter: grayscale(60%) contrast(0.9) !important;
+}
+.language-switcher{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px;
+  border-radius:999px;
+  background:#0b0b0d;
+  border:1px solid rgba(var(--brand-accent-rgb),0.45);
+}
+.language-switcher button{
+  border:0;
+  border-radius:999px;
+  padding:8px 10px;
+  background:transparent;
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.04em;
+  cursor:pointer;
+}
+.language-switcher button.active,
+.language-switcher button:hover{
+  background:var(--brand-accent);
+  color:#050505;
+}
+.goog-te-banner-frame,
+.skiptranslate iframe{
+  display:none !important;
+}
+body{
+  top:0 !important;
+}
+#google_translate_element{
+  width:0;
+  height:0;
+  overflow:hidden;
+  position:absolute;
+  pointer-events:none;
 }
 CSS;
 ?>
