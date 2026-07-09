@@ -24,7 +24,7 @@ if (empty($allAreas) && !empty($Coverage)) {
 }
 
 if (empty($allAreas)) {
-  $allAreas = ['Annapolis, MD', 'Anne Arundel County, MD', 'Edgewater, MD'];
+  $allAreas = ['Anne Arundel County, MD', 'Calvert County, MD', 'Prince George\'s County, MD', 'Howard County, MD', 'Baltimore County, MD', 'Charles County, MD', 'Saint Mary\'s County, MD'];
 }
 
 $primaryAreas = array_slice($allAreas, 0, 6);

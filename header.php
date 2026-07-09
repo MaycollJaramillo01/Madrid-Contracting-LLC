@@ -14,11 +14,11 @@ $defaultSeoTitles = [
 ];
 
 $defaultSeoDescriptions = [
-    'home' => sprintf('%s provides water pump replacement, pressure tank installation, waterline leak repair, constant pressure systems, well rehab, waterproofing, general contracting, and dumping in Annapolis, MD and nearby Maryland communities.', $Company ?? 'Madrid Contracting'),
+    'home' => sprintf('%s provides water pump replacement, pressure tank installation, waterline leak repair, constant pressure systems, well rehab, waterproofing, general contracting, and dumping across Anne Arundel, Calvert, Prince George\'s, Howard, Baltimore, Charles, and Saint Mary\'s counties.', $Company ?? 'Madrid Contracting'),
     'about' => sprintf('Learn about %s, an Annapolis-based water well service and contracting company serving Maryland properties with pump, tank, leak, pressure, rehab, waterproofing, and property support.', $Company ?? 'Madrid Contracting'),
     'services' => 'Water well services in Annapolis, MD: water pump replacement, pressure tank installation, waterline leak repairs, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.',
-    'projects' => 'See field work and service photos from Madrid Contracting water well service, waterproofing, contracting, and property support across Annapolis and nearby Maryland communities.',
-    'reviews' => 'Read customer feedback for Madrid Contracting water well service and contracting support in Annapolis, Maryland.',
+    'projects' => 'See field work and service photos from Madrid Contracting water well service, waterproofing, contracting, and property support across Central Maryland counties.',
+    'reviews' => 'Read customer feedback for Madrid Contracting water well service and contracting support across Central Maryland.',
     'contact' => 'Call Madrid Contracting to schedule water well service, pressure tank installation, waterline repair, waterproofing, general contracting, or dumping in Annapolis, MD.',
     'thank-you' => sprintf('Thank you for contacting %s. Our team will follow up about your water well or contracting request.', $Company ?? 'Madrid Contracting')
 ];

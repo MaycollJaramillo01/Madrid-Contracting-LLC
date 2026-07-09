@@ -26,7 +26,7 @@ $experienceLabel = trim((string) ($Experience ?? '15 Years'));
 $licenseLabel = trim((string) ($LicenseNote ?? 'Licensed and Insured'));
 $estimateLabel = trim((string) ($Estimates ?? 'Free Estimates'));
 $typeLabel = trim((string) ($TypeOfService ?? 'Residential and Commercial'));
-$coverageLabel = trim((string) ($Coverage ?? 'Serving Annapolis and nearby Maryland communities'));
+$coverageLabel = trim((string) ($Coverage ?? 'Serving Anne Arundel County, Calvert County, Prince George\'s County, Howard County, Baltimore County, Charles County, and Saint Mary\'s County.'));
 $bilingualLabel = trim((string) ($BilingualNote ?? 'Bilingual Attention Available'));
 ?>
 

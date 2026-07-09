@@ -151,8 +151,8 @@ $Payment        = "Call for payment options";
 $Experience     = "15+ Years";
 $CompanyAge     = "3 Years in Business";
 $Schedule       = "Call to schedule service or request urgent support.";
-$Coverage       = "Serving Annapolis, Hillsmere, Anne Arundel County, and nearby Maryland communities.";
-$LicenseNote    = $CompanyAge;
+$Coverage       = "Serving Anne Arundel County, Calvert County, Prince George's County, Howard County, Baltimore County, Charles County, and Saint Mary's County.";
+$LicenseNote    = "Licensed and Insured";
 $BilingualNote  = "English and Spanish Support";
 $TypeOfService  = "Water Well Service and Contracting";
 
@@ -174,19 +174,13 @@ $BrandColors = [
    SERVICE AREAS
    =========================*/
 $Areas = [
-  "Annapolis, MD",
-  "Hillsmere, Annapolis, MD",
   "Anne Arundel County, MD",
-  "Edgewater, MD",
-  "Mayo, MD",
-  "Riva, MD",
-  "Parole, MD",
-  "Arnold, MD",
-  "Severna Park, MD",
-  "Davidsonville, MD",
-  "Crofton, MD",
-  "Crownsville, MD",
-  "And nearby Maryland communities"
+  "Calvert County, MD",
+  "Prince George's County, MD",
+  "Howard County, MD",
+  "Baltimore County, MD",
+  "Charles County, MD",
+  "Saint Mary's County, MD"
 ];
 
 /*=========================
@@ -285,7 +279,7 @@ $Home = [
 ];
 
 $About = [
-  "MADRID CONTRACTING LLC is based at 307 Hillsmere Dr, Annapolis, MD 21403 and serves homeowners and properties across nearby Maryland communities.",
+  "MADRID CONTRACTING LLC is based at 307 Hillsmere Dr, Annapolis, MD 21403 and serves homeowners and properties across Anne Arundel, Calvert, Prince George's, Howard, Baltimore, Charles, and Saint Mary's counties.",
   "Our work focuses on practical water well solutions, clear communication, and reliable contracting support when a project needs more than a single repair."
 ];
 
@@ -645,9 +639,9 @@ $AboutCredentialsCopy = [
   'cta' => ['title' => 'Need water well service?', 'desc' => 'Call for pump, tank, leak, pressure, well rehab, waterproofing, contracting, or dumping support.', 'primary_text' => 'Call Now', 'primary_href' => $PhoneRef, 'secondary_prefix' => 'Call']
 ];
 
-$AboutServicesSummaryCopy = ['eyebrow' => 'Services', 'title' => 'How we help', 'desc' => $TypeOfService . ' across Annapolis and nearby Maryland communities.', 'link_label' => 'Learn more'];
+$AboutServicesSummaryCopy = ['eyebrow' => 'Services', 'title' => 'How we help', 'desc' => $TypeOfService . ' across Anne Arundel, Calvert, Prince George\'s, Howard, Baltimore, Charles, and Saint Mary\'s counties.', 'link_label' => 'Learn more'];
 $ServicesListCopy = ['eyebrow' => 'Scope', 'title' => 'Services we provide', 'desc' => $Services, 'link_label' => 'Learn more'];
-$BrandsCopy = ['tagline' => 'Serving Annapolis and nearby Maryland communities'];
+$BrandsCopy = ['tagline' => $Coverage];
 
 $HomeServicesCopy = [
   'eyebrow' => 'Our Services',
@@ -724,11 +718,11 @@ $FaqCopy = [
 
 $AreasCopy = [
   'title' => 'Serving',
-  'title_strong' => 'Annapolis, Maryland',
+  'title_strong' => 'Maryland Counties',
   'subtitle' => $Coverage,
   'cta_label' => 'Request Service in Your Area',
-  'map_overlay' => 'Annapolis Service Base',
-  'license_pills' => [$CompanyAge, $Experience, 'Water Well Service', 'Contracting Support']
+  'map_overlay' => 'Maryland Service Coverage',
+  'license_pills' => [$LicenseNote, $CompanyAge, $Experience, 'Water Well Service']
 ];
 
 $CtaCopy = [
@@ -736,7 +730,7 @@ $CtaCopy = [
   'title' => 'Need Water Well',
   'title_strong' => 'Service?',
   'paragraph' => $Company . ' provides pump replacement, pressure tank installation, leak repairs, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.',
-  'features' => [$CompanyAge, $Experience, 'Annapolis Based'],
+  'features' => [$LicenseNote, $CompanyAge, $Experience],
   'button' => 'Call for Service',
   'card_title' => 'Speak With Madrid Contracting',
   'card_subtitle' => 'Water well and contracting support',
