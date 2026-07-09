@@ -27,8 +27,13 @@ $Company      = "MADRID CONTRACTING LLC";
 $CustomerName = "Madrid Contracting";
 
 function detectBaseURL() {
-  $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-  $host   = $_SERVER['HTTP_HOST'] ?? 'localhost';
+  $forwardedProto = trim(explode(',', $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '')[0]);
+  $scheme = in_array($forwardedProto, ['http', 'https'], true)
+    ? $forwardedProto
+    : ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http');
+
+  $forwardedHost = trim(explode(',', $_SERVER['HTTP_X_FORWARDED_HOST'] ?? '')[0]);
+  $host   = $forwardedHost ?: ($_SERVER['HTTP_HOST'] ?? 'localhost');
   $script = $_SERVER['SCRIPT_NAME'] ?? '';
   $dir    = rtrim(str_replace('\\', '/', dirname($script)), '/.');
   $path   = $dir ? $dir . '/' : '/';
