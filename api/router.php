@@ -15,6 +15,9 @@ $publicPhpRoutes = [
     'thank-you.php',
     'business-card.php',
     'bussiness-card.php',
+    'robots.php',
+    'sitemap.php',
+    'llms.php',
     'utils/captcha.php',
 ];
 
@@ -31,6 +34,28 @@ if ($requested === '') {
 $requested = str_replace('\\', '/', $requested);
 $requested = preg_replace('#/+#', '/', $requested) ?? $requested;
 
+$projectRoot = dirname(__DIR__);
+$requestedFile = $projectRoot . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $requested);
+if (
+    is_file($requestedFile)
+    && (
+        str_starts_with($requested, 'assets/')
+        || str_starts_with($requested, 'data/')
+    )
+) {
+    return false;
+}
+
+$specialRoutes = [
+    'robots.txt' => 'robots.php',
+    'sitemap.xml' => 'sitemap.php',
+    'llms.txt' => 'llms.php',
+];
+
+if (isset($specialRoutes[$requested])) {
+    $requested = $specialRoutes[$requested];
+}
+
 if (!str_contains($requested, '.')) {
     $extensionless = $requested . '.php';
     if (in_array($extensionless, $publicPhpRoutes, true)) {
@@ -45,7 +70,6 @@ if (!in_array($requested, $publicPhpRoutes, true)) {
     exit;
 }
 
-$projectRoot = dirname(__DIR__);
 $targetFile = $projectRoot . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $requested);
 
 if (!is_file($targetFile)) {

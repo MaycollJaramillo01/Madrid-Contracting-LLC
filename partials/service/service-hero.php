@@ -1,11 +1,11 @@
 <?php
 // Enhanced Service Hero
-$heroBg = $heroImageMain ?? 'assets/img/truck.jpeg'; 
+$heroBg = $heroImageMain ?? ($serviceData['image'] ?? (function_exists('stockImage') ? stockImage($CurrentServiceSlug ?? 'hero1') : '')); 
 if (!file_exists($heroBg) && !strpos($heroBg, 'http')) {
-    $heroBg = 'assets/img/truck.jpeg';
+    $heroBg = function_exists('stockImage') ? stockImage($CurrentServiceSlug ?? 'hero1') : '';
 }
 // Force fallback if empty
-if (empty($heroBg)) $heroBg = 'assets/img/truck.jpeg';
+if (empty($heroBg)) $heroBg = function_exists('stockImage') ? stockImage('hero1') : '';
 ?>
 <section class="service-hero-nova">
     <div class="service-hero__bg" style="background-image: url('<?php echo $heroBg; ?>');"></div>

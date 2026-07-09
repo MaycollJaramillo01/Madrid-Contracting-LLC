@@ -6,10 +6,10 @@ $missionText = trim((string) ($Mission ?? ''));
 $visionText = trim((string) ($Vision ?? ''));
 
 if ($missionText === '') {
-  $missionText = 'Deliver reliable towing and roadside assistance with clear communication, safe handling, and consistent response.';
+  $missionText = 'Deliver reliable water well service and contracting support with clear communication and consistent workmanship.';
 }
 if ($visionText === '') {
-  $visionText = 'Be the trusted towing company for drivers across Palm Beach County through consistency and dependable service.';
+  $visionText = 'Be a trusted Annapolis contractor for water well systems, waterproofing, and property service work.';
 }
 
 $missionIntro = trim((string) ($About[0] ?? ''));
@@ -26,7 +26,7 @@ $experienceLabel = trim((string) ($Experience ?? '15 Years'));
 $licenseLabel = trim((string) ($LicenseNote ?? 'Licensed and Insured'));
 $estimateLabel = trim((string) ($Estimates ?? 'Free Estimates'));
 $typeLabel = trim((string) ($TypeOfService ?? 'Residential and Commercial'));
-$coverageLabel = trim((string) ($Coverage ?? 'Serving Palm Beach County and nearby communities'));
+$coverageLabel = trim((string) ($Coverage ?? 'Serving Annapolis and nearby Maryland communities'));
 $bilingualLabel = trim((string) ($BilingualNote ?? 'Bilingual Attention Available'));
 ?>
 
@@ -50,7 +50,7 @@ $bilingualLabel = trim((string) ($BilingualNote ?? 'Bilingual Attention Availabl
       <article class="mission-forge__card mission-forge__card--mission" data-aos="fade-right">
         <div class="mission-forge__card-head">
           <div class="mission-forge__icon">
-            <i class="fas fa-truck" aria-hidden="true"></i>
+            <i class="fas fa-water" aria-hidden="true"></i>
           </div>
           <h3><?php echo htmlspecialchars($missionTitle, ENT_QUOTES, 'UTF-8'); ?></h3>
         </div>
@@ -58,8 +58,8 @@ $bilingualLabel = trim((string) ($BilingualNote ?? 'Bilingual Attention Availabl
         <p><?php echo htmlspecialchars($missionText, ENT_QUOTES, 'UTF-8'); ?></p>
 
         <ul class="mission-forge__points">
-          <li>Fast dispatch and clear details before service begins.</li>
-          <li>Safe loading, handling, and roadside support.</li>
+          <li>Clear details before service begins.</li>
+          <li>Practical water well and property support.</li>
           <li>Direct updates from first call to service completion.</li>
         </ul>
       </article>
@@ -75,8 +75,8 @@ $bilingualLabel = trim((string) ($BilingualNote ?? 'Bilingual Attention Availabl
         <p><?php echo htmlspecialchars($visionText, ENT_QUOTES, 'UTF-8'); ?></p>
 
         <ul class="mission-forge__points">
-          <li>Consistent service standards across all roadside calls.</li>
-          <li>Dependable support for local and long distance towing.</li>
+          <li>Consistent service standards across every call.</li>
+          <li>Dependable support for wells, waterproofing, contracting, and cleanup.</li>
           <li>Long-term trust built through reliability and accountability.</li>
         </ul>
       </article>

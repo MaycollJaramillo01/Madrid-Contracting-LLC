@@ -1,44 +1,39 @@
 <?php
 if (!isset($BrandColors)) include_once __DIR__ . '/../../text.php';
 
-$galleryCandidates = [
-    'assets/img/truck.jpeg',
-    'assets/img/hero/hero1.jpg',
-    'assets/img/hero/hero2.jpg',
-    'assets/img/hero/hero3.jpg',
-    'assets/img/services/Local Towing.png',
-    'assets/img/services/Long Distance Towing.png',
-    'assets/img/services/We Buy Junk Cars.png',
-    'assets/img/services/Jump Start Vehicles.png',
-    'assets/img/services/Locked Car Services.png',
-    'assets/img/services/Roadside Assistance.png',
-    'assets/img/services/24 Hour Towing.png'
-];
 $galleryItems = [];
-$seenMedia = [];
+$tabLabels = ['all' => 'All'];
+$servicesForGallery = (!empty($ServicesDisplayList) && is_array($ServicesDisplayList))
+    ? $ServicesDisplayList
+    : (!empty($ServicesList) && is_array($ServicesList) ? array_values($ServicesList) : []);
 
-foreach ($galleryCandidates as $rel) {
-    $abs = __DIR__ . '/../../' . str_replace('/', DIRECTORY_SEPARATOR, $rel);
-    if (!is_file($abs)) continue;
-    if (isset($seenMedia[$rel])) continue;
-    $seenMedia[$rel] = true;
+foreach ($servicesForGallery as $service) {
+    if (!is_array($service)) continue;
+
+    $src = trim((string) ($service['image'] ?? ''));
+    $title = trim((string) ($service['name'] ?? 'Service Photo'));
+    $categorySlug = trim((string) ($service['category_slug'] ?? 'service'));
+    $categoryLabel = trim((string) ($service['category_label'] ?? 'Service'));
+
+    if ($src === '' || $title === '') continue;
+    if ($categorySlug === '') $categorySlug = 'service';
+    if ($categoryLabel === '') $categoryLabel = 'Service';
+
+    $tabLabels[$categorySlug] = $categoryLabel;
     $galleryItems[] = [
-        'src' => $rel,
-        'cat' => 'images',
+        'src' => $src,
+        'cat' => $categorySlug,
+        'label' => $categoryLabel,
         'type' => 'image',
-        'title' => 'Familia Towing Image'
+        'title' => $title,
+        'url' => trim((string) ($service['url'] ?? 'services.php'))
     ];
 }
 
-$hasImages = false;
-foreach ($galleryItems as $item) {
-    if (($item['cat'] ?? '') === 'images') $hasImages = true;
-}
-
-$defaultFilter = 'images';
+$defaultFilter = 'all';
 $tabLabels = [
-    'images' => 'Images'
-];
+    'all' => 'All'
+] + $tabLabels;
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -324,7 +319,7 @@ $tabLabels = [
     <div class="container">
         <div class="gal-header" data-aos="fade-up">
             <span class="gal-eyebrow">Project Gallery</span>
-            <h2 class="gal-title">Towing Gallery <br><strong>From Recent Work</strong></h2>
+            <h2 class="gal-title">Service Gallery <br><strong>From Field Work</strong></h2>
         </div>
 
         <div class="gallery-filter-nav" data-aos="fade-up" data-aos-delay="100">
@@ -343,7 +338,7 @@ $tabLabels = [
                 </div>
             <?php else: ?>
                 <?php foreach ($galleryItems as $item): ?>
-                    <div class="gallery-card<?php echo ($item['cat'] === $defaultFilter) ? ' show' : ''; ?>" data-category="<?php echo htmlspecialchars($item['cat'], ENT_QUOTES, 'UTF-8'); ?>">
+                    <div class="gallery-card<?php echo ($defaultFilter === 'all' || $item['cat'] === $defaultFilter) ? ' show' : ''; ?>" data-category="<?php echo htmlspecialchars($item['cat'], ENT_QUOTES, 'UTF-8'); ?>">
                         <img src="<?php echo htmlspecialchars($item['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
 
                         <div class="card-overlay">
@@ -351,7 +346,7 @@ $tabLabels = [
                                 <i class="fas fa-expand"></i>
                             </div>
                             <div class="card-info">
-                                <span><?php echo htmlspecialchars(ucfirst((string) $item['cat']), ENT_QUOTES, 'UTF-8'); ?></span>
+                                <span><?php echo htmlspecialchars((string) ($item['label'] ?? ucfirst((string) $item['cat'])), ENT_QUOTES, 'UTF-8'); ?></span>
                                 <h4><?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?></h4>
                             </div>
                         </div>
@@ -394,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.offsetHeight; // trigger reflow
                 item.style.animation = 'revealItem 0.5s forwards';
 
-                if (item.getAttribute('data-category') === filterValue) {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                     item.classList.add('show');
                 } else {
                     item.classList.remove('show');

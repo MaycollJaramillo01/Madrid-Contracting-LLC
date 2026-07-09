@@ -1,9 +1,230 @@
 <?php
 $defaultPageName = $namepage ?? ($NavCopy['home'] ?? '');
-$PageTitle = $PageTitle ?? sprintf('%s | %s', $Company ?? '', $defaultPageName);
-$PageDescription = $PageDescription ?? ($ExHome ?? ($Home[0] ?? ''));
+$currentScriptName = basename($_SERVER['SCRIPT_NAME'] ?? '') ?: 'index.php';
+$pageSeoKey = $currentScriptName === 'index.php' ? 'home' : preg_replace('/\.php$/', '', $currentScriptName);
+
+$defaultSeoTitles = [
+    'home' => sprintf('%s | Water Well Service & Contracting in Annapolis, MD', $Company ?? 'Madrid Contracting'),
+    'about' => sprintf('About %s | Annapolis Water Well Contractor', $Company ?? 'Madrid Contracting'),
+    'services' => sprintf('Water Well Services in Annapolis, MD | %s', $Company ?? 'Madrid Contracting'),
+    'projects' => sprintf('Water Well & Contracting Work in Maryland | %s', $Company ?? 'Madrid Contracting'),
+    'reviews' => sprintf('Customer Reviews | %s Annapolis, MD', $Company ?? 'Madrid Contracting'),
+    'contact' => sprintf('Request Water Well Service in Annapolis, MD | %s', $Company ?? 'Madrid Contracting'),
+    'thank-you' => sprintf('Thank You | %s', $Company ?? 'Madrid Contracting')
+];
+
+$defaultSeoDescriptions = [
+    'home' => sprintf('%s provides water pump replacement, pressure tank installation, waterline leak repair, constant pressure systems, well rehab, waterproofing, general contracting, and dumping in Annapolis, MD and nearby Maryland communities.', $Company ?? 'Madrid Contracting'),
+    'about' => sprintf('Learn about %s, an Annapolis-based water well service and contracting company serving Maryland properties with pump, tank, leak, pressure, rehab, waterproofing, and property support.', $Company ?? 'Madrid Contracting'),
+    'services' => 'Water well services in Annapolis, MD: water pump replacement, pressure tank installation, waterline leak repairs, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.',
+    'projects' => 'See field work and service photos from Madrid Contracting water well service, waterproofing, contracting, and property support across Annapolis and nearby Maryland communities.',
+    'reviews' => 'Read customer feedback for Madrid Contracting water well service and contracting support in Annapolis, Maryland.',
+    'contact' => 'Call Madrid Contracting to schedule water well service, pressure tank installation, waterline repair, waterproofing, general contracting, or dumping in Annapolis, MD.',
+    'thank-you' => sprintf('Thank you for contacting %s. Our team will follow up about your water well or contracting request.', $Company ?? 'Madrid Contracting')
+];
+
+$PageTitle = $PageTitle ?? ($defaultSeoTitles[$pageSeoKey] ?? sprintf('%s | %s', $Company ?? '', $defaultPageName));
+$PageDescription = $PageDescription ?? ($defaultSeoDescriptions[$pageSeoKey] ?? ($ExHome ?? ($Home[0] ?? '')));
 $canonicalPath = basename($_SERVER['SCRIPT_NAME'] ?? '') ?: '';
-$PageCanonical = $PageCanonical ?? rtrim($BaseURL ?? '', '/') . ($canonicalPath ? '/' . ltrim($canonicalPath, '/') : '/');
+$canonicalSlug = ($canonicalPath !== '' && $canonicalPath !== 'index.php') ? ltrim($canonicalPath, '/') : '';
+$PageCanonical = $PageCanonical ?? rtrim($BaseURL ?? '', '/') . ($canonicalSlug !== '' ? '/' . $canonicalSlug : '/');
+
+if (!function_exists('siteAbsoluteUrl')) {
+    function siteAbsoluteUrl($url) {
+        global $BaseURL;
+        $url = trim((string) $url);
+        if ($url === '') return '';
+        if (preg_match('/^(https?:)?\/\//i', $url)) return $url;
+        if (preg_match('/^(tel|mailto):/i', $url)) return $url;
+        return rtrim((string) ($BaseURL ?? ''), '/') . '/' . ltrim($url, '/');
+    }
+}
+
+$seoCompany = trim((string) ($Company ?? 'Madrid Contracting'));
+$seoDescription = trim((string) $PageDescription);
+$seoCanonical = siteAbsoluteUrl($PageCanonical);
+$seoSiteUrl = rtrim((string) ($BaseURL ?? $seoCanonical), '/') . '/';
+$seoBusinessId = $seoSiteUrl . '#localbusiness';
+$seoWebsiteId = $seoSiteUrl . '#website';
+$seoLogo = siteAbsoluteUrl($BrandLogo ?? 'assets/img/logo.png');
+$seoImage = siteAbsoluteUrl($PageHeroCopy[$pageSeoKey]['bg'] ?? ($PageHeroCopy['default']['bg'] ?? (function_exists('stockImage') ? stockImage('hero1') : ($BrandLogo ?? ''))));
+$seoPhone = trim((string) ($Phone ?? ''));
+$seoPhone2 = trim((string) ($Phone2 ?? ''));
+$seoKeywords = array_values(array_unique(array_filter(array_merge(
+    [
+        'water well service Annapolis MD',
+        'water pump replacement Annapolis',
+        'pressure tank installation Maryland',
+        'waterline leak repair Annapolis',
+        'constant pressure system installation',
+        'well rehab Maryland',
+        'waterproofing Annapolis MD',
+        'general contracting Annapolis',
+        'dumping service Annapolis MD'
+    ],
+    is_array($Areas ?? null) ? $Areas : []
+))));
+
+$seoSocialProfiles = array_values(array_filter([
+    trim((string) ($facebook ?? '')),
+    trim((string) ($instagram ?? '')),
+    trim((string) ($google ?? '')),
+    trim((string) ($tiktok ?? ''))
+]));
+
+$seoServiceItems = [];
+if (!empty($ServicesDisplayList) && is_array($ServicesDisplayList)) {
+    foreach ($ServicesDisplayList as $serviceIndex => $service) {
+        if (!is_array($service)) continue;
+        $serviceName = trim((string) ($service['name'] ?? ''));
+        if ($serviceName === '') continue;
+        $seoServiceItems[] = [
+            '@type' => 'Offer',
+            'position' => $serviceIndex + 1,
+            'itemOffered' => [
+                '@type' => 'Service',
+                'name' => $serviceName,
+                'description' => trim((string) ($service['description'] ?? $service['excerpt'] ?? '')),
+                'serviceType' => $serviceName,
+                'areaServed' => array_map(static function ($area) {
+                    return ['@type' => 'Place', 'name' => $area];
+                }, is_array($Areas ?? null) ? $Areas : []),
+                'provider' => ['@id' => $seoBusinessId],
+                'url' => siteAbsoluteUrl($service['url'] ?? 'services.php')
+            ]
+        ];
+    }
+}
+
+$seoFaqItems = [];
+if (!empty($FaqCopy['items']) && is_array($FaqCopy['items'])) {
+    foreach ($FaqCopy['items'] as $item) {
+        $question = trim((string) ($item['q'] ?? ''));
+        $answer = trim((string) ($item['a'] ?? ''));
+        if ($question === '' || $answer === '') continue;
+        $seoFaqItems[] = [
+            '@type' => 'Question',
+            'name' => $question,
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => $answer
+            ]
+        ];
+    }
+}
+
+$seoGraph = [
+    [
+        '@type' => 'HomeAndConstructionBusiness',
+        '@id' => $seoBusinessId,
+        'name' => $seoCompany,
+        'alternateName' => $CustomerName ?? $seoCompany,
+        'url' => $seoSiteUrl,
+        'logo' => $seoLogo,
+        'image' => array_values(array_filter([$seoImage, $seoLogo])),
+        'description' => $seoDescription,
+        'telephone' => $seoPhone,
+        'priceRange' => '$$',
+        'address' => [
+            '@type' => 'PostalAddress',
+            'streetAddress' => $StreetAddress ?? $Address ?? '',
+            'addressLocality' => $AddressLocality ?? 'Annapolis',
+            'addressRegion' => $AddressRegion ?? 'MD',
+            'postalCode' => $PostalCode ?? '21403',
+            'addressCountry' => $AddressCountry ?? 'US'
+        ],
+        'areaServed' => array_map(static function ($area) {
+            return ['@type' => 'Place', 'name' => $area];
+        }, is_array($Areas ?? null) ? $Areas : []),
+        'knowsAbout' => [
+            'Water pump replacement',
+            'Pressure tank installation',
+            'Waterline leak repairs',
+            'Constant pressure systems',
+            'Well rehab',
+            'Waterproofing',
+            'General contracting',
+            'Dumping'
+        ],
+        'contactPoint' => array_values(array_filter([
+            [
+                '@type' => 'ContactPoint',
+                'telephone' => $seoPhone,
+                'contactType' => 'customer service',
+                'areaServed' => 'US-MD',
+                'availableLanguage' => ['English', 'Spanish']
+            ],
+            $seoPhone2 !== '' ? [
+                '@type' => 'ContactPoint',
+                'telephone' => $seoPhone2,
+                'contactType' => 'customer service',
+                'areaServed' => 'US-MD',
+                'availableLanguage' => ['English', 'Spanish']
+            ] : null
+        ])),
+        'sameAs' => $seoSocialProfiles
+    ],
+    [
+        '@type' => 'WebSite',
+        '@id' => $seoWebsiteId,
+        'url' => $seoSiteUrl,
+        'name' => $seoCompany,
+        'publisher' => ['@id' => $seoBusinessId],
+        'inLanguage' => 'en-US'
+    ],
+    [
+        '@type' => 'WebPage',
+        '@id' => $seoCanonical . '#webpage',
+        'url' => $seoCanonical,
+        'name' => $PageTitle,
+        'description' => $seoDescription,
+        'isPartOf' => ['@id' => $seoWebsiteId],
+        'about' => ['@id' => $seoBusinessId],
+        'primaryImageOfPage' => $seoImage !== '' ? ['@type' => 'ImageObject', 'url' => $seoImage] : null,
+        'inLanguage' => 'en-US',
+        'speakable' => [
+            '@type' => 'SpeakableSpecification',
+            'cssSelector' => ['h1', '.lead', '.section-title p']
+        ]
+    ],
+    [
+        '@type' => 'OfferCatalog',
+        '@id' => $seoCanonical . '#services',
+        'name' => 'Madrid Contracting services',
+        'itemListElement' => $seoServiceItems
+    ],
+    [
+        '@type' => 'BreadcrumbList',
+        '@id' => $seoCanonical . '#breadcrumbs',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => 'Home',
+                'item' => $seoSiteUrl
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 2,
+                'name' => $defaultPageName,
+                'item' => $seoCanonical
+            ]
+        ]
+    ]
+];
+
+if (!empty($seoFaqItems)) {
+    $seoGraph[] = [
+        '@type' => 'FAQPage',
+        '@id' => $seoCanonical . '#faq',
+        'mainEntity' => $seoFaqItems
+    ];
+}
+
+$seoSchema = [
+    '@context' => 'https://schema.org',
+    '@graph' => $seoGraph
+];
 
 // Aseguramos variables de redes sociales
 $fb_url = $facebook ?? '';
@@ -17,11 +238,36 @@ $tik_url = $tiktok ?? '';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $PageTitle; ?></title>
-    <meta name="description" content="<?php echo $PageDescription; ?>">
-    <link rel="canonical" href="<?php echo $PageCanonical; ?>">
-    <link rel="icon" type="image/png" href="assets/img/logos.png">
-    <link rel="apple-touch-icon" href="assets/img/logos.png">
+    <title><?php echo htmlspecialchars($PageTitle, ENT_QUOTES, 'UTF-8'); ?></title>
+    <meta name="description" content="<?php echo htmlspecialchars($seoDescription, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="<?php echo htmlspecialchars($seoCompany, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars(implode(', ', $seoKeywords), ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="geo.region" content="US-MD">
+    <meta name="geo.placename" content="<?php echo htmlspecialchars(($AddressLocality ?? 'Annapolis') . ', ' . ($AddressRegion ?? 'MD'), ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="coverage" content="<?php echo htmlspecialchars($Coverage ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="theme-color" content="<?php echo htmlspecialchars($BrandColors['primary'] ?? '#0D1B2A', ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="<?php echo htmlspecialchars($seoCompany, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:title" content="<?php echo htmlspecialchars($PageTitle, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:description" content="<?php echo htmlspecialchars($seoDescription, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:url" content="<?php echo htmlspecialchars($seoCanonical, ENT_QUOTES, 'UTF-8'); ?>">
+    <?php if ($seoImage !== ''): ?><meta property="og:image" content="<?php echo htmlspecialchars($seoImage, ENT_QUOTES, 'UTF-8'); ?>"><?php endif; ?>
+    <meta property="business:contact_data:street_address" content="<?php echo htmlspecialchars($StreetAddress ?? $Address ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="business:contact_data:locality" content="<?php echo htmlspecialchars($AddressLocality ?? 'Annapolis', ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="business:contact_data:region" content="<?php echo htmlspecialchars($AddressRegion ?? 'MD', ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="business:contact_data:postal_code" content="<?php echo htmlspecialchars($PostalCode ?? '21403', ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="business:contact_data:country_name" content="<?php echo htmlspecialchars($AddressCountry ?? 'US', ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="business:contact_data:phone_number" content="<?php echo htmlspecialchars($seoPhone, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo htmlspecialchars($PageTitle, ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="twitter:description" content="<?php echo htmlspecialchars($seoDescription, ENT_QUOTES, 'UTF-8'); ?>">
+    <?php if ($seoImage !== ''): ?><meta name="twitter:image" content="<?php echo htmlspecialchars($seoImage, ENT_QUOTES, 'UTF-8'); ?>"><?php endif; ?>
+    <link rel="canonical" href="<?php echo htmlspecialchars($seoCanonical, ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="icon" type="image/png" href="<?php echo htmlspecialchars($BrandLogo ?? 'assets/img/logo.png', ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo htmlspecialchars($BrandLogo ?? 'assets/img/logo.png', ENT_QUOTES, 'UTF-8'); ?>">
+    <script type="application/ld+json"><?php echo json_encode($seoSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +302,7 @@ $tik_url = $tiktok ?? '';
         }
 
         .header-main {
-            padding: 8px 0;
+            padding: 6px 0;
             background: #ffffff;
             border-bottom: 1px solid rgba(31, 42, 54, 0.1);
         }
@@ -66,7 +312,7 @@ $tik_url = $tiktok ?? '';
             grid-template-columns: auto minmax(0, 1fr) auto;
             align-items: center;
             gap: 20px;
-            min-height: 112px;
+            min-height: 136px;
             max-width: min(1680px, 97vw);
             width: 100%;
             margin: 0 auto;
@@ -80,19 +326,66 @@ $tik_url = $tiktok ?? '';
             gap: 12px;
             text-decoration: none;
             flex-shrink: 0;
-            max-width: 320px;
+            max-width: 460px;
             min-width: 0;
         }
 
+        .brand-mark {
+            width: 54px;
+            height: 54px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--brand-primary);
+            color: var(--brand-accent);
+            border: 1px solid rgba(var(--brand-accent-rgb), 0.45);
+            border-radius: 8px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            flex: 0 0 auto;
+        }
+
+        .brand-wordmark {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .brand-wordmark strong {
+            color: var(--brand-primary);
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.05rem, 1.45vw, 1.4rem);
+            line-height: 1;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .brand-wordmark span {
+            margin-top: 4px;
+            color: var(--brand-secondary);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
         .logo-img {
-            height: 120px;
-            min-height: 120px;
-            max-height: 132px;
+            height: 132px;
+            min-height: 132px;
+            max-height: 146px;
             max-width: 360px;
             width: auto;
             display: block;
             object-fit: contain;
             transition: all 0.3s ease;
+        }
+
+        .site-logo-img {
+            flex: 0 0 auto;
         }
 
         .brand-text {
@@ -454,19 +747,19 @@ $tik_url = $tiktok ?? '';
             }
 
             .brand {
-                max-width: min(250px, calc(100vw - 92px));
+                max-width: min(315px, calc(100vw - 92px));
             }
 
             .logo-img {
-                width: min(240px, 62vw);
+                width: min(285px, 66vw);
                 height: auto;
                 min-height: 0;
-                max-height: 72px;
+                max-height: 92px;
             }
 
             .header-container {
                 grid-template-columns: minmax(0, 1fr) auto;
-                min-height: 78px;
+                min-height: 96px;
                 gap: 12px;
             }
 
@@ -645,16 +938,31 @@ $tik_url = $tiktok ?? '';
 
         @media (max-width: 575px) {
             .brand {
-                max-width: min(225px, calc(100vw - 84px));
+                max-width: min(255px, calc(100vw - 84px));
+            }
+
+            .brand-mark {
+                width: 46px;
+                height: 46px;
+                font-size: 1rem;
+            }
+
+            .brand-wordmark strong {
+                font-size: 0.98rem;
+            }
+
+            .brand-wordmark span {
+                font-size: 0.58rem;
+                letter-spacing: 0.09em;
             }
 
             .logo-img {
-                width: min(220px, 60vw);
-                max-height: 64px;
+                width: min(235px, 62vw);
+                max-height: 82px;
             }
 
             .header-container {
-                min-height: 72px;
+                min-height: 90px;
                 padding-left: 12px;
                 padding-right: 12px;
             }
@@ -678,9 +986,18 @@ $bodyClassAttr = trim((string) ($BodyClass ?? ''));
             $companyParts = preg_split('/\s+/', trim($Company ?? ''));
             $brandLine1 = implode(' ', array_slice($companyParts, 0, 2));
             $brandLine2 = implode(' ', array_slice($companyParts, 2));
+            $brandLogoUrl = trim((string) ($BrandLogo ?? ''));
             ?>
             <a href="<?php echo $BaseURL; ?>" class="brand">
-                <img src="assets/img/logos.png" alt="<?php echo $Company; ?>" class="logo-img">
+                <?php if ($brandLogoUrl !== ''): ?>
+                    <img class="logo-img site-logo-img" src="<?php echo htmlspecialchars($brandLogoUrl, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($Company, ENT_QUOTES, 'UTF-8'); ?>">
+                <?php else: ?>
+                    <span class="brand-mark" aria-hidden="true">MC</span>
+                    <span class="brand-wordmark">
+                        <strong><?php echo htmlspecialchars($Company, ENT_QUOTES, 'UTF-8'); ?></strong>
+                        <span><?php echo htmlspecialchars($TypeOfService ?? '', ENT_QUOTES, 'UTF-8'); ?></span>
+                    </span>
+                <?php endif; ?>
             </a>
 
             <nav class="main-nav" id="mainNav" aria-label="<?php echo htmlspecialchars($AriaCopy['primary_nav'] ?? ''); ?>">

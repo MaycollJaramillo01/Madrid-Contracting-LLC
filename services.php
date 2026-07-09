@@ -4,11 +4,11 @@
 require_once __DIR__ . '/text.php';
 
 $page_name = $NavCopy['services'] ?? 'Services';
-$PageTitle = ($NavCopy['services'] ?? 'Services') . ' | ' . ($Company ?? 'Familia Towing');
+$PageTitle = ($NavCopy['services'] ?? 'Services') . ' | ' . ($Company ?? 'MADRID CONTRACTING LLC');
 
 $PageDescription = trim((string) ($HomeServicesCopy['desc'] ?? ''));
 if ($PageDescription === '') {
-  $PageDescription = 'Local towing, long distance towing, jump starts, lockout service, and junk car buying in Palm Beach County.';
+  $PageDescription = 'Water pump replacement, pressure tank installation, waterline leak repairs, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.';
 }
 
 $PageCanonical = rtrim((string) ($BaseURL ?? ''), '/') . '/services.php';

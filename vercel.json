@@ -9,6 +9,9 @@
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/data/(.*)", "dest": "/data/$1" },
     { "src": "/favicon.ico", "dest": "/assets/img/logo.png" },
+    { "src": "/robots.txt", "dest": "/api/router.php" },
+    { "src": "/sitemap.xml", "dest": "/api/router.php" },
+    { "src": "/llms.txt", "dest": "/api/router.php" },
     { "src": "/(.*)", "dest": "/api/router.php" }
   ]
 }

@@ -18,7 +18,7 @@ $galleryCtaHref = $gallery['cta_href'] ?? 'contact.php';
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: url('assets/img/stock/modern-living.jpg') center/cover no-repeat fixed;
+      background: url('<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('hero2') : '', ENT_QUOTES, 'UTF-8'); ?>') center/cover no-repeat fixed;
       color: var(--color-light);
       overflow: hidden;
     }

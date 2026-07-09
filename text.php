@@ -2,7 +2,7 @@
 @session_start();
 
 /*=========================
-   PAGE NAME (Routing simple)
+   PAGE NAME
    =========================*/
 $full_name  = $_SERVER['PHP_SELF'] ?? '';
 $name_array = explode('/', $full_name);
@@ -10,21 +10,21 @@ $count      = count($name_array);
 $page_name  = $name_array[$count - 1] ?? '';
 
 if      ($page_name == 'index.php')        { $namepage = "Home"; }
-elseif ($page_name == 'about.php')        { $namepage = "About"; }
-elseif ($page_name == 'services.php')     { $namepage = "Services"; }
-elseif ($page_name == 'testimonials.php') { $namepage = "Reviews"; }
-elseif ($page_name == 'reviews.php')      { $namepage = "Reviews"; }
-elseif ($page_name == 'projects.php')     { $namepage = "Projects"; }
-elseif ($page_name == 'thank-you.php')    { $namepage = "Thank You"; }
-elseif ($page_name == '404.php')          { $namepage = "Not Found"; }
-elseif ($page_name == 'contact.php')      { $namepage = "Contact"; }
-else                                      { $namepage = ucfirst(str_replace('.php', '', $page_name)); }
+elseif ($page_name == 'about.php')         { $namepage = "About"; }
+elseif ($page_name == 'services.php')      { $namepage = "Services"; }
+elseif ($page_name == 'testimonials.php')  { $namepage = "Reviews"; }
+elseif ($page_name == 'reviews.php')       { $namepage = "Reviews"; }
+elseif ($page_name == 'projects.php')      { $namepage = "Work"; }
+elseif ($page_name == 'thank-you.php')     { $namepage = "Thank You"; }
+elseif ($page_name == '404.php')           { $namepage = "Not Found"; }
+elseif ($page_name == 'contact.php')       { $namepage = "Contact"; }
+else                                       { $namepage = ucfirst(str_replace('.php', '', $page_name)); }
 
 /*=========================
-   INFO GENERAL - FAMILIA TOWING
+   COMPANY INFO
    =========================*/
-$Company      = "Familia Towing";
-$CustomerName = "Familia";
+$Company      = "MADRID CONTRACTING LLC";
+$CustomerName = "Madrid Contracting";
 
 function detectBaseURL() {
   $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
@@ -38,12 +38,19 @@ function detectBaseURL() {
 $BaseURL   = rtrim(detectBaseURL(), '/') . '/';
 $Domain    = $BaseURL;
 $MAVEN     = "go-maven.com";
-$Address   = "W.P.B., FL 33416";
-$PhoneName = "Spanish";
-$Phone2Name = "English";
+$Address   = "307 Hillsmere Dr, Annapolis, MD 21403";
+$StreetAddress = "307 Hillsmere Dr";
+$AddressLocality = "Annapolis";
+$AddressRegion = "MD";
+$PostalCode = "21403";
+$AddressCountry = "US";
+$BusinessLatitude = "";
+$BusinessLongitude = "";
+$PhoneName = "Main Line";
+$Phone2Name = "Second Line";
 
-$Phone     = "+1 (561) 396-0659";
-$Phone2    = "+1 (561) 215-4377";
+$Phone     = "+1 (410) 353-7255";
+$Phone2    = "+1 (443) 510-9027";
 
 function telRef($p) {
   $clean = str_replace(str_split('()-/\\:?"<>|., '), '', $p);
@@ -60,35 +67,101 @@ function slugify($text) {
 
 $whatsapp_num = preg_replace('/\D+/', '', $Phone);
 if (strpos($whatsapp_num, '1') !== 0) { $whatsapp_num = '1' . $whatsapp_num; }
-$whatsapp = "https://api.whatsapp.com/send?phone=$whatsapp_num&text=Hello%20Familia%20Towing!%20I%20need%20towing%20or%20roadside%20assistance.";
+$whatsapp = "https://api.whatsapp.com/send?phone=$whatsapp_num&text=Hello%20MADRID%20CONTRACTING%20LLC,%20I%20need%20water%20well%20or%20contracting%20service.";
 
-$Mail    = "info@familiatowing.com";
-$MailRef = "mailto:" . $Mail;
+$Mail    = "";
+$MailRef = "";
+
+/*=========================
+   STOCK IMAGES
+   =========================*/
+function localAssetUrl($relativePath) {
+  $relativePath = trim(str_replace('\\', '/', (string) $relativePath), '/');
+  if ($relativePath === '') return '';
+
+  $absolutePath = __DIR__ . '/' . $relativePath;
+  if (!is_file($absolutePath)) return '';
+
+  $segments = array_map('rawurlencode', explode('/', $relativePath));
+  $url = implode('/', $segments);
+  $version = (string) @filemtime($absolutePath);
+  return ($version !== '' && $version !== '0') ? $url . '?v=' . $version : $url;
+}
+
+$BrandLogo = localAssetUrl('assets/img/logo-horizontal.png');
+if ($BrandLogo === '') $BrandLogo = localAssetUrl('assets/img/logo.png');
+
+$AboutVideo = localAssetUrl('assets/videos/1.mp4');
+
+$LocalProjectPhotos = [
+  'hero1' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.25 AM.jpeg',
+  'hero2' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM.jpeg',
+  'hero3' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.25 AM (1).jpeg',
+  'about' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (1).jpeg',
+  'water-pump-replacement' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.25 AM.jpeg',
+  'pressure-tank-installation' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM.jpeg',
+  'waterline-leak-repairs' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (1).jpeg',
+  'constant-pressure-system-installation' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (2).jpeg',
+  'well-rehab' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (3).jpeg',
+  'waterproofing' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (4).jpeg',
+  'general-contracting' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (5).jpeg',
+  'dumping' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (6).jpeg',
+  'gallery1' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.25 AM.jpeg',
+  'gallery2' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM.jpeg',
+  'gallery3' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (1).jpeg',
+  'gallery4' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (2).jpeg'
+];
+
+$StockImages = [
+  'hero1' => localAssetUrl($LocalProjectPhotos['hero1']),
+  'hero2' => localAssetUrl($LocalProjectPhotos['hero2']),
+  'hero3' => localAssetUrl($LocalProjectPhotos['hero3']),
+  'about' => localAssetUrl($LocalProjectPhotos['about']),
+  'water-pump-replacement' => localAssetUrl($LocalProjectPhotos['water-pump-replacement']),
+  'pressure-tank-installation' => localAssetUrl($LocalProjectPhotos['pressure-tank-installation']),
+  'waterline-leak-repairs' => localAssetUrl($LocalProjectPhotos['waterline-leak-repairs']),
+  'constant-pressure-system-installation' => localAssetUrl($LocalProjectPhotos['constant-pressure-system-installation']),
+  'well-rehab' => localAssetUrl($LocalProjectPhotos['well-rehab']),
+  'waterproofing' => localAssetUrl($LocalProjectPhotos['waterproofing']),
+  'general-contracting' => localAssetUrl($LocalProjectPhotos['general-contracting']),
+  'dumping' => localAssetUrl($LocalProjectPhotos['dumping']),
+  'gallery1' => localAssetUrl($LocalProjectPhotos['gallery1']),
+  'gallery2' => localAssetUrl($LocalProjectPhotos['gallery2']),
+  'gallery3' => localAssetUrl($LocalProjectPhotos['gallery3']),
+  'gallery4' => localAssetUrl($LocalProjectPhotos['gallery4'])
+];
+
+function stockImage($key) {
+  global $StockImages;
+  $key = trim((string) $key);
+  return $StockImages[$key] ?? ($StockImages['hero1'] ?? '');
+}
 
 /*=========================
    GENERAL MESSAGES
    =========================*/
-$Services       = "Local and long distance towing, junk car buying, jump starts, and lockout service";
-$Estimates      = "Fast Assistance";
-$Payment        = "Cash, Zelle, Card";
-$Experience     = "10+ Years";
-$Schedule       = "Office hours: 6:00 AM to 6:00 PM. Emergency towing available 24/7.";
-$Coverage       = "We cover West Palm Beach, Jupiter, Boca Raton, and all Palm Beach County.";
-$LicenseNote    = "Reliable 24 Hour Service";
-$BilingualNote  = "English and Spanish Spoken";
-$TypeOfService  = "Towing and Roadside Assistance";
+$Services       = "Water pump replacement, pressure tank installation, waterline leak repairs, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.";
+$Estimates      = "Call for Service";
+$Payment        = "Call for payment options";
+$Experience     = "15+ Years";
+$CompanyAge     = "3 Years in Business";
+$Schedule       = "Call to schedule service or request urgent support.";
+$Coverage       = "Serving Annapolis, Hillsmere, Anne Arundel County, and nearby Maryland communities.";
+$LicenseNote    = $CompanyAge;
+$BilingualNote  = "English and Spanish Support";
+$TypeOfService  = "Water Well Service and Contracting";
 
 /*=========================
    BRAND COLORS
    =========================*/
 $BrandColors = [
-  'primary'       => '#0B0B0D',
-  'primary_rgb'   => '11, 11, 13',
-  'secondary'     => '#181818',
-  'secondary_rgb' => '24, 24, 24',
-  'accent'        => '#FF7A00',
-  'accent_rgb'    => '255, 122, 0',
-  'neutral'       => '#F7F4EF',
+  'primary'       => '#0D1B2A',
+  'primary_rgb'   => '13, 27, 42',
+  'secondary'     => '#415A77',
+  'secondary_rgb' => '65, 90, 119',
+  'accent'        => '#D4AF37',
+  'accent_rgb'    => '212, 175, 55',
+  'neutral'       => '#F7F3E9',
   'white'         => '#FFFFFF'
 ];
 
@@ -96,27 +169,25 @@ $BrandColors = [
    SERVICE AREAS
    =========================*/
 $Areas = [
-  "West Palm Beach, FL",
-  "W.P.B., FL 33416",
-  "Jupiter, FL",
-  "Boca Raton, FL",
-  "Palm Beach County, FL",
-  "Lake Worth Beach, FL",
-  "Boynton Beach, FL",
-  "Delray Beach, FL",
-  "Palm Beach Gardens, FL",
-  "Royal Palm Beach, FL",
-  "Wellington, FL",
-  "Riviera Beach, FL",
-  "Greenacres, FL",
-  "Lantana, FL",
-  "And nearby communities"
+  "Annapolis, MD",
+  "Hillsmere, Annapolis, MD",
+  "Anne Arundel County, MD",
+  "Edgewater, MD",
+  "Mayo, MD",
+  "Riva, MD",
+  "Parole, MD",
+  "Arnold, MD",
+  "Severna Park, MD",
+  "Davidsonville, MD",
+  "Crofton, MD",
+  "Crownsville, MD",
+  "And nearby Maryland communities"
 ];
 
 /*=========================
-   MAPA Y REDES SOCIALES
+   MAP AND SOCIAL
    =========================*/
-$GoogleMap = '<iframe src="https://maps.google.com/maps?q=West%20Palm%20Beach%2C%20FL%2033416&t=&z=11&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy"></iframe>';
+$GoogleMap = '<iframe src="https://maps.google.com/maps?q=307%20Hillsmere%20Dr%2C%20Annapolis%2C%20MD%2021403&t=&z=12&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy"></iframe>';
 $facebook  = "";
 $instagram = "";
 $google = "";
@@ -134,35 +205,35 @@ $GoogleReviews = 'reviews.php';
 
 $DirectoryReviewItems = [
   [
-    'name' => 'Verified Driver',
-    'city' => 'West Palm Beach, FL',
+    'name' => 'Residential Well Client',
+    'city' => 'Annapolis, MD',
     'stars' => 5,
-    'text' => 'Familia Towing answered quickly and helped with a local tow when my car stopped running.',
-    'source' => 'Website Review',
+    'text' => 'Madrid Contracting helped diagnose a pump issue and explained the replacement clearly before starting the work.',
+    'source' => 'Customer Feedback',
     'url' => ''
   ],
   [
-    'name' => 'Roadside Customer',
-    'city' => 'Jupiter, FL',
+    'name' => 'Homeowner',
+    'city' => 'Edgewater, MD',
     'stars' => 5,
-    'text' => 'They helped with a jump start and explained everything clearly in English and Spanish.',
-    'source' => 'Website Review',
+    'text' => 'The team handled a pressure tank installation with clean work and direct communication.',
+    'source' => 'Customer Feedback',
     'url' => ''
   ],
   [
-    'name' => 'Palm Beach Client',
-    'city' => 'Boca Raton, FL',
+    'name' => 'Property Manager',
+    'city' => 'Anne Arundel County, MD',
     'stars' => 5,
-    'text' => 'Reliable service for long distance towing. The driver arrived prepared and handled the vehicle carefully.',
-    'source' => 'Website Review',
+    'text' => 'They repaired a waterline leak and helped coordinate the surrounding contracting work.',
+    'source' => 'Customer Feedback',
     'url' => ''
   ],
   [
-    'name' => 'Local Customer',
-    'city' => 'Lake Worth Beach, FL',
+    'name' => 'Local Client',
+    'city' => 'Severna Park, MD',
     'stars' => 5,
-    'text' => 'Fast lockout help and fair communication from start to finish.',
-    'source' => 'Website Review',
+    'text' => 'Reliable support for well rehab and waterproofing questions.',
+    'source' => 'Customer Feedback',
     'url' => ''
   ]
 ];
@@ -171,145 +242,152 @@ $GoogleReviewItems = $DirectoryReviewItems;
 
 $ReviewSourceSummaries = [
   [
-    'source' => 'Website Reviews',
+    'source' => 'Customer Feedback',
     'rating' => '5.0/5',
     'count' => 4,
-    'label' => 'Based on recent customer feedback',
+    'label' => 'Recent water well and contracting feedback',
     'url' => ''
   ],
   [
-    'source' => 'Roadside Follow-Up',
+    'source' => 'Service Follow-Up',
     'rating' => '5.0/5',
     'count' => 4,
-    'label' => 'Customer service follow-up responses',
+    'label' => 'Follow-up notes after completed work',
     'url' => ''
   ]
 ];
 
-$DetailedReviewItems = [
-  [
-    'name' => 'Verified Driver',
-    'city' => 'West Palm Beach, FL',
-    'stars' => 5,
-    'text' => 'Familia Towing answered quickly and helped with a local tow when my car stopped running.',
-    'source' => 'Website Review',
-    'date' => 'April 2026',
-    'url' => ''
-  ],
-  [
-    'name' => 'Roadside Customer',
-    'city' => 'Jupiter, FL',
-    'stars' => 5,
-    'text' => 'They helped with a jump start and explained everything clearly in English and Spanish.',
-    'source' => 'Website Review',
-    'date' => 'March 2026',
-    'url' => ''
-  ],
-  [
-    'name' => 'Palm Beach Client',
-    'city' => 'Boca Raton, FL',
-    'stars' => 5,
-    'text' => 'Reliable service for long distance towing. The driver arrived prepared and handled the vehicle carefully.',
-    'source' => 'Website Review',
-    'date' => 'February 2026',
-    'url' => ''
-  ],
-  [
-    'name' => 'Local Customer',
-    'city' => 'Lake Worth Beach, FL',
-    'stars' => 5,
-    'text' => 'Fast lockout help and fair communication from start to finish.',
-    'source' => 'Website Review',
-    'date' => 'January 2026',
-    'url' => ''
-  ]
-];
+$DetailedReviewItems = [];
+foreach ($DirectoryReviewItems as $index => $review) {
+  $review['date'] = ['June 2026', 'May 2026', 'April 2026', 'March 2026'][$index] ?? '2026';
+  $DetailedReviewItems[] = $review;
+}
 
 /*=========================
-   SEO & BRANDING SLOGANS
+   SEO AND BRANDING
    =========================*/
 $Phrase = [
-  "24 Hour Towing Service in Palm Beach County",
-  "Local and Long Distance Towing",
-  "We Buy Junk Cars",
-  "Jump Start Vehicles and Locked Car Services",
-  "English and Spanish Spoken"
+  "Water Well Services in Annapolis, Maryland",
+  "Water Pump Replacement and Pressure Tank Installation",
+  "Waterline Leak Repairs",
+  "Constant Pressure System Installation",
+  "General Contracting and Dumping"
 ];
 
-/*=========================
-   HOME / ABOUT
-   =========================*/
 $Home = [
-  "Familia Towing provides local and long distance towing, junk car buying, jump starts, and locked car services across West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.",
-  "With more than 10 years of experience, our bilingual team responds with dependable 24 hour roadside support and clear communication."
+  "MADRID CONTRACTING LLC provides water well service, pump replacement, pressure tank installation, leak repair, well rehab, waterproofing, general contracting, and dumping from Annapolis, Maryland.",
+  "The company has 3 years in business backed by 15 years of hands-on experience in water well maintenance and service."
 ];
 
 $About = [
-  "Familia Towing is a local towing and roadside assistance company serving drivers throughout Palm Beach County.",
-  "We cover West Palm Beach, Jupiter, Boca Raton, and nearby areas with English and Spanish support, fast dispatch, and practical help when your vehicle cannot move."
+  "MADRID CONTRACTING LLC is based at 307 Hillsmere Dr, Annapolis, MD 21403 and serves homeowners and properties across nearby Maryland communities.",
+  "Our work focuses on practical water well solutions, clear communication, and reliable contracting support when a project needs more than a single repair."
 ];
 
-$Mission = "To provide dependable towing and roadside assistance with fast response, safe handling, and clear bilingual communication.";
-$Vision  = "To be a trusted towing company across Palm Beach County for local drivers who need reliable help day or night.";
+$Mission = "To keep Maryland homes and properties supplied, protected, and maintained through dependable water well service and contracting support.";
+$Vision  = "To be a trusted Annapolis-based contractor for water well systems, waterproofing, and property service work.";
 
 /*=========================
-   SERVICES SECTION
+   SERVICES
    =========================*/
+$serviceDefinitions = [
+  [
+    'name' => 'Water Pump Replacement',
+    'description' => 'Replacement service for failing or worn water well pumps, with clear diagnosis and careful installation.',
+    'category' => 'Water Well Services',
+    'image' => stockImage('water-pump-replacement'),
+    'bullets' => ['Pump troubleshooting', 'Replacement planning', 'Well system compatibility', 'Clean installation']
+  ],
+  [
+    'name' => 'Pressure Tank Installation',
+    'description' => 'Pressure tank installation for well systems that need better storage, cycling control, and dependable pressure.',
+    'category' => 'Water Well Services',
+    'image' => stockImage('pressure-tank-installation'),
+    'bullets' => ['Tank sizing support', 'Pressure switch coordination', 'System checks', 'Clean connections']
+  ],
+  [
+    'name' => 'Waterline Leak Repairs',
+    'description' => 'Waterline leak repair for damaged, leaking, or compromised supply lines around homes and properties.',
+    'category' => 'Water Well Services',
+    'image' => stockImage('waterline-leak-repairs'),
+    'bullets' => ['Leak location support', 'Line repair', 'Property protection', 'Service restoration']
+  ],
+  [
+    'name' => 'Constant Pressure System Installation',
+    'description' => 'Constant pressure system installation for smoother water pressure and improved well system performance.',
+    'category' => 'Water Well Services',
+    'image' => stockImage('constant-pressure-system-installation'),
+    'bullets' => ['Pressure control upgrades', 'System installation', 'Performance checks', 'Home water support']
+  ],
+  [
+    'name' => 'Well Rehab',
+    'description' => 'Well rehab service for systems that need maintenance, performance recovery, or service planning.',
+    'category' => 'Water Well Services',
+    'image' => stockImage('well-rehab'),
+    'bullets' => ['Well system evaluation', 'Maintenance planning', 'Performance recovery', 'Service recommendations']
+  ],
+  [
+    'name' => 'Waterproofing',
+    'description' => 'Waterproofing support for areas affected by moisture, seepage, or water intrusion concerns.',
+    'category' => 'Water Well Services',
+    'image' => stockImage('waterproofing'),
+    'bullets' => ['Moisture protection', 'Water intrusion support', 'Preventive planning', 'Contracting execution']
+  ],
+  [
+    'name' => 'General Contracting',
+    'description' => 'General contracting support for property work connected to repairs, maintenance, and service projects.',
+    'category' => 'Contracting Support',
+    'image' => stockImage('general-contracting'),
+    'bullets' => ['Project coordination', 'Repair support', 'Property maintenance', 'Clear scope planning']
+  ],
+  [
+    'name' => 'Dumping',
+    'description' => 'Dumping support for cleanup, debris removal, and hauling needs related to contracting work.',
+    'category' => 'Contracting Support',
+    'image' => stockImage('dumping'),
+    'bullets' => ['Debris hauling', 'Jobsite cleanup', 'Property cleanout support', 'Simple scheduling']
+  ]
+];
+
 $SN = $SD = $ExSD = [];
-
-$SN[1] = "Local Towing";
-$SD[1] = "Local towing for cars and light vehicles throughout West Palm Beach and nearby Palm Beach County areas.";
-
-$SN[2] = "Long Distance Towing";
-$SD[2] = "Long distance towing handled with careful loading, safe transport, and direct communication.";
-
-$SN[3] = "We Buy Junk Cars";
-$SD[3] = "We buy junk cars and help remove unwanted vehicles with straightforward scheduling.";
-
-$SN[4] = "Jump Start Vehicles";
-$SD[4] = "Battery jump start assistance when your vehicle will not start at home, work, or on the road.";
-
-$SN[5] = "Locked Car Services";
-$SD[5] = "Vehicle lockout help when keys are locked inside and you need access quickly.";
-
-$SN[6] = "Roadside Assistance";
-$SD[6] = "Roadside assistance for drivers who need fast help before the next step is decided.";
-
-$SN[7] = "24 Hour Towing";
-$SD[7] = "Emergency towing support available 24/7, with office hours from 6:00 AM to 6:00 PM.";
+foreach ($serviceDefinitions as $idx => $definition) {
+  $serviceId = $idx + 1;
+  $SN[$serviceId] = $definition['name'];
+  $SD[$serviceId] = $definition['description'];
+}
 
 $OtherServices = [
-  "Roadside Assistance",
-  "24 Hour Towing"
+  "General Contracting",
+  "Dumping"
 ];
 
 $ServicesByCategory = [
   [
-    'label' => 'Towing Services',
-    'summary_slug' => 'local-towing',
+    'label' => 'Water Well Services',
+    'summary_slug' => 'water-pump-replacement',
     'service_slugs' => [
-      'local-towing',
-      'long-distance-towing',
-      'we-buy-junk-cars',
-      'jump-start-vehicles',
-      'locked-car-services',
+      'water-pump-replacement',
+      'pressure-tank-installation',
+      'waterline-leak-repairs',
+      'constant-pressure-system-installation',
+      'well-rehab',
+      'waterproofing'
     ]
   ],
   [
-    'label' => 'Roadside Help',
-    'summary_slug' => 'roadside-assistance',
+    'label' => 'Contracting Support',
+    'summary_slug' => 'general-contracting',
     'service_slugs' => [
-      'roadside-assistance',
-      '24-hour-towing'
+      'general-contracting',
+      'dumping'
     ]
   ]
 ];
 
 $Badges = [
-  $Estimates,
+  $CompanyAge,
   $Experience,
   $Coverage,
-  $LicenseNote,
   $BilingualNote
 ];
 
@@ -320,31 +398,31 @@ for ($i = 1; $i <= count($SN); $i++) {
 }
 
 $ServicesList = [];
-for ($i = 1; $i <= count($SN); $i++) {
-  if (empty($SN[$i])) continue;
-  $slug = slugify($SN[$i]);
+foreach ($serviceDefinitions as $idx => $definition) {
+  $id = $idx + 1;
+  $slug = slugify($definition['name']);
   $ServicesList[$slug] = [
-    'id'          => $i,
-    'name'        => $SN[$i],
-    'description' => $SD[$i] ?? '',
-    'excerpt'     => $ExSD[$i] ?? '',
+    'id'          => $id,
+    'name'        => $definition['name'],
+    'description' => $definition['description'],
+    'excerpt'     => substr($definition['description'], 0, 120) . '...',
     'slug'        => $slug,
     'file'        => 'services.php',
-    'url'         => 'services.php#' . $slug
+    'url'         => 'services.php#' . $slug,
+    'image'       => $definition['image'],
+    'category_label' => $definition['category'],
+    'category_slug'  => slugify($definition['category'])
   ];
 }
 
-$OtherServicesLandingSlugs = [
-  'roadside-assistance',
-  '24-hour-towing'
-];
-
+$OtherServicesLandingSlugs = ['general-contracting', 'dumping'];
 $PrimaryServiceSlugs = [
-  'local-towing',
-  'long-distance-towing',
-  'we-buy-junk-cars',
-  'jump-start-vehicles',
-  'locked-car-services'
+  'water-pump-replacement',
+  'pressure-tank-installation',
+  'waterline-leak-repairs',
+  'constant-pressure-system-installation',
+  'well-rehab',
+  'waterproofing'
 ];
 $AllowedServiceSlugs = array_merge($PrimaryServiceSlugs, $OtherServicesLandingSlugs);
 foreach (array_keys($ServicesList) as $serviceSlug) {
@@ -364,7 +442,7 @@ foreach ($ServicesByCategory as $category) {
   }
   foreach (array_unique($allSlugs) as $serviceSlug) {
     $serviceCategoryMap[$serviceSlug] = [
-      'category_slug' => $categorySlug,
+      'category_slug' => slugify($categoryLabel),
       'category_label' => $categoryLabel
     ];
   }
@@ -374,9 +452,6 @@ foreach ($ServicesList as $serviceSlug => &$serviceData) {
   if (isset($serviceCategoryMap[$serviceSlug])) {
     $serviceData['category_slug'] = $serviceCategoryMap[$serviceSlug]['category_slug'];
     $serviceData['category_label'] = $serviceCategoryMap[$serviceSlug]['category_label'];
-  } else {
-    $serviceData['category_slug'] = 'general';
-    $serviceData['category_label'] = 'General';
   }
 }
 unset($serviceData);
@@ -386,83 +461,36 @@ usort($ServicesDisplayList, static function ($a, $b) {
   return (int) ($a['id'] ?? 0) <=> (int) ($b['id'] ?? 0);
 });
 
-$ServiceDetails = [
-  'local-towing' => [
-    'kicker' => 'Local Towing',
-    'headline' => 'Fast towing help near West Palm Beach',
+$ServiceDetails = [];
+$ServiceFeatures = [];
+foreach ($serviceDefinitions as $idx => $definition) {
+  $slug = slugify($definition['name']);
+  $ServiceDetails[$slug] = [
+    'kicker' => $definition['category'],
+    'headline' => $definition['name'],
     'paragraphs' => [
-      'We provide local towing for drivers in West Palm Beach and nearby Palm Beach County communities.',
-      'Our team focuses on safe loading, clear updates, and dependable arrival.'
+      $definition['description'],
+      'MADRID CONTRACTING LLC brings 15 years of water well service and maintenance experience to each job, with straightforward scheduling from Annapolis, Maryland.'
     ],
-    'bullets' => ['Cars and light vehicles', 'Local transport', 'Safe vehicle handling', 'English and Spanish support']
-  ],
-  'long-distance-towing' => [
-    'kicker' => 'Long Distance Towing',
-    'headline' => 'Safe transport beyond your local area',
-    'paragraphs' => [
-      'When your vehicle needs to move farther, Familia Towing coordinates long distance towing with careful handling.',
-      'We keep communication direct so you know the pickup and delivery details.'
-    ],
-    'bullets' => ['Longer transport routes', 'Careful loading', 'Route coordination', 'Clear updates']
-  ],
-  'we-buy-junk-cars' => [
-    'kicker' => 'Junk Cars',
-    'headline' => 'We buy junk cars and help clear space',
-    'paragraphs' => [
-      'If you have an unwanted vehicle, contact us for junk car buying and removal options.',
-      'We make scheduling simple and keep the process straightforward.'
-    ],
-    'bullets' => ['Junk car buying', 'Unwanted vehicle removal', 'Simple scheduling', 'Local pickup support']
-  ],
-  'jump-start-vehicles' => [
-    'kicker' => 'Jump Starts',
-    'headline' => 'Battery help when your vehicle will not start',
-    'paragraphs' => [
-      'A dead battery can stop your day fast. We provide jump start assistance where your vehicle is located.',
-      'If a jump start is not enough, we can help coordinate the next towing step.'
-    ],
-    'bullets' => ['Battery jump starts', 'Home, work, and roadside help', 'Fast dispatch', 'Next-step towing support']
-  ],
-  'locked-car-services' => [
-    'kicker' => 'Lockout Service',
-    'headline' => 'Help when your keys are locked inside',
-    'paragraphs' => [
-      'Locked out of your vehicle? Call Familia Towing for lockout assistance.',
-      'We respond with practical help and bilingual communication.'
-    ],
-    'bullets' => ['Locked car help', 'Driver support', 'Bilingual service', 'Fast roadside response']
-  ],
-  'roadside-assistance' => [
-    'kicker' => 'Roadside Assistance',
-    'headline' => 'Practical roadside help when plans change',
-    'paragraphs' => [
-      'Roadside problems can happen anywhere. We help drivers with jump starts, lockouts, and towing coordination.',
-      'Call the Spanish or English number for direct support.'
-    ],
-    'bullets' => ['Roadside support', 'Jump starts', 'Lockout help', 'Towing coordination']
-  ],
-  '24-hour-towing' => [
-    'kicker' => '24 Hour Towing',
-    'headline' => 'Emergency towing available day or night',
-    'paragraphs' => [
-      'Familia Towing provides 24/7 emergency towing support across Palm Beach County.',
-      'Office hours are 6:00 AM to 6:00 PM, and emergency calls are available 24 hours.'
-    ],
-    'bullets' => ['24/7 emergency towing', 'Palm Beach County coverage', 'Fast response', 'Safe vehicle transport']
-  ]
-];
+    'bullets' => $definition['bullets'],
+    'image' => $definition['image']
+  ];
+  $ServiceFeatures[$idx + 1] = array_map(static function ($bullet) {
+    return ['title' => $bullet, 'desc' => 'Handled with practical field experience and clear communication.', 'icon' => 'fa-check'];
+  }, $definition['bullets']);
+}
 
 /*=========================
   COPY / UI TEXT
   =========================*/
 $WhyChoose = [
-  'eyebrow' => 'Roadside Help You Can Trust',
+  'eyebrow' => 'Water Well Service You Can Trust',
   'title_pre' => 'Why Choose',
-  'intro' => 'With more than 10 years of towing experience, Familia Towing helps drivers with safe transport, quick roadside assistance, and bilingual communication.',
+  'intro' => 'Madrid Contracting combines 3 years in business with 15 years of experience in water well maintenance, service, and related contracting.',
   'cards' => [
-    ['title' => 'Fast Response', 'text' => 'Call for towing, jump starts, lockout service, and junk car help across Palm Beach County.'],
-    ['title' => 'Bilingual Support', 'text' => $BilingualNote . '. Use the Spanish or English number shown on the site.'],
-    ['title' => 'Need Help Now?', 'text' => 'Contact Familia Towing for 24 hour towing and roadside support.', 'btn' => ['href' => $PhoneRef, 'text' => 'Call Now']],
+    ['title' => 'Experienced Service', 'text' => 'Support for pumps, tanks, pressure systems, leaks, well rehab, and waterproofing.'],
+    ['title' => 'Local Annapolis Base', 'text' => 'Based at 307 Hillsmere Dr, Annapolis, MD 21403.'],
+    ['title' => 'Need Help?', 'text' => 'Call Madrid Contracting to discuss your property and water system needs.', 'btn' => ['href' => $PhoneRef, 'text' => 'Call Now']]
   ],
 ];
 
@@ -478,10 +506,10 @@ $NavCopy = [
   'home' => 'Home',
   'about' => 'About',
   'services' => 'Services',
-  'projects' => 'Fleet',
+  'projects' => 'Work',
   'reviews' => 'Reviews',
   'contact' => 'Contact',
-  'other_services' => 'Roadside Help',
+  'other_services' => 'Additional Services',
   'cta' => 'Call Now',
   'cta_mobile' => 'Call Now',
   'explore_service' => 'Explore Service',
@@ -511,144 +539,156 @@ $HeaderCopy = [
 ];
 
 $FooterCopy = [
-  'desc' => 'Local and long distance towing, junk car buying, jump starts, and lockout service in Palm Beach County.',
+  'desc' => 'Water well service, waterproofing, general contracting, and dumping from Annapolis, Maryland.',
   'titles' => ['company' => 'Company', 'services' => 'Services', 'contact' => 'Contact Us'],
-  'labels' => ['location' => 'Location', 'phone' => 'Phone', 'hours' => 'Hours'],
+  'labels' => ['location' => 'Location', 'phone' => 'Phone', 'hours' => 'Scheduling'],
   'copyright_suffix' => 'All Rights Reserved.'
 ];
 
 $PageHeroCopy = [
-  'default' => ['title' => 'Towing Services', 'desc' => 'Local towing, long distance towing, junk car buying, jump starts, locked car service, and 24 hour roadside support.', 'bg' => 'assets/img/hero/hero1.jpg'],
-  'projects' => ['title' => 'Our Tow Truck', 'desc' => 'Dependable towing and roadside help across Palm Beach County.', 'bg' => 'assets/img/hero/hero2.jpg'],
-  'about' => ['title' => 'About ' . $Company, 'desc' => 'Bilingual towing and roadside assistance serving West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.', 'bg' => 'assets/img/hero/hero3.jpg'],
-  'contact' => ['title' => 'Get Roadside Help', 'desc' => 'Call Familia Towing for towing, jump starts, lockouts, and junk car service.', 'bg' => 'assets/img/hero/hero1.jpg'],
-  'reviews' => ['title' => 'Customer Reviews', 'desc' => 'Read feedback from drivers we have helped across Palm Beach County.', 'bg' => 'assets/img/hero/hero2.jpg'],
-  'other' => ['title' => 'Roadside Help', 'desc' => 'Fast help for towing, jump starts, lockouts, and emergency calls.', 'bg' => 'assets/img/hero/hero3.jpg']
+  'default' => ['title' => 'Water Well Services', 'desc' => 'Pump replacement, pressure tanks, waterline leak repairs, constant pressure systems, well rehab, and waterproofing.', 'bg' => stockImage('hero1')],
+  'projects' => ['title' => 'Our Work', 'desc' => 'Water well service and contracting support for Maryland properties.', 'bg' => stockImage('hero2')],
+  'about' => ['title' => 'About ' . $Company, 'desc' => 'Annapolis-based contracting company with 15 years of water well service experience.', 'bg' => stockImage('hero3')],
+  'contact' => ['title' => 'Request Service', 'desc' => 'Call Madrid Contracting for water well, waterproofing, contracting, or dumping support.', 'bg' => stockImage('hero1')],
+  'reviews' => ['title' => 'Customer Reviews', 'desc' => 'Feedback from water well and contracting clients across Maryland.', 'bg' => stockImage('hero2')],
+  'other' => ['title' => 'Additional Services', 'desc' => 'General contracting and dumping support for property projects.', 'bg' => stockImage('hero3')]
 ];
 
 $HomeHeroCopy = [
   'headline' => $Company,
-  'sub' => '24 hour towing, local and long distance service, junk car buying, jump starts, and locked car help in West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.',
-  'cta_primary' => 'Call Spanish Line',
-  'cta_secondary' => 'Call English Line',
+  'title' => 'Water Well Service and Contracting',
+  'sub' => 'Water pump replacement, pressure tank installation, waterline leak repair, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.',
+  'cta_primary' => 'Call Main Line',
+  'cta_secondary' => 'Call Second Line',
   'cta_primary_href' => $PhoneRef,
   'cta_secondary_href' => $PhoneRef2,
   'prev_label' => 'Previous slide',
   'next_label' => 'Next slide',
-  'slide_alt_prefix' => 'Familia Towing Slide',
-  'thumb_alt_prefix' => 'Towing Thumbnail'
+  'slide_alt_prefix' => 'Madrid Contracting Service',
+  'thumb_alt_prefix' => 'Service Thumbnail',
+  'slide_statuses' => [$CompanyAge, $Experience . ' Experience', 'Annapolis, Maryland'],
+  'slide_descriptions' => [
+    $Home[0],
+    $Home[1],
+    'Call ' . $Phone . ' or ' . $Phone2 . ' to discuss your water well or contracting service.'
+  ],
+  'slides' => [
+    ['src' => stockImage('hero1'), 'alt' => 'Contractor inspecting water system equipment'],
+    ['src' => stockImage('hero2'), 'alt' => 'Construction and repair worksite'],
+    ['src' => stockImage('hero3'), 'alt' => 'Water and utility service work']
+  ]
 ];
 
 $HomeAboutCopy = [
-  'eyebrow' => 'Palm Beach County Towing',
-  'title' => 'Fast Roadside Help,',
-  'title_strong' => 'Handled Safely.',
-  'description' => 'Familia Towing helps drivers with towing, jump starts, lockouts, long distance transport, and junk car removal.',
-  'badge_label' => 'Years in Service',
+  'eyebrow' => 'Annapolis Water Well Service',
+  'title' => 'Water systems,',
+  'title_strong' => 'handled with experience.',
+  'description' => 'MADRID CONTRACTING LLC has 3 years in business and 15 years of field experience in water well maintenance, service, and contracting support.',
+  'badge_label' => 'Years Experience',
   'images' => [
-    'back' => ['src' => 'assets/img/truck.jpeg', 'alt' => 'Towing service truck'],
-    'front' => ['src' => 'assets/img/truck.jpeg', 'alt' => 'Familia Towing truck']
+    'back' => ['src' => stockImage('about'), 'alt' => 'Water well service technician at work'],
+    'front' => ['src' => stockImage('hero2'), 'alt' => 'Contracting worksite']
   ],
   'features' => [
-    ['icon' => 'fa-truck-pickup', 'title' => 'Local Towing', 'text' => 'West Palm Beach, Jupiter, Boca Raton, and nearby areas.'],
-    ['icon' => 'fa-road', 'title' => 'Long Distance', 'text' => 'Vehicle transport with careful loading and communication.'],
-    ['icon' => 'fa-comments', 'title' => 'Bilingual Support', 'text' => $BilingualNote],
-    ['icon' => 'fa-clock', 'title' => '24 Hour Service', 'text' => $LicenseNote]
+    ['icon' => 'fa-water', 'title' => 'Water Well Service', 'text' => 'Pump, tank, pressure, leak, and rehab support.'],
+    ['icon' => 'fa-gauge-high', 'title' => 'Pressure Systems', 'text' => 'Installation for constant pressure systems and tanks.'],
+    ['icon' => 'fa-house-flood-water', 'title' => 'Waterproofing', 'text' => 'Support for moisture and water intrusion concerns.'],
+    ['icon' => 'fa-helmet-safety', 'title' => 'Contracting Support', 'text' => 'General contracting and dumping available.']
   ],
   'cta' => 'Learn About Us'
 ];
 
 $AboutHeroCopy = [
   'eyebrow' => 'About ' . $Company,
-  'title' => 'Reliable towing based in Palm Beach County',
+  'title' => 'An Annapolis contractor focused on water well service',
   'desc' => $About[0],
   'cta_primary' => 'Our Story',
   'cta_primary_href' => '#story',
   'cta_secondary_prefix' => 'Call',
-  'meta' => [$Experience, $Estimates, $LicenseNote, $BilingualNote],
+  'meta' => [$CompanyAge, $Experience, $Coverage, $BilingualNote],
   'list' => [
     ['label' => 'Service area', 'value' => $Coverage],
-    ['label' => 'Schedule', 'value' => $Schedule],
+    ['label' => 'Scheduling', 'value' => $Schedule],
     ['label' => 'Core services', 'value' => $TypeOfService],
-    ['label' => 'Availability', 'value' => $LicenseNote]
+    ['label' => 'Base', 'value' => $Address]
   ]
 ];
 
 $AboutStoryCopy = [
   'eyebrow' => 'Our Story',
-  'title' => 'Built on fast response and safe vehicle handling',
+  'title' => 'Built around water well service and practical property work',
   'points' => [
-    ['title' => '24 hour support', 'text' => $LicenseNote],
-    ['title' => 'Bilingual attention', 'text' => $BilingualNote],
-    ['title' => 'Fast help', 'text' => $Estimates]
+    ['title' => '3 years in business', 'text' => $CompanyAge],
+    ['title' => '15 years experience', 'text' => 'Hands-on maintenance and service experience for water wells.'],
+    ['title' => 'Local service', 'text' => 'Based in Annapolis, Maryland.']
   ],
   'actions' => ['primary_text' => 'Request service', 'primary_href' => $PhoneRef, 'secondary_prefix' => 'Call'],
-  'stats' => ['years_label' => 'Years of Experience', 'services_label' => 'Core services', 'areas_label' => 'Service areas', 'areas_separator' => ', ', 'areas_preview_count' => 5]
+  'stats' => ['years_label' => 'Years of Experience', 'services_label' => 'Service lines', 'areas_label' => 'Areas served', 'areas_separator' => ', ', 'areas_preview_count' => 5]
 ];
 
 $AboutCredentialsCopy = [
   'eyebrow' => 'Why work with us',
-  'title' => 'Reliable help when your vehicle cannot move',
-  'intro' => 'Every call is handled with direct communication, bilingual support, and practical next steps.',
+  'title' => 'Experienced help for wells, water pressure, and property needs',
+  'intro' => 'Every service call is handled with direct communication, practical planning, and field experience.',
   'list' => [
     ['label' => 'Contact', 'value' => $Phone . ' | ' . $Phone2],
-    ['label' => 'Availability', 'value' => $LicenseNote],
+    ['label' => 'Experience', 'value' => $Experience],
     ['label' => 'Core services', 'value' => $TypeOfService],
     ['label' => 'Coverage', 'value' => $Coverage],
-    ['text' => $Estimates . ' | ' . $BilingualNote]
+    ['text' => $CompanyAge . ' | ' . $BilingualNote]
   ],
-  'cta' => ['title' => 'Need towing now?', 'desc' => 'Call for towing, jump starts, lockouts, and junk car removal.', 'primary_text' => 'Call Now', 'primary_href' => $PhoneRef, 'secondary_prefix' => 'Call']
+  'cta' => ['title' => 'Need water well service?', 'desc' => 'Call for pump, tank, leak, pressure, well rehab, waterproofing, contracting, or dumping support.', 'primary_text' => 'Call Now', 'primary_href' => $PhoneRef, 'secondary_prefix' => 'Call']
 ];
 
-$AboutServicesSummaryCopy = ['eyebrow' => 'Services', 'title' => 'How we help', 'desc' => $TypeOfService . ' across Palm Beach County.', 'link_label' => 'Learn more'];
-$ServicesListCopy = ['eyebrow' => 'Scope', 'title' => 'Towing services we provide', 'desc' => $Services, 'link_label' => 'Learn more'];
-$BrandsCopy = ['tagline' => 'Trusted by Drivers Across Palm Beach County'];
+$AboutServicesSummaryCopy = ['eyebrow' => 'Services', 'title' => 'How we help', 'desc' => $TypeOfService . ' across Annapolis and nearby Maryland communities.', 'link_label' => 'Learn more'];
+$ServicesListCopy = ['eyebrow' => 'Scope', 'title' => 'Services we provide', 'desc' => $Services, 'link_label' => 'Learn more'];
+$BrandsCopy = ['tagline' => 'Serving Annapolis and nearby Maryland communities'];
 
 $HomeServicesCopy = [
-  'eyebrow' => 'Towing Services',
-  'title' => 'Built for Drivers',
-  'title_strong' => 'Who Need Help Fast',
-  'desc' => 'Local towing, long distance towing, junk car buying, jump starts, locked car service, and 24 hour towing.',
+  'eyebrow' => 'Our Services',
+  'title' => 'Water Well Work',
+  'title_strong' => 'And Contracting Support',
+  'desc' => $Services,
   'link_label' => 'Contact',
-  'more_title' => 'Need Roadside Help?',
-  'more_desc' => 'Call Familia Towing and tell us your location, vehicle, and what happened.',
+  'more_title' => 'Need a water system checked?',
+  'more_desc' => 'Call Madrid Contracting and tell us what is happening with your pump, tank, waterline, pressure, well, or property.',
   'more_button' => 'Call for Service',
   'more_href' => $PhoneRef
 ];
 
 $HomeMaintenanceCopy = [
-  'tagline' => 'Reliable Tow Service',
-  'title' => 'Tow, Unlock,',
-  'title_strong' => 'Jump Start',
-  'desc' => 'From roadside emergencies to junk car pickup, Familia Towing responds with practical vehicle help.',
+  'tagline' => 'Reliable Field Service',
+  'title' => 'Pump, Tank,',
+  'title_strong' => 'Pressure, Repair',
+  'desc' => 'From well equipment to waterproofing and cleanup support, Madrid Contracting keeps property service practical and direct.',
   'cards' => [
-    ['icon' => 'fa-truck', 'title' => 'Local & Long Distance', 'text' => 'Towing service for short local routes and longer vehicle transport.', 'action' => 'See Details'],
-    ['icon' => 'fa-car-battery', 'title' => 'Jump Starts', 'text' => 'Battery jump start help when your vehicle will not turn on.', 'action' => 'See Details'],
-    ['icon' => 'fa-key', 'title' => 'Lockout Service', 'text' => 'Locked car service when keys are inside the vehicle.', 'action' => 'See Details'],
-    ['icon' => 'fa-recycle', 'title' => 'Junk Cars', 'text' => 'We buy junk cars and help clear unwanted vehicles.', 'action' => 'See Details']
+    ['icon' => 'fa-water', 'title' => 'Pump and Tank Work', 'text' => 'Water pump replacement and pressure tank installation.', 'action' => 'See Details'],
+    ['icon' => 'fa-screwdriver-wrench', 'title' => 'Leak Repairs', 'text' => 'Waterline leak repairs and service restoration support.', 'action' => 'See Details'],
+    ['icon' => 'fa-gauge-high', 'title' => 'Constant Pressure', 'text' => 'Constant pressure system installation for better performance.', 'action' => 'See Details'],
+    ['icon' => 'fa-truck-ramp-box', 'title' => 'Contracting and Dumping', 'text' => 'General contracting and dumping available when the job needs more support.', 'action' => 'See Details']
   ],
   'foundation' => [
-    ['icon' => 'fa-phone-volume', 'title' => '24/7 Calls', 'subtitle' => 'Emergency towing support'],
-    ['icon' => 'fa-language', 'title' => 'Bilingual', 'subtitle' => 'English and Spanish'],
-    ['icon' => 'fa-star', 'title' => $ExperienceYears . '+ Years', 'subtitle' => 'Field experience']
+    ['icon' => 'fa-briefcase', 'title' => $CompanyAge, 'subtitle' => 'Local company'],
+    ['icon' => 'fa-star', 'title' => $Experience, 'subtitle' => 'Water well experience'],
+    ['icon' => 'fa-location-dot', 'title' => 'Annapolis', 'subtitle' => 'Maryland service base']
   ]
 ];
 
 $WhyCopy = [
-  'badge' => 'Trusted Towing Choice',
-  'title_prefix' => 'Why Drivers Choose',
-  'description' => 'Our towing service is built around fast response, safe vehicle handling, and bilingual communication.',
+  'badge' => 'Trusted Water Well Service',
+  'title_prefix' => 'Why Clients Choose',
+  'description' => 'The work is focused on accurate service, practical repair planning, and clear communication before and during the job.',
   'stats' => [
-    ['value' => $ExperienceYears . '+', 'label' => 'Years in Service'],
-    ['value' => count($ServicesList) . '+', 'label' => 'Services Offered'],
-    ['value' => '24/7', 'label' => 'Emergency Towing']
+    ['value' => '3', 'label' => 'Years in Business'],
+    ['value' => $ExperienceYears . '+', 'label' => 'Years Experience'],
+    ['value' => count($ServicesList) . '+', 'label' => 'Service Lines']
   ],
-  'service_area_label' => 'Coverage and Availability',
+  'service_area_label' => 'Coverage and Service Base',
   'features' => [
-    ['icon' => 'fa-comments', 'title' => 'Clear Communication', 'text' => $BilingualNote . '. Call the Spanish or English line.'],
-    ['icon' => 'fa-truck-fast', 'title' => 'Fast Dispatch', 'text' => 'Share your location and vehicle issue so we can send the right help.'],
-    ['icon' => 'fa-shield-alt', 'title' => 'Safe Handling', 'text' => 'We focus on careful loading and transport for every tow.'],
-    ['icon' => 'fa-clock', 'title' => '24 Hour Support', 'text' => $Schedule]
+    ['icon' => 'fa-comments', 'title' => 'Clear Communication', 'text' => 'Call either service line to describe your water system or property issue.'],
+    ['icon' => 'fa-toolbox', 'title' => 'Practical Repairs', 'text' => 'Support for pumps, tanks, leaks, pressure systems, well rehab, and waterproofing.'],
+    ['icon' => 'fa-house-chimney', 'title' => 'Property Support', 'text' => 'General contracting and dumping are also available.'],
+    ['icon' => 'fa-location-dot', 'title' => 'Annapolis Based', 'text' => $Address]
   ],
   'cta_label' => 'Call Now'
 ];
@@ -656,151 +696,151 @@ $WhyCopy = [
 $MissionCopy = ['mission_title' => 'Our Mission', 'vision_title' => 'Our Vision'];
 
 $ProcessCopy = [
-  'title' => 'How We Respond',
-  'title_strong' => 'When You Call',
-  'desc' => 'Our process keeps towing and roadside service simple from first call to final drop-off.',
+  'title' => 'How We Work',
+  'title_strong' => 'From Call To Service',
+  'desc' => 'The process keeps water well and contracting service clear from first call to completed work.',
   'steps' => [
-    ['icon' => 'fa-phone', 'title' => 'Call Us', 'text' => 'Tell us your location, vehicle, and what kind of help you need.'],
-    ['icon' => 'fa-location-dot', 'title' => 'Confirm Details', 'text' => 'We confirm pickup point, service type, and destination when needed.'],
-    ['icon' => 'fa-truck-fast', 'title' => 'Dispatch Help', 'text' => 'Our driver heads to your location for towing or roadside assistance.'],
-    ['icon' => 'fa-check-circle', 'title' => 'Complete Service', 'text' => 'We help finish the tow, jump start, lockout, or junk car pickup safely.']
+    ['icon' => 'fa-phone', 'title' => 'Call Us', 'text' => 'Tell us your location and what is happening with the system or property.'],
+    ['icon' => 'fa-clipboard-check', 'title' => 'Confirm Scope', 'text' => 'We discuss the service needed and the practical next step.'],
+    ['icon' => 'fa-screwdriver-wrench', 'title' => 'Complete Service', 'text' => 'We handle the repair, installation, rehab, waterproofing, contracting, or dumping support.'],
+    ['icon' => 'fa-check-circle', 'title' => 'Review Work', 'text' => 'We communicate what was completed and any follow-up needed.']
   ]
 ];
 
 $FaqCopy = [
   'title' => 'Frequently Asked Questions',
   'items' => [
-    ['q' => 'Do you provide 24 hour service?', 'a' => 'Yes. Emergency towing support is available 24/7. Office hours are 6:00 AM to 6:00 PM.'],
-    ['q' => 'Do you speak Spanish?', 'a' => 'Yes. Familia Towing speaks English and Spanish.'],
-    ['q' => 'What areas do you cover?', 'a' => $Coverage],
-    ['q' => 'Do you buy junk cars?', 'a' => 'Yes. We buy junk cars and help schedule removal for unwanted vehicles.']
+    ['q' => 'What services do you offer?', 'a' => $Services],
+    ['q' => 'Where are you located?', 'a' => $Address],
+    ['q' => 'How much experience do you have?', 'a' => 'MADRID CONTRACTING LLC has 3 years in business and 15 years of experience in water well maintenance and service.'],
+    ['q' => 'Do you offer general contracting and dumping?', 'a' => 'Yes. General contracting and dumping are also available.']
   ]
 ];
 
 $AreasCopy = [
   'title' => 'Serving',
-  'title_strong' => 'Palm Beach County',
-  'subtitle' => 'Coverage includes West Palm Beach, Jupiter, Boca Raton, and nearby communities.',
+  'title_strong' => 'Annapolis, Maryland',
+  'subtitle' => $Coverage,
   'cta_label' => 'Request Service in Your Area',
-  'map_overlay' => 'Active Towing Coverage',
-  'license_pills' => ['24 Hour Service', 'English & Spanish', 'Local & Long Distance']
+  'map_overlay' => 'Annapolis Service Base',
+  'license_pills' => [$CompanyAge, $Experience, 'Water Well Service', 'Contracting Support']
 ];
 
 $CtaCopy = [
-  'badge' => $ExperienceYears . '+ Years in Towing',
-  'title' => 'Need Towing',
-  'title_strong' => 'Right Now?',
-  'paragraph' => $Company . ' provides local and long distance towing, junk car buying, jump starts, and locked car service across Palm Beach County.',
-  'features' => ['24 Hour Service', 'Bilingual Team', 'Fast Assistance'],
+  'badge' => $Experience . ' Experience',
+  'title' => 'Need Water Well',
+  'title_strong' => 'Service?',
+  'paragraph' => $Company . ' provides pump replacement, pressure tank installation, leak repairs, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.',
+  'features' => [$CompanyAge, $Experience, 'Annapolis Based'],
   'button' => 'Call for Service',
-  'card_title' => 'Speak With Familia Towing',
-  'card_subtitle' => 'Fast response for towing and roadside calls',
-  'row_call_label' => 'Call for towing',
-  'row_license_label' => 'Availability',
-  'row_license_title' => $LicenseNote,
-  'row_service_label' => 'Coverage Area',
+  'card_title' => 'Speak With Madrid Contracting',
+  'card_subtitle' => 'Water well and contracting support',
+  'row_call_label' => 'Call for service',
+  'row_license_label' => 'Experience',
+  'row_license_title' => $Experience,
+  'row_service_label' => 'Service Area',
   'whatsapp_button' => 'WhatsApp Us',
   'book_button' => 'Start Request'
 ];
 
 $ContactFormCopy = [
   'eyebrow' => 'Request Service',
-  'title' => "Let's Get You",
-  'title_strong' => 'Back on the Road.',
-  'desc' => 'Send your location, vehicle details, and service needed. For emergencies, call directly.',
-  'method_labels' => ['call' => 'Call or Text', 'hours' => 'Business Hours'],
+  'title' => "Tell Us What",
+  'title_strong' => 'You Need.',
+  'desc' => 'Send your location and service details. For urgent service, call directly.',
+  'method_labels' => ['call' => 'Call or Text', 'hours' => 'Scheduling'],
   'form_labels' => ['name' => 'Name', 'phone' => 'Phone', 'email' => 'Email', 'service' => 'Service', 'message' => 'Service Details'],
-  'placeholders' => ['service' => 'Select service type', 'service_other' => 'Other / Custom Request', 'message' => 'Describe your location, vehicle, and what happened...'],
+  'placeholders' => ['service' => 'Select service type', 'service_other' => 'Other / Custom Request', 'message' => 'Describe the pump, tank, waterline, well, waterproofing, contracting, or dumping need...'],
   'submit' => 'Send Service Request',
   'honeypot_label' => 'Leave this field empty'
 ];
 
-$MapCopy = ['title' => 'Locate', 'title_strong' => 'Familia Towing', 'labels' => ['location' => 'Service Base', 'call' => 'Phone', 'hours' => 'Hours']];
+$MapCopy = ['title' => 'Locate', 'title_strong' => 'Madrid Contracting', 'labels' => ['location' => 'Service Base', 'call' => 'Phone', 'hours' => 'Scheduling']];
 
-$TestimonialsCopy = ['title' => 'Driver Feedback', 'title_strong' => 'From Real Calls', 'desc' => 'Read customer feedback from towing and roadside assistance calls across Palm Beach County.', 'button_label' => 'Read More Reviews', 'button_href' => 'reviews.php', 'fallback_name' => 'Verified Client'];
+$TestimonialsCopy = ['title' => 'Client Feedback', 'title_strong' => 'From Service Calls', 'desc' => 'Read customer feedback from water well and contracting service calls across Maryland.', 'button_label' => 'Read More Reviews', 'button_href' => 'reviews.php', 'fallback_name' => 'Client'];
 
 $TrustedDirectoriesCopy = [
-  'eyebrow' => 'Trusted Feedback Sources',
-  'title' => 'Customer Service Highlights',
-  'desc' => 'Explore feedback from drivers helped by Familia Towing.',
+  'eyebrow' => 'Customer Feedback',
+  'title' => 'Service Highlights',
+  'desc' => 'Feedback from clients who needed water well and contracting support.',
   'cards' => [
-    ['icon' => 'fa-award', 'subtitle' => 'Website', 'title' => 'Website Reviews', 'text' => 'Read direct feedback from towing and roadside customers.', 'url' => 'reviews.php', 'tags' => ['Client Feedback', 'Verified Responses']],
-    ['icon' => 'fa-phone', 'subtitle' => 'Follow-Up', 'title' => 'Service Follow-Up', 'text' => 'See customer satisfaction highlights after towing calls.', 'url' => 'reviews.php', 'tags' => ['Roadside Help', 'Service Quality']],
-    ['icon' => 'fa-car', 'subtitle' => 'Drivers', 'title' => 'Driver Experiences', 'text' => 'Explore feedback from local towing, jump starts, and lockouts.', 'url' => 'reviews.php', 'tags' => ['Local Drivers', 'Fast Response']],
-    ['icon' => 'fa-map', 'subtitle' => 'Coverage', 'title' => 'Palm Beach County', 'text' => 'Read comments from drivers across West Palm Beach, Jupiter, and Boca Raton.', 'url' => 'reviews.php', 'tags' => ['County Coverage', 'Trusted Service']]
+    ['icon' => 'fa-award', 'subtitle' => 'Water Wells', 'title' => 'Pump and Tank Work', 'text' => 'Feedback from water system service calls.', 'url' => 'reviews.php', 'tags' => ['Pump Work', 'Tank Installation']],
+    ['icon' => 'fa-water', 'subtitle' => 'Repairs', 'title' => 'Waterline Repairs', 'text' => 'Comments from leak repair and service restoration jobs.', 'url' => 'reviews.php', 'tags' => ['Leak Repair', 'Service']],
+    ['icon' => 'fa-house-flood-water', 'subtitle' => 'Protection', 'title' => 'Waterproofing', 'text' => 'Support for water intrusion and moisture concerns.', 'url' => 'reviews.php', 'tags' => ['Waterproofing', 'Property']],
+    ['icon' => 'fa-helmet-safety', 'subtitle' => 'Support', 'title' => 'Contracting', 'text' => 'General contracting and dumping support for property projects.', 'url' => 'reviews.php', 'tags' => ['Contracting', 'Dumping']]
   ]
 ];
 
 $ReviewsPageCopy = [
   'hero_title' => 'Customer Reviews',
-  'hero_subtitle' => 'See what drivers across Palm Beach County say about working with us.',
-  'hero_image' => 'assets/img/stock/vision-crew.jpg',
+  'hero_subtitle' => 'See what Maryland clients say about working with us.',
+  'hero_image' => stockImage('hero2'),
   'list_eyebrow' => 'Reviews',
   'list_title' => 'What Our Customers Say',
-  'list_desc' => 'Recent feedback from towing and roadside assistance customers.',
+  'list_desc' => 'Recent feedback from water well and contracting customers.',
   'list_cta' => 'Leave a Review'
 ];
 
 $ReviewFormCopy = [
   'title' => 'Share Your Experience',
-  'subtitle' => 'We value your feedback and would love to hear about your service.',
-  'success_title' => 'Thank You!',
+  'subtitle' => 'We value your feedback and would like to hear about your service.',
+  'success_title' => 'Thank You',
   'success_message' => 'Your review has been submitted successfully.',
-  'error_title' => 'Error!',
+  'error_title' => 'Error',
   'captcha_error' => 'Incorrect security code. Please try again.',
   'labels' => ['name' => 'Your Name', 'city' => 'City / Location', 'rating' => 'Rating', 'rating_hint' => '(Select stars)', 'review' => 'Your Review', 'security' => 'Security Check', 'refresh' => 'Refresh', 'captcha' => 'Enter the code shown above'],
   'captcha_alt' => 'Captcha image',
-  'placeholders' => ['name' => '', 'city' => 'e.g. West Palm Beach, FL', 'review' => 'Tell us how we did...'],
+  'placeholders' => ['name' => '', 'city' => 'e.g. Annapolis, MD', 'review' => 'Tell us how we did...'],
   'submit' => 'Submit Review'
 ];
 
-$GalleryHeroCopy = ['eyebrow' => 'Our Gallery', 'title' => 'Familia Towing in Action', 'desc' => 'Explore towing and roadside service moments from ' . $Company . ' across Palm Beach County.', 'cta_text' => 'Call Now', 'cta_href' => $PhoneRef];
+$GalleryHeroCopy = ['eyebrow' => 'Our Work', 'title' => 'Madrid Contracting in the Field', 'desc' => 'Water well service and property support from ' . $Company . '.', 'cta_text' => 'Call Now', 'cta_href' => $PhoneRef];
 
 $ProjectsIntroCopy = [
   'label' => 'Our Work',
-  'title_line1' => 'Towing',
-  'title_line2' => 'Support.',
-  'outline_line1' => 'On The Road',
-  'outline_line2' => 'Day Or Night.',
-  'desc' => 'At ' . $Company . ', every call is handled with safe vehicle care and clear communication.',
+  'title_line1' => 'Water Well',
+  'title_line2' => 'Service.',
+  'outline_line1' => 'Contracting',
+  'outline_line2' => 'Support.',
+  'desc' => 'At ' . $Company . ', service is handled with water well experience, practical planning, and clear communication.',
   'stats' => [
-    ['value' => $ExperienceYears . '+', 'label' => 'Years of Experience'],
-    ['value' => count($ServicesList) . '+', 'label' => 'Services Offered'],
+    ['value' => $ExperienceYears . '+', 'label' => 'Years Experience'],
+    ['value' => count($ServicesList) . '+', 'label' => 'Service Lines'],
     ['value' => count($Areas), 'label' => 'Areas Served']
   ]
 ];
 
-$ProjectsBeforeAfterCopy = ['eyebrow' => 'Service', 'title' => 'Before & After', 'desc' => 'See how roadside help gets drivers moving again.', 'before_label' => 'Before', 'after_label' => 'After'];
+$ProjectsBeforeAfterCopy = ['eyebrow' => 'Service', 'title' => 'Before & After', 'desc' => 'Examples of property service, repair planning, and contracting support.', 'before_label' => 'Before', 'after_label' => 'After'];
 $ProjectsStatsCopy = ['items' => [
-  ['icon' => 'fa-hourglass-half', 'value' => $ExperienceYears . '+', 'label' => 'Years of Service'],
-  ['icon' => 'fa-truck', 'value' => count($ServicesList) . '+', 'label' => 'Towing Services'],
-  ['icon' => 'fa-map-location-dot', 'value' => count($Areas), 'label' => 'Areas Served'],
-  ['icon' => 'fa-clock', 'value' => '24/7', 'label' => 'Emergency Towing']
+  ['icon' => 'fa-briefcase', 'value' => '3', 'label' => 'Years in Business'],
+  ['icon' => 'fa-star', 'value' => $ExperienceYears . '+', 'label' => 'Years Experience'],
+  ['icon' => 'fa-screwdriver-wrench', 'value' => count($ServicesList) . '+', 'label' => 'Service Lines'],
+  ['icon' => 'fa-map-location-dot', 'value' => count($Areas), 'label' => 'Areas Served']
 ]];
 
-$ProjectsGalleryCopy = ['eyebrow' => 'Service Gallery', 'title' => 'Selected Work &', 'title_strong' => 'Recent Calls', 'videos_label' => 'Videos', 'empty' => 'Projects coming soon.', 'image_title' => 'Service Photo', 'video_title' => 'Service Video'];
-$ServiceHeroCopy = ['badge' => 'Towing Service', 'cta_primary' => 'Call Now', 'cta_secondary' => 'Explore Service'];
+$ProjectsGalleryCopy = ['eyebrow' => 'Service Gallery', 'title' => 'Selected Work &', 'title_strong' => 'Service Support', 'videos_label' => 'Videos', 'empty' => 'Work images coming soon.', 'image_title' => 'Service Photo', 'video_title' => 'Service Video'];
+$ServiceHeroCopy = ['badge' => 'Water Well Service', 'cta_primary' => 'Call Now', 'cta_secondary' => 'Explore Service'];
 $ServiceIntroCopy = [
   'eyebrow' => 'Our Method',
   'title' => 'How We Deliver',
-  'title_strong' => 'Roadside Help',
-  'desc' => 'We keep the process simple so you know what to expect from call to completion.',
+  'title_strong' => 'Water Well Service',
+  'desc' => 'We keep the process direct so you know what to expect from call to completion.',
   'steps' => [
     ['icon' => 'fa-comments', 'title' => 'Call', 'text' => 'We start by confirming your location and service need.'],
-    ['icon' => 'fa-map-location-dot', 'title' => 'Dispatch', 'text' => 'A driver heads your way with the right support.'],
-    ['icon' => 'fa-truck', 'title' => 'Service', 'text' => 'We complete the tow, jump start, lockout, or junk car pickup.']
+    ['icon' => 'fa-clipboard-check', 'title' => 'Plan', 'text' => 'We review the issue and discuss the right next step.'],
+    ['icon' => 'fa-screwdriver-wrench', 'title' => 'Service', 'text' => 'We complete the repair, installation, waterproofing, contracting, or dumping support.']
   ]
 ];
 
-$ServiceDetailsCopy = ['badge_title' => 'Familia Towing Promise', 'badge_subtitle' => 'Service Focused', 'title_prefix' => 'Professional', 'button' => 'Call Now'];
+$ServiceDetailsCopy = ['badge_title' => 'Madrid Contracting Standard', 'badge_subtitle' => 'Service Focused', 'title_prefix' => 'Professional', 'button' => 'Call Now'];
 $ServiceFaqCopy = [
   'eyebrow' => 'Common Questions',
   'title' => 'Info About Our',
-  'title_strong' => 'Towing Service',
+  'title_strong' => 'Service Process',
   'items' => [
-    ['icon' => 'fa-hourglass-half', 'question' => 'How fast can you arrive?', 'answer' => 'Arrival time depends on your location and traffic. Call with your exact location for current availability.'],
-    ['icon' => 'fa-file-invoice-dollar', 'question' => 'Do you buy junk cars?', 'answer' => 'Yes. ' . $Company . ' buys junk cars and helps schedule removal.'],
-    ['icon' => 'fa-language', 'question' => 'Do you speak Spanish?', 'answer' => $BilingualNote . '.'],
+    ['icon' => 'fa-water', 'question' => 'Do you replace water pumps?', 'answer' => 'Yes. Water pump replacement is one of the core services.'],
+    ['icon' => 'fa-gauge-high', 'question' => 'Do you install pressure tanks and constant pressure systems?', 'answer' => 'Yes. We install pressure tanks and constant pressure systems.'],
+    ['icon' => 'fa-screwdriver-wrench', 'question' => 'Do you repair waterline leaks?', 'answer' => 'Yes. We provide waterline leak repairs.'],
     ['icon' => 'fa-map', 'question' => 'What areas do you serve?', 'answer' => $Coverage]
   ],
   'footer' => 'Have a different question? Contact our team directly'
@@ -809,16 +849,16 @@ $ServiceFaqCopy = [
 $ServiceCtaCopy = [
   'tag' => 'Need Help?',
   'title' => "Let's Get Your",
-  'title_strong' => 'Vehicle Moving',
-  'paragraph' => 'Call for %s across West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.',
+  'title_strong' => 'Service Scheduled',
+  'paragraph' => 'Call for %s from Annapolis, Maryland and nearby communities.',
   'subject_fallback' => 'service',
-  'features' => ['24/7', 'Bilingual', $Experience],
+  'features' => [$CompanyAge, $Experience, 'Water Well Service'],
   'primary' => 'Call Now',
   'secondary_prefix' => 'Call'
 ];
 
-$OtherServicesCopy = ['label' => 'Additional Help', 'title' => 'More Ways We Can Help', 'title_strong' => 'On The Road', 'item_note' => 'Professional towing and roadside assistance.', 'cta_title' => 'Have a specific request?', 'cta_text' => 'From emergency towing to junk car pickup, call and tell us what you need.', 'cta_button' => $Estimates, 'page_desc' => 'Additional roadside help tailored to your vehicle situation.'];
-$FounderCopy = ['title' => 'A Note from', 'title_strong' => 'The Owner', 'quote' => 'At ' . $Company . ', we believe towing is about trust, response, and safe vehicle care. Our goal is to help every driver with practical service and clear communication.', 'role' => 'Owner', 'image_alt' => $CustomerName];
+$OtherServicesCopy = ['label' => 'Additional Help', 'title' => 'More Ways We Can Help', 'title_strong' => 'With Property Work', 'item_note' => 'Professional water well and contracting support.', 'cta_title' => 'Have a specific request?', 'cta_text' => 'From well service to contracting and dumping, call and tell us what you need.', 'cta_button' => $Estimates, 'page_desc' => 'Additional contracting support tailored to your property situation.'];
+$FounderCopy = ['title' => 'A Note from', 'title_strong' => 'The Owner', 'quote' => 'At ' . $Company . ', our work is about practical service, clear communication, and reliable help for water wells and property needs.', 'role' => 'Owner', 'image_alt' => $CustomerName];
 
 $AriaCopy = [
   'call' => 'Click to call',
@@ -832,8 +872,8 @@ $AriaCopy = [
   'email' => 'Email'
 ];
 
-$TestimonialsPageCopy = ['eyebrow' => $NavCopy['reviews'] ?? 'Reviews', 'title' => 'What Customers Say', 'desc' => 'Trusted feedback from drivers across Palm Beach County.', 'card_title' => 'Read Verified Reviews', 'card_desc' => 'See feedback from towing and roadside service customers.', 'card_button' => $NavCopy['read_reviews'] ?? 'Read Reviews', 'card_link' => 'reviews.php'];
-$ThankYouCopy = ['title' => 'Thank You', 'description' => 'Thank you for contacting ' . $Company . '. We will be in touch shortly.', 'eyebrow' => 'Thank You', 'headline' => 'We received your request', 'body' => 'Thank you for contacting ' . $Company . '. Our team will reach out soon to confirm your towing or roadside service details.', 'cta_call' => 'Click to Call', 'cta_home' => 'Back to Home'];
+$TestimonialsPageCopy = ['eyebrow' => $NavCopy['reviews'] ?? 'Reviews', 'title' => 'What Customers Say', 'desc' => 'Trusted feedback from water well and contracting clients across Maryland.', 'card_title' => 'Read Customer Reviews', 'card_desc' => 'See feedback from service customers.', 'card_button' => $NavCopy['read_reviews'] ?? 'Read Reviews', 'card_link' => 'reviews.php'];
+$ThankYouCopy = ['title' => 'Thank You', 'description' => 'Thank you for contacting ' . $Company . '. We will be in touch shortly.', 'eyebrow' => 'Thank You', 'headline' => 'We received your request', 'body' => 'Thank you for contacting ' . $Company . '. Our team will reach out soon to confirm your service details.', 'cta_call' => 'Click to Call', 'cta_home' => 'Back to Home'];
 $LabelsCopy = ['service_areas' => 'Service Areas', 'call' => 'Call', 'email' => 'Email'];
 
 /*=========================
@@ -854,33 +894,33 @@ $BrandCSSVars = sprintf(
 $BrandCSSVars .= <<<CSS
 :root{
   --site-surface:#ffffff;
-  --site-surface-soft:color-mix(in srgb, var(--brand-neutral) 82%, #fff 18%);
-  --site-ink:var(--brand-secondary);
-  --site-ink-soft:rgba(var(--brand-secondary-rgb),0.76);
+  --site-surface-soft:color-mix(in srgb, var(--brand-neutral) 86%, #fff 14%);
+  --site-ink:var(--brand-primary);
+  --site-ink-soft:rgba(var(--brand-primary-rgb),0.76);
   --site-panel:#ffffff;
-  --site-panel-soft:rgba(255,255,255,0.78);
-  --site-line:rgba(var(--brand-secondary-rgb),0.14);
-  --site-dark:#0a0a0b;
-  --site-dark-2:#161616;
-  --site-dark-3:#1f1f1f;
-  --site-dark-line:rgba(var(--brand-accent-rgb),0.26);
+  --site-panel-soft:rgba(255,255,255,0.80);
+  --site-line:rgba(var(--brand-primary-rgb),0.14);
+  --site-dark:#0D1B2A;
+  --site-dark-2:#15263A;
+  --site-dark-3:#233A56;
+  --site-dark-line:rgba(var(--brand-accent-rgb),0.28);
   --site-dark-text:#ffffff;
-  --site-dark-muted:rgba(255,255,255,0.72);
-  --site-accent-soft:rgba(var(--brand-accent-rgb),0.14);
+  --site-dark-muted:rgba(255,255,255,0.74);
+  --site-accent-soft:rgba(var(--brand-accent-rgb),0.16);
 }
 body{
   background:
-    radial-gradient(circle at 10% 8%, rgba(var(--brand-accent-rgb),0.16), transparent 28%),
+    radial-gradient(circle at 10% 8%, rgba(var(--brand-accent-rgb),0.15), transparent 28%),
     linear-gradient(180deg, var(--brand-neutral) 0%, #ffffff 100%);
 }
 #hero-4.hero4{
-  background: linear-gradient(130deg, #000 0%, var(--brand-secondary) 58%, #2a1600 100%) !important;
+  background: linear-gradient(130deg, var(--brand-primary) 0%, var(--brand-secondary) 58%, #1b2c42 100%) !important;
 }
 #hero-4 .hero4__slides::after{
-  background: linear-gradient(to bottom, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.88) 100%) !important;
+  background: linear-gradient(to bottom, rgba(var(--brand-primary-rgb),0.78) 0%, rgba(var(--brand-primary-rgb),0.5) 42%, rgba(var(--brand-primary-rgb),0.88) 100%) !important;
 }
 #hero-4 .hero4__content{
-  background: linear-gradient(145deg, rgba(0,0,0,0.92), rgba(var(--brand-secondary-rgb),0.78)) !important;
+  background: linear-gradient(145deg, rgba(var(--brand-primary-rgb),0.94), rgba(var(--brand-secondary-rgb),0.78)) !important;
   border: 1px solid rgba(var(--brand-accent-rgb),0.55) !important;
 }
 #hero-4 .hero4__content::before{
@@ -892,7 +932,7 @@ body{
 .cta-premium-section .btn-cta-primary,
 .section-contact-premium .btn-submit-arch{
   background: var(--brand-accent) !important;
-  color: #080808 !important;
+  color: var(--brand-primary) !important;
   border-color: var(--brand-accent) !important;
 }
 #hero-4 .hero4__btn--ghost,
@@ -913,7 +953,7 @@ body{
 .cta-premium-section,
 .section-contact-premium,
 .section-map-contact{
-  background: linear-gradient(135deg, #000 0%, var(--brand-secondary) 100%) !important;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #12263c 100%) !important;
 }
 .section-about-arch .arch-eyebrow,
 .section-services-premium .sv-eyebrow,
@@ -952,13 +992,13 @@ body{
 .section-contact-premium .ct-form-wrapper,
 .cta-premium-section .contact-glass-card,
 .section-map-contact .contact-card{
-  border-radius: 18px !important;
+  border-radius: 12px !important;
 }
 .section-services-premium .sv-card:hover,
 .section-maint-pro .maint-card-dark:hover,
 .section-remodel-why .feature-card:hover,
 .section-process .process-step:hover{
-  box-shadow: 0 22px 48px rgba(0,0,0,0.28) !important;
+  box-shadow: 0 22px 48px rgba(var(--brand-primary-rgb),0.28) !important;
 }
 .section-about-arch .btn-arch,
 .section-remodel-why .btn-gold,
@@ -973,7 +1013,7 @@ body{
 .cta-premium-section .btn-cta-primary:hover,
 .section-contact-premium .btn-submit-arch:hover{
   background: color-mix(in srgb, var(--brand-accent) 84%, #fff 16%) !important;
-  color: #080808 !important;
+  color: var(--brand-primary) !important;
 }
 .section-areas .btn-area{
   border-color: var(--brand-accent) !important;
@@ -981,13 +1021,13 @@ body{
 }
 .section-areas .btn-area:hover{
   background: var(--brand-accent) !important;
-  color: #080808 !important;
+  color: var(--brand-primary) !important;
 }
 .section-contact-premium .form-control-arch:focus{
   border-bottom-color: var(--brand-accent) !important;
 }
 .section-map-contact .map-background iframe{
-  filter: grayscale(60%) contrast(0.9) !important;
+  filter: grayscale(45%) contrast(0.92) !important;
 }
 .language-switcher{
   display:inline-flex;
@@ -995,7 +1035,7 @@ body{
   gap:6px;
   padding:5px;
   border-radius:999px;
-  background:#0b0b0d;
+  background:var(--brand-primary);
   border:1px solid rgba(var(--brand-accent-rgb),0.45);
 }
 .language-switcher button{
@@ -1012,7 +1052,7 @@ body{
 .language-switcher button.active,
 .language-switcher button:hover{
   background:var(--brand-accent);
-  color:#050505;
+  color:var(--brand-primary);
 }
 .goog-te-banner-frame,
 .skiptranslate iframe{

@@ -105,8 +105,10 @@ body.reviews-page .cta-forge__layout > * {
   <?php 
     $pageHeroTitle = $ReviewsPageCopy['hero_title'] ?? '';
     $pageHeroSubtitle = $ReviewsPageCopy['hero_subtitle'] ?? '';
-    $pageHeroImage = $ReviewsPageCopy['hero_image'] ?? "assets/img/stock/vision-crew.jpg";
-    if(!file_exists($pageHeroImage)) $pageHeroImage = "assets/img/hero-bg.jpg"; // fallback
+    $pageHeroImage = $ReviewsPageCopy['hero_image'] ?? (function_exists('stockImage') ? stockImage('hero2') : "");
+    if(strpos($pageHeroImage, 'http') !== 0 && !file_exists($pageHeroImage)) {
+        $pageHeroImage = function_exists('stockImage') ? stockImage('hero2') : "";
+    }
 
     include __DIR__ . '/partials/shared/page-hero.php'; 
   ?>

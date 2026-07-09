@@ -24,7 +24,7 @@ if (empty($allAreas) && !empty($Coverage)) {
 }
 
 if (empty($allAreas)) {
-  $allAreas = ['West Palm Beach, FL', 'Jupiter, FL', 'Boca Raton, FL'];
+  $allAreas = ['Annapolis, MD', 'Anne Arundel County, MD', 'Edgewater, MD'];
 }
 
 $primaryAreas = array_slice($allAreas, 0, 6);

@@ -113,6 +113,19 @@ $heroDirRel = 'assets/img/hero';
 $imageExts = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'avif'];
 $videoExts = ['mp4', 'webm', 'ogg', 'mov'];
 $heroFiles = [];
+$configuredSlides = [];
+
+if (!empty($HomeHeroCopy['slides']) && is_array($HomeHeroCopy['slides'])) {
+  foreach ($HomeHeroCopy['slides'] as $slide) {
+    if (!is_array($slide)) continue;
+    $src = trim((string) ($slide['src'] ?? ''));
+    if ($src === '') continue;
+    $configuredSlides[] = [
+      'src' => $src,
+      'alt' => trim((string) ($slide['alt'] ?? $slideAltPrefix))
+    ];
+  }
+}
 
 if (is_dir($heroDirAbs)) {
   $scanned = scandir($heroDirAbs);
@@ -135,10 +148,30 @@ foreach ($heroFiles as $file) {
   if (in_array($ext, $imageExts, true)) $imageFiles[] = $file;
 }
 
-$defaultPoster = !empty($imageFiles) ? $heroDirRel . '/' . $imageFiles[0] : 'assets/img/stock/remodel-main.jpg';
+$defaultPoster = !empty($configuredSlides)
+  ? $configuredSlides[0]['src']
+  : (!empty($imageFiles) ? $heroDirRel . '/' . $imageFiles[0] : (function_exists('stockImage') ? stockImage('hero1') : ''));
 $slides = [];
 
+if (!empty($configuredSlides)) {
+  foreach ($configuredSlides as $index => $slide) {
+    $statusText = $heroStatusPool[$index % count($heroStatusPool)];
+    $descriptionText = $heroDescriptionPool[$index % count($heroDescriptionPool)];
+    $slides[] = [
+      'type' => 'image',
+      'src' => $slide['src'],
+      'poster' => '',
+      'texture_src' => $slide['src'],
+      'title_html' => $heroTitleHtml,
+      'status' => $statusText,
+      'description' => $descriptionText,
+      'alt' => $slide['alt'] !== '' ? $slide['alt'] : ($slideAltPrefix . ' - Service')
+    ];
+  }
+}
+
 foreach ($heroFiles as $index => $file) {
+  if (!empty($slides)) break;
   $ext = strtolower((string) pathinfo($file, PATHINFO_EXTENSION));
   $label = vdHeroLabelFromFile($file);
   $statusText = $heroStatusPool[$index % count($heroStatusPool)];

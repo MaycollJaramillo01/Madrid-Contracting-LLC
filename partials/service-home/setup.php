@@ -62,13 +62,14 @@ if (!function_exists('serviceHomeIcon')) {
   function serviceHomeIcon($slug)
   {
     $icons = [
-      'local-towing' => 'fa-solid fa-truck-pickup',
-      'long-distance-towing' => 'fa-solid fa-road',
-      'we-buy-junk-cars' => 'fa-solid fa-recycle',
-      'jump-start-vehicles' => 'fa-solid fa-car-battery',
-      'locked-car-services' => 'fa-solid fa-key',
-      'roadside-assistance' => 'fa-solid fa-screwdriver-wrench',
-      '24-hour-towing' => 'fa-solid fa-clock'
+      'water-pump-replacement' => 'fa-solid fa-water',
+      'pressure-tank-installation' => 'fa-solid fa-gauge-high',
+      'waterline-leak-repairs' => 'fa-solid fa-screwdriver-wrench',
+      'constant-pressure-system-installation' => 'fa-solid fa-sliders',
+      'well-rehab' => 'fa-solid fa-toolbox',
+      'waterproofing' => 'fa-solid fa-house-flood-water',
+      'general-contracting' => 'fa-solid fa-helmet-safety',
+      'dumping' => 'fa-solid fa-truck-ramp-box'
     ];
 
     $slug = trim((string) $slug);
@@ -84,6 +85,10 @@ if (!function_exists('serviceHomeImage')) {
     $serviceName = trim((string) ($service['name'] ?? ''));
     $categorySlug = trim((string) ($service['category_slug'] ?? ''));
 
+    if (!empty($service['image'])) {
+      return (string) $service['image'];
+    }
+
     $sources = [
       ['rel' => 'assets/img/services', 'abs' => __DIR__ . '/../../assets/img/services'],
       ['rel' => 'assets/img/gallery/services', 'abs' => __DIR__ . '/../../assets/img/gallery/services'],
@@ -93,13 +98,14 @@ if (!function_exists('serviceHomeImage')) {
     $exts = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
     $aliasMap = [
-      'local-towing' => ['towing', 'tow-truck'],
-      'long-distance-towing' => ['long-distance-tow', 'vehicle-transport'],
-      'we-buy-junk-cars' => ['junk-cars', 'junk-car-removal'],
-      'jump-start-vehicles' => ['jump-start', 'battery-jump'],
-      'locked-car-services' => ['lockout', 'car-lockout'],
-      'roadside-assistance' => ['roadside-help'],
-      '24-hour-towing' => ['emergency-towing', '24-hour-service']
+      'water-pump-replacement' => ['well-pump', 'pump-replacement'],
+      'pressure-tank-installation' => ['pressure-tank', 'well-tank'],
+      'waterline-leak-repairs' => ['waterline-leak', 'leak-repair'],
+      'constant-pressure-system-installation' => ['constant-pressure', 'pressure-system'],
+      'well-rehab' => ['well-maintenance', 'well-service'],
+      'waterproofing' => ['waterproofing-service'],
+      'general-contracting' => ['contracting', 'construction'],
+      'dumping' => ['dumping-service', 'hauling']
     ];
 
     $labels = [];
@@ -187,7 +193,7 @@ if (!function_exists('serviceHomeImage')) {
       }
     }
 
-    return 'assets/img/truck.jpeg';
+    return function_exists('stockImage') ? stockImage($slug ?: 'hero1') : '';
   }
 }
 

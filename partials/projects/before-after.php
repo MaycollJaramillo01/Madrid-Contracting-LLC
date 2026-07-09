@@ -74,8 +74,8 @@
             <!-- Item 1: Interior -->
             <div class="ba-card">
                 <div class="ba-slider">
-                    <img src="assets/img/gallery/before-after/before-1.jpg" class="ba-img before-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?>">
-                    <img src="assets/img/gallery/before-after/after-1.jpg" class="ba-img after-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?>">
+                    <img src="<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('gallery1') : '', ENT_QUOTES, 'UTF-8'); ?>" class="ba-img before-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?>">
+                    <img src="<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('water-pump-replacement') : '', ENT_QUOTES, 'UTF-8'); ?>" class="ba-img after-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?>">
                     <div class="ba-handle"></div>
                     <span class="ba-badge badge-before"><?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?></span>
                     <span class="ba-badge badge-after"><?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?></span>
@@ -85,8 +85,8 @@
              <!-- Item 2: Exterior -->
             <div class="ba-card">
                 <div class="ba-slider">
-                    <img src="assets/img/gallery/before-after/before-2.jpg" class="ba-img before-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?>">
-                    <img src="assets/img/gallery/before-after/after-2.jpg" class="ba-img after-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?>">
+                    <img src="<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('gallery2') : '', ENT_QUOTES, 'UTF-8'); ?>" class="ba-img before-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?>">
+                    <img src="<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('pressure-tank-installation') : '', ENT_QUOTES, 'UTF-8'); ?>" class="ba-img after-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?>">
                     <div class="ba-handle"></div>
                     <span class="ba-badge badge-before"><?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?></span>
                     <span class="ba-badge badge-after"><?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?></span>
@@ -96,8 +96,8 @@
              <!-- Item 3: Flooring -->
             <div class="ba-card">
                 <div class="ba-slider">
-                    <img src="assets/img/gallery/before-after/before-3.jpg" class="ba-img before-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?>">
-                    <img src="assets/img/gallery/before-after/after-3.jpg" class="ba-img after-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?>">
+                    <img src="<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('gallery3') : '', ENT_QUOTES, 'UTF-8'); ?>" class="ba-img before-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?>">
+                    <img src="<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('waterproofing') : '', ENT_QUOTES, 'UTF-8'); ?>" class="ba-img after-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?>">
                     <div class="ba-handle"></div>
                     <span class="ba-badge badge-before"><?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?></span>
                     <span class="ba-badge badge-after"><?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?></span>

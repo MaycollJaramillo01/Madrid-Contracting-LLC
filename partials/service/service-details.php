@@ -28,12 +28,20 @@ if ($serviceImgExists && (!$detailImageIsService || empty($detailImage))) {
     $detailImage = $serviceImgRel;
 }
 
+if (empty($detailImage) && !empty($detail['image'])) {
+    $detailImage = $detail['image'];
+}
+
+if (empty($detailImage) && !empty($detailData['image'])) {
+    $detailImage = $detailData['image'];
+}
+
 if (empty($detailImage) && !empty($heroImageMain)) {
     $detailImage = $heroImageMain;
 }
 
 if (empty($detailImage)) {
-    $detailImage = 'assets/img/truck.jpeg';
+    $detailImage = function_exists('stockImage') ? stockImage($slug ?: 'hero1') : '';
 }
 
 // Features por defecto si no hay específicas

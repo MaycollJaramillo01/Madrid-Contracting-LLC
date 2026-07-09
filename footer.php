@@ -102,16 +102,56 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 10px 14px;
+        gap: 12px;
+        padding: 14px;
         margin-bottom: 25px;
-        background: #ffffff;
+        background: rgba(255,255,255,0.06);
         border-radius: 12px;
         border: 1px solid rgba(var(--brand-accent-rgb), 0.16);
         box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+        text-decoration: none;
     }
     
-    .f-logo {
-        max-width: 180px;
+    .f-logo-mark {
+        width: 48px;
+        height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--brand-accent);
+        color: var(--brand-primary);
+        border-radius: 8px;
+        font-family: var(--font-display);
+        font-weight: 900;
+        letter-spacing: 0;
+    }
+
+    .f-logo-text {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .f-logo-text strong {
+        color: #ffffff;
+        line-height: 1;
+        font-size: 1rem;
+        letter-spacing: 0;
+    }
+
+    .f-logo-text span {
+        margin-top: 4px;
+        color: var(--brand-accent);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .f-logo-img {
+        width: min(260px, 58vw);
+        max-height: 96px;
+        object-fit: contain;
         display: block;
     }
 
@@ -309,7 +349,16 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
             
             <div class="f-brand">
                 <a href="<?php echo $BaseURL; ?>" class="f-logo-link">
-                    <img src="assets/img/logos.png" alt="<?php echo $Company; ?>" class="f-logo">
+                    <?php $footerLogoUrl = trim((string) ($BrandLogo ?? '')); ?>
+                    <?php if ($footerLogoUrl !== ''): ?>
+                        <img class="f-logo-img" src="<?php echo htmlspecialchars($footerLogoUrl, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($Company, ENT_QUOTES, 'UTF-8'); ?>">
+                    <?php else: ?>
+                        <span class="f-logo-mark" aria-hidden="true">MC</span>
+                        <span class="f-logo-text">
+                            <strong><?php echo htmlspecialchars($Company, ENT_QUOTES, 'UTF-8'); ?></strong>
+                            <span><?php echo htmlspecialchars($TypeOfService ?? '', ENT_QUOTES, 'UTF-8'); ?></span>
+                        </span>
+                    <?php endif; ?>
                 </a>
                 <p class="f-desc">
                     <?php echo htmlspecialchars($FooterCopy['desc'] ?? ''); ?>

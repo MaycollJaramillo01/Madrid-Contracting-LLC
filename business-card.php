@@ -27,7 +27,6 @@ $googleRef = trim((string) ($google ?? ''));
 $messengerRef = trim((string) ($messenger ?? ''));
 $googleMap = (string) ($GoogleMap ?? '');
 
-$logoPath = 'assets/img/logos.png';
 $domainRef = trim((string) ($Domain ?? ($BaseURL ?? '')));
 if ($domainRef === '') $domainRef = '#';
 $domainLabel = preg_replace('#^https?://#i', '', $domainRef);
@@ -134,8 +133,7 @@ if (isset($_GET['vcard'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($company, ENT_QUOTES, 'UTF-8'); ?>  Business Card</title>
     <meta name="description" content="Digital business card for <?php echo htmlspecialchars($company, ENT_QUOTES, 'UTF-8'); ?>">
-    <link rel="icon" type="image/png" href="assets/img/logos.png">
-    <link rel="apple-touch-icon" href="assets/img/logos.png">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230D1B2A'/%3E%3Cpath d='M14 44V20h9l9 13 9-13h9v24h-8V31L33 44h-2L22 31v13z' fill='%23D4AF37'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
@@ -250,11 +248,19 @@ if (isset($_GET['vcard'])) {
             padding: 8px;
         }
 
-        .bclogowrap img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            display: block;
+        .bclogomark {
+            width: 72px;
+            height: 72px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: var(--brand-accent);
+            color: var(--brand-primary);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 800;
+            letter-spacing: 0;
         }
 
         .bcbrand h1 {
@@ -640,7 +646,7 @@ if (isset($_GET['vcard'])) {
 
                 <div class="bcbrandtop">
                     <div class="bclogowrap">
-                        <img src="<?php echo htmlspecialchars($logoPath, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($company, ENT_QUOTES, 'UTF-8'); ?> logo">
+                        <span class="bclogomark" aria-hidden="true">MC</span>
                     </div>
                     <h1>
                         <?php echo htmlspecialchars($company, ENT_QUOTES, 'UTF-8'); ?>

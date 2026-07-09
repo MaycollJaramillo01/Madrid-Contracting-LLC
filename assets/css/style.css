@@ -494,7 +494,7 @@ h3 { font-size: 1.5rem; }
 .video-background {
     position: absolute;
     inset: 0;
-    background: url('../img/stock/house-exterior.jpg') center/cover no-repeat;
+    background: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1600&q=82') center/cover no-repeat;
     opacity: 0.35;
 }
 
@@ -503,7 +503,7 @@ h3 { font-size: 1.5rem; }
 .about-image .placeholder-img {
     height: 100%;
     min-height: 540px;
-    background: url('../img/stock/vision-crew.jpg') center/cover no-repeat;
+    background: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=82') center/cover no-repeat;
 }
 
 .hero-grid {
@@ -799,7 +799,7 @@ h3 { font-size: 1.5rem; }
 .about-image .placeholder-img {
     height: 100%;
     min-height: 540px;
-    background: url('../img/about.png') center/cover no-repeat, linear-gradient(135deg, var(--neutral-200), var(--neutral-50));
+    background: url('https://images.unsplash.com/photo-1590959651373-a3db0f38a961?auto=format&fit=crop&w=1600&q=82') center/cover no-repeat, linear-gradient(135deg, var(--neutral-200), var(--neutral-50));
 }
 
 .about-text {

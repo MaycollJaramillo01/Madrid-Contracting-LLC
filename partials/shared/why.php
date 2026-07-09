@@ -7,7 +7,7 @@ $whyDescription = trim((string) ($whyCopy['description'] ?? ''));
 $whyServiceAreaLabel = trim((string) ($whyCopy['service_area_label'] ?? 'Coverage and Credentials'));
 $whyCtaLabel = trim((string) ($whyCopy['cta_label'] ?? 'Request Free Estimate'));
 
-$companyName = trim((string) ($Company ?? 'Familia Towing'));
+$companyName = trim((string) ($Company ?? 'MADRID CONTRACTING LLC'));
 $coverageText = trim((string) ($Coverage ?? 'Serving nearby communities.'));
 $phoneMain = trim((string) ($Phone ?? ''));
 $phoneMainRef = trim((string) ($PhoneRef ?? '#'));

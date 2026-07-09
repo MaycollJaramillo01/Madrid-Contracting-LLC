@@ -18,14 +18,14 @@ $categoryConfig = (isset($ServicesByCategory) && is_array($ServicesByCategory)) 
 if (empty($categoryConfig)) {
   $categoryConfig = [
     [
-      'label' => 'Core Services',
-      'summary_slug' => 'local-towing',
-      'service_slugs' => ['local-towing', 'long-distance-towing', 'we-buy-junk-cars', 'jump-start-vehicles', 'locked-car-services']
+      'label' => 'Water Well Services',
+      'summary_slug' => 'water-pump-replacement',
+      'service_slugs' => ['water-pump-replacement', 'pressure-tank-installation', 'waterline-leak-repairs', 'constant-pressure-system-installation', 'well-rehab', 'waterproofing']
     ],
     [
-      'label' => 'Other Services',
-      'summary_slug' => 'other-services',
-      'service_slugs' => ['roadside-assistance', '24-hour-towing']
+      'label' => 'Contracting Support',
+      'summary_slug' => 'general-contracting',
+      'service_slugs' => ['general-contracting', 'dumping']
     ]
   ];
 }
@@ -43,10 +43,16 @@ if (!function_exists('homeServicesMinimalSlugify')) {
 if (!function_exists('homeServicesMinimalImage')) {
   function homeServicesMinimalImage($serviceSlug, $serviceId, $categorySlug, $serviceName = '')
   {
+    global $ServicesList;
+
     $serviceSlug = trim((string) $serviceSlug);
     $categorySlug = trim((string) $categorySlug);
     $serviceId = (int) $serviceId;
     $serviceName = trim((string) $serviceName);
+
+    if ($serviceSlug !== '' && !empty($ServicesList[$serviceSlug]['image'])) {
+      return (string) $ServicesList[$serviceSlug]['image'];
+    }
 
     $baseDirs = [
       [
@@ -69,13 +75,14 @@ if (!function_exists('homeServicesMinimalImage')) {
     $exts = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
     $aliasMap = [
-      'local-towing' => ['towing', 'tow-truck'],
-      'long-distance-towing' => ['long-distance-tow', 'vehicle-transport'],
-      'we-buy-junk-cars' => ['junk-cars', 'junk-car-removal'],
-      'jump-start-vehicles' => ['jump-start', 'battery-jump'],
-      'locked-car-services' => ['lockout', 'car-lockout'],
-      'roadside-assistance' => ['roadside-help'],
-      '24-hour-towing' => ['emergency-towing', '24-hour-service']
+      'water-pump-replacement' => ['well-pump', 'pump-replacement'],
+      'pressure-tank-installation' => ['pressure-tank', 'well-tank'],
+      'waterline-leak-repairs' => ['waterline-leak', 'leak-repair'],
+      'constant-pressure-system-installation' => ['constant-pressure', 'pressure-system'],
+      'well-rehab' => ['well-maintenance', 'well-service'],
+      'waterproofing' => ['waterproofing-service'],
+      'general-contracting' => ['contracting', 'construction'],
+      'dumping' => ['dumping-service', 'hauling']
     ];
 
     $labelCandidates = [];
@@ -168,7 +175,7 @@ if (!function_exists('homeServicesMinimalImage')) {
       }
     }
 
-    return 'assets/img/truck.jpeg';
+    return function_exists('stockImage') ? stockImage($serviceSlug ?: 'hero1') : '';
   }
 }
 

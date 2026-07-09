@@ -18,7 +18,7 @@ if (stripos($heroTitle, 'Project') !== false) {
 $heroData = $PageHeroCopy[$heroKey] ?? $defaultHero;
 $heroTitle = $pageHeroTitle ?? ($heroData['title'] ?? $heroTitle);
 $heroDesc = $pageHeroSubtitle ?? ($heroData['desc'] ?? '');
-$heroBg = $pageHeroImage ?? ($heroData['bg'] ?? 'assets/img/hero/hero1.jpg');
+$heroBg = $pageHeroImage ?? ($heroData['bg'] ?? (function_exists('stockImage') ? stockImage('hero1') : ''));
 ?>
 
 <section class="page-hero section" style="background-image: url('<?php echo $heroBg; ?>');">

@@ -88,7 +88,7 @@
         <div class="founder-grid">
             <div class="founder-img" data-aos="fade-right">
                 <div class="founder-img-frame">
-                    <img src="assets/img/stock/founder.jpg" alt="<?php echo htmlspecialchars($FounderCopy['image_alt'] ?? $CustomerName); ?>">
+                    <img src="<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('about') : '', ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($FounderCopy['image_alt'] ?? $CustomerName); ?>">
                 </div>
             </div>
             <div class="founder-content" data-aos="fade-left">
