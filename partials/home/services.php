@@ -19,8 +19,8 @@ if (empty($categoryConfig)) {
   $categoryConfig = [
     [
       'label' => 'Water Well Services',
-      'summary_slug' => 'water-pump-replacement',
-      'service_slugs' => ['water-pump-replacement', 'pressure-tank-installation', 'waterline-leak-repairs', 'constant-pressure-system-installation', 'well-rehab', 'waterproofing']
+      'summary_slug' => 'water-well-pump-replacement',
+      'service_slugs' => ['water-well-pump-replacement', 'pressure-tank-installation', 'waterline-leak-repairs', 'constant-pressure-system-installation', 'well-rehab', 'waterproofing']
     ],
     [
       'label' => 'Contracting Support',
@@ -75,7 +75,7 @@ if (!function_exists('homeServicesMinimalImage')) {
     $exts = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
     $aliasMap = [
-      'water-pump-replacement' => ['well-pump', 'pump-replacement'],
+      'water-well-pump-replacement' => ['water-pump-replacement', 'well-pump', 'pump-replacement'],
       'pressure-tank-installation' => ['pressure-tank', 'well-tank'],
       'waterline-leak-repairs' => ['waterline-leak', 'leak-repair'],
       'constant-pressure-system-installation' => ['constant-pressure', 'pressure-system'],

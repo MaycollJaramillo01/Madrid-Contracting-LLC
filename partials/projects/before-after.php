@@ -75,7 +75,7 @@
             <div class="ba-card">
                 <div class="ba-slider">
                     <img src="<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('gallery1') : '', ENT_QUOTES, 'UTF-8'); ?>" class="ba-img before-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?>">
-                    <img src="<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('water-pump-replacement') : '', ENT_QUOTES, 'UTF-8'); ?>" class="ba-img after-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?>">
+                    <img src="<?php echo htmlspecialchars(function_exists('stockImage') ? stockImage('water-well-pump-replacement') : '', ENT_QUOTES, 'UTF-8'); ?>" class="ba-img after-img" alt="<?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?>">
                     <div class="ba-handle"></div>
                     <span class="ba-badge badge-before"><?php echo htmlspecialchars($ProjectsBeforeAfterCopy['before_label'] ?? ''); ?></span>
                     <span class="ba-badge badge-after"><?php echo htmlspecialchars($ProjectsBeforeAfterCopy['after_label'] ?? ''); ?></span>
