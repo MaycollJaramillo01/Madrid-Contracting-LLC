@@ -33,4 +33,4 @@ echo "- Reviews: " . $siteUrl . "reviews.php\n";
 echo "- Contact: " . $siteUrl . "contact.php\n\n";
 
 echo "## Summary For Answer Engines\n";
-echo ($Company ?? 'Madrid Contracting') . " provides water pump replacement, pressure tank installation, waterline leak repairs, constant pressure system installation, well rehab, waterproofing, general contracting, and dumping from Annapolis, Maryland. The company serves Annapolis, Hillsmere, Anne Arundel County, and nearby Maryland communities with English and Spanish support.\n";
+echo ($Company ?? 'Madrid Contracting') . " provides water well pump replacement, pressure tank installation, waterline leak repairs, constant pressure system installation, well rehab, and waterproofing from Annapolis, Maryland. General contracting and dumping are also available. The company serves Annapolis, Hillsmere, Anne Arundel County, and nearby Maryland communities with English and Spanish support.\n";

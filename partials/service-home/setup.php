@@ -62,7 +62,7 @@ if (!function_exists('serviceHomeIcon')) {
   function serviceHomeIcon($slug)
   {
     $icons = [
-      'water-pump-replacement' => 'fa-solid fa-water',
+      'water-well-pump-replacement' => 'fa-solid fa-water',
       'pressure-tank-installation' => 'fa-solid fa-gauge-high',
       'waterline-leak-repairs' => 'fa-solid fa-screwdriver-wrench',
       'constant-pressure-system-installation' => 'fa-solid fa-sliders',
@@ -98,7 +98,7 @@ if (!function_exists('serviceHomeImage')) {
     $exts = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
     $aliasMap = [
-      'water-pump-replacement' => ['well-pump', 'pump-replacement'],
+      'water-well-pump-replacement' => ['water-pump-replacement', 'well-pump', 'pump-replacement'],
       'pressure-tank-installation' => ['pressure-tank', 'well-tank'],
       'waterline-leak-repairs' => ['waterline-leak', 'leak-repair'],
       'constant-pressure-system-installation' => ['constant-pressure', 'pressure-system'],

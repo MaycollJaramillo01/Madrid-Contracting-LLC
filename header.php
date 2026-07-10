@@ -14,9 +14,9 @@ $defaultSeoTitles = [
 ];
 
 $defaultSeoDescriptions = [
-    'home' => sprintf('%s provides water pump replacement, pressure tank installation, waterline leak repair, constant pressure systems, well rehab, waterproofing, general contracting, and dumping across Anne Arundel, Calvert, Prince George\'s, Howard, Baltimore, Charles, and Saint Mary\'s counties.', $Company ?? 'Madrid Contracting'),
+    'home' => sprintf('%s provides water well pump replacement, pressure tank installation, waterline leak repairs, constant pressure system installation, well rehab, and waterproofing. General contracting and dumping are also available across Anne Arundel, Calvert, Prince George\'s, Howard, Baltimore, Charles, and Saint Mary\'s counties.', $Company ?? 'Madrid Contracting'),
     'about' => sprintf('Learn about %s, an Annapolis-based water well service and contracting company serving Maryland properties with pump, tank, leak, pressure, rehab, waterproofing, and property support.', $Company ?? 'Madrid Contracting'),
-    'services' => 'Water well services in Annapolis, MD: water pump replacement, pressure tank installation, waterline leak repairs, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.',
+    'services' => 'Water well services in Annapolis, MD: water well pump replacement, pressure tank installation, waterline leak repairs, constant pressure system installation, well rehab, and waterproofing. General contracting and dumping are also available.',
     'projects' => 'See field work and service photos from Madrid Contracting water well service, waterproofing, contracting, and property support across Central Maryland counties.',
     'reviews' => 'Read customer feedback for Madrid Contracting water well service and contracting support across Central Maryland.',
     'contact' => 'Call Madrid Contracting to schedule water well service, pressure tank installation, waterline repair, waterproofing, general contracting, or dumping in Annapolis, MD.',
@@ -53,7 +53,7 @@ $seoPhone2 = trim((string) ($Phone2 ?? ''));
 $seoKeywords = array_values(array_unique(array_filter(array_merge(
     [
         'water well service Annapolis MD',
-        'water pump replacement Annapolis',
+        'water well pump replacement Annapolis',
         'pressure tank installation Maryland',
         'waterline leak repair Annapolis',
         'constant pressure system installation',
@@ -137,7 +137,7 @@ $seoGraph = [
             return ['@type' => 'Place', 'name' => $area];
         }, is_array($Areas ?? null) ? $Areas : []),
         'knowsAbout' => [
-            'Water pump replacement',
+            'Water well pump replacement',
             'Pressure tank installation',
             'Waterline leak repairs',
             'Constant pressure systems',

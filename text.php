@@ -43,7 +43,7 @@ function detectBaseURL() {
 $BaseURL   = rtrim(detectBaseURL(), '/') . '/';
 $Domain    = $BaseURL;
 $MAVEN     = "go-maven.com";
-$Address   = "307 Hillsmere Dr, Annapolis, MD 21403";
+$Address   = "307 Hillsmere Dr, Annapolis, Maryland 21403";
 $StreetAddress = "307 Hillsmere Dr";
 $AddressLocality = "Annapolis";
 $AddressRegion = "MD";
@@ -96,14 +96,14 @@ function localAssetUrl($relativePath) {
 $BrandLogo = localAssetUrl('assets/img/logo-horizontal.png');
 if ($BrandLogo === '') $BrandLogo = localAssetUrl('assets/img/logo.png');
 
-$AboutVideo = localAssetUrl('assets/videos/1.mp4');
+$AboutVideo = localAssetUrl('assets/videos/WhatsApp Video 2026-07-10 at 3.13.32 PM.mp4');
 
 $LocalProjectPhotos = [
   'hero1' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.25 AM.jpeg',
   'hero2' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM.jpeg',
   'hero3' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.25 AM (1).jpeg',
   'about' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (1).jpeg',
-  'water-pump-replacement' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.25 AM.jpeg',
+  'water-well-pump-replacement' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.25 AM.jpeg',
   'pressure-tank-installation' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM.jpeg',
   'waterline-leak-repairs' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (1).jpeg',
   'constant-pressure-system-installation' => 'assets/img/photos/WhatsApp Image 2026-07-09 at 9.30.26 AM (2).jpeg',
@@ -122,7 +122,7 @@ $StockImages = [
   'hero2' => localAssetUrl($LocalProjectPhotos['hero2']),
   'hero3' => localAssetUrl($LocalProjectPhotos['hero3']),
   'about' => localAssetUrl($LocalProjectPhotos['about']),
-  'water-pump-replacement' => localAssetUrl($LocalProjectPhotos['water-pump-replacement']),
+  'water-well-pump-replacement' => localAssetUrl($LocalProjectPhotos['water-well-pump-replacement']),
   'pressure-tank-installation' => localAssetUrl($LocalProjectPhotos['pressure-tank-installation']),
   'waterline-leak-repairs' => localAssetUrl($LocalProjectPhotos['waterline-leak-repairs']),
   'constant-pressure-system-installation' => localAssetUrl($LocalProjectPhotos['constant-pressure-system-installation']),
@@ -145,7 +145,7 @@ function stockImage($key) {
 /*=========================
    GENERAL MESSAGES
    =========================*/
-$Services       = "Water pump replacement, pressure tank installation, waterline leak repairs, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.";
+$Services       = "Water well pump replacement, pressure tank installation, waterline leak repairs, constant pressure system installation, well rehab, and waterproofing. We also offer general contracting and dumping.";
 $Estimates      = "Call for Service";
 $Payment        = "Call for payment options";
 $Experience     = "15+ Years";
@@ -267,7 +267,7 @@ foreach ($DirectoryReviewItems as $index => $review) {
    =========================*/
 $Phrase = [
   "Water Well Services in Annapolis, Maryland",
-  "Water Pump Replacement and Pressure Tank Installation",
+  "Water Well Pump Replacement and Pressure Tank Installation",
   "Waterline Leak Repairs",
   "Constant Pressure System Installation",
   "General Contracting and Dumping"
@@ -279,7 +279,7 @@ $Home = [
 ];
 
 $About = [
-  "MADRID CONTRACTING LLC is based at 307 Hillsmere Dr, Annapolis, MD 21403 and serves homeowners and properties across Anne Arundel, Calvert, Prince George's, Howard, Baltimore, Charles, and Saint Mary's counties.",
+  "MADRID CONTRACTING LLC is based at 307 Hillsmere Dr, Annapolis, Maryland 21403 and serves homeowners and properties across Anne Arundel, Calvert, Prince George's, Howard, Baltimore, Charles, and Saint Mary's counties.",
   "Our work focuses on practical water well solutions, clear communication, and reliable contracting support when a project needs more than a single repair."
 ];
 
@@ -291,10 +291,10 @@ $Vision  = "To be a trusted Annapolis-based contractor for water well systems, w
    =========================*/
 $serviceDefinitions = [
   [
-    'name' => 'Water Pump Replacement',
+    'name' => 'Water Well Pump Replacement',
     'description' => 'Replacement service for failing or worn water well pumps, with clear diagnosis and careful installation.',
     'category' => 'Water Well Services',
-    'image' => stockImage('water-pump-replacement'),
+    'image' => stockImage('water-well-pump-replacement'),
     'bullets' => ['Pump troubleshooting', 'Replacement planning', 'Well system compatibility', 'Clean installation']
   ],
   [
@@ -363,9 +363,9 @@ $OtherServices = [
 $ServicesByCategory = [
   [
     'label' => 'Water Well Services',
-    'summary_slug' => 'water-pump-replacement',
+    'summary_slug' => 'water-well-pump-replacement',
     'service_slugs' => [
-      'water-pump-replacement',
+      'water-well-pump-replacement',
       'pressure-tank-installation',
       'waterline-leak-repairs',
       'constant-pressure-system-installation',
@@ -416,7 +416,7 @@ foreach ($serviceDefinitions as $idx => $definition) {
 
 $OtherServicesLandingSlugs = ['general-contracting', 'dumping'];
 $PrimaryServiceSlugs = [
-  'water-pump-replacement',
+  'water-well-pump-replacement',
   'pressure-tank-installation',
   'waterline-leak-repairs',
   'constant-pressure-system-installation',
@@ -488,7 +488,7 @@ $WhyChoose = [
   'intro' => 'Madrid Contracting combines 3 years in business with 15 years of experience in water well maintenance, service, and related contracting.',
   'cards' => [
     ['title' => 'Experienced Service', 'text' => 'Support for pumps, tanks, pressure systems, leaks, well rehab, and waterproofing.'],
-    ['title' => 'Local Annapolis Base', 'text' => 'Based at 307 Hillsmere Dr, Annapolis, MD 21403.'],
+    ['title' => 'Local Annapolis Base', 'text' => 'Based at 307 Hillsmere Dr, Annapolis, Maryland 21403.'],
     ['title' => 'Need Help?', 'text' => 'Call Madrid Contracting to discuss your property and water system needs.', 'btn' => ['href' => $PhoneRef, 'text' => 'Call Now']]
   ],
 ];
@@ -556,7 +556,7 @@ $PageHeroCopy = [
 $HomeHeroCopy = [
   'headline' => $Company,
   'title' => 'Water Well Service and Contracting',
-  'sub' => 'Water pump replacement, pressure tank installation, waterline leak repair, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.',
+  'sub' => 'Water well pump replacement, pressure tank installation, waterline leak repairs, constant pressure system installation, well rehab, and waterproofing. We also offer general contracting and dumping.',
   'cta_primary' => 'Call Main Line',
   'cta_secondary' => 'Call Second Line',
   'cta_primary_href' => $PhoneRef,
@@ -661,7 +661,7 @@ $HomeMaintenanceCopy = [
   'title_strong' => 'Pressure, Repair',
   'desc' => 'From well equipment to waterproofing and cleanup support, Madrid Contracting keeps property service practical and direct.',
   'cards' => [
-    ['icon' => 'fa-water', 'title' => 'Pump and Tank Work', 'text' => 'Water pump replacement and pressure tank installation.', 'action' => 'See Details'],
+    ['icon' => 'fa-water', 'title' => 'Pump and Tank Work', 'text' => 'Water well pump replacement and pressure tank installation.', 'action' => 'See Details'],
     ['icon' => 'fa-screwdriver-wrench', 'title' => 'Leak Repairs', 'text' => 'Waterline leak repairs and service restoration support.', 'action' => 'See Details'],
     ['icon' => 'fa-gauge-high', 'title' => 'Constant Pressure', 'text' => 'Constant pressure system installation for better performance.', 'action' => 'See Details'],
     ['icon' => 'fa-truck-ramp-box', 'title' => 'Contracting and Dumping', 'text' => 'General contracting and dumping available when the job needs more support.', 'action' => 'See Details']
@@ -837,7 +837,7 @@ $ServiceFaqCopy = [
   'title' => 'Info About Our',
   'title_strong' => 'Service Process',
   'items' => [
-    ['icon' => 'fa-water', 'question' => 'Do you replace water pumps?', 'answer' => 'Yes. Water pump replacement is one of the core services.'],
+    ['icon' => 'fa-water', 'question' => 'Do you replace water well pumps?', 'answer' => 'Yes. Water well pump replacement is one of our core services.'],
     ['icon' => 'fa-gauge-high', 'question' => 'Do you install pressure tanks and constant pressure systems?', 'answer' => 'Yes. We install pressure tanks and constant pressure systems.'],
     ['icon' => 'fa-screwdriver-wrench', 'question' => 'Do you repair waterline leaks?', 'answer' => 'Yes. We provide waterline leak repairs.'],
     ['icon' => 'fa-map', 'question' => 'What areas do you serve?', 'answer' => $Coverage]

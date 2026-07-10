@@ -30,6 +30,18 @@ foreach ($servicesForGallery as $service) {
     ];
 }
 
+if (!empty($AboutVideo)) {
+    $tabLabels['videos'] = $ProjectsGalleryCopy['videos_label'] ?? 'Videos';
+    $galleryItems[] = [
+        'src' => $AboutVideo,
+        'cat' => 'videos',
+        'label' => $ProjectsGalleryCopy['videos_label'] ?? 'Videos',
+        'type' => 'video',
+        'title' => 'Water Well Field Work',
+        'url' => 'projects.php'
+    ];
+}
+
 $defaultFilter = 'all';
 $tabLabels = [
     'all' => 'All'
@@ -339,7 +351,14 @@ $tabLabels = [
             <?php else: ?>
                 <?php foreach ($galleryItems as $item): ?>
                     <div class="gallery-card<?php echo ($defaultFilter === 'all' || $item['cat'] === $defaultFilter) ? ' show' : ''; ?>" data-category="<?php echo htmlspecialchars($item['cat'], ENT_QUOTES, 'UTF-8'); ?>">
-                        <img src="<?php echo htmlspecialchars($item['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
+                        <?php if (($item['type'] ?? 'image') === 'video'): ?>
+                            <video class="gallery-video" muted playsinline preload="metadata" aria-label="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                                <source src="<?php echo htmlspecialchars($item['src'], ENT_QUOTES, 'UTF-8'); ?>" type="video/mp4">
+                            </video>
+                            <div class="video-play-badge" aria-hidden="true"><span><i class="fas fa-play"></i></span></div>
+                        <?php else: ?>
+                            <img src="<?php echo htmlspecialchars($item['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
+                        <?php endif; ?>
 
                         <div class="card-overlay">
                             <div class="card-zoom-icon">

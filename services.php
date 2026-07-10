@@ -8,7 +8,7 @@ $PageTitle = ($NavCopy['services'] ?? 'Services') . ' | ' . ($Company ?? 'MADRID
 
 $PageDescription = trim((string) ($HomeServicesCopy['desc'] ?? ''));
 if ($PageDescription === '') {
-  $PageDescription = 'Water pump replacement, pressure tank installation, waterline leak repairs, constant pressure systems, well rehab, waterproofing, general contracting, and dumping.';
+  $PageDescription = 'Water well pump replacement, pressure tank installation, waterline leak repairs, constant pressure system installation, well rehab, and waterproofing. We also offer general contracting and dumping.';
 }
 
 $PageCanonical = rtrim((string) ($BaseURL ?? ''), '/') . '/services.php';
